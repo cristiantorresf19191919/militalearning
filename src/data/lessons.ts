@@ -1,5 +1,6 @@
-export type LessonType = 'javascript' | 'html' | 'css';
+export type LessonType = 'javascript' | 'html' | 'css' | 'typescript';
 export type LessonColor = 'purple' | 'pink' | 'teal';
+export type LessonSection = 'javascript' | 'html' | 'css' | 'typescript' | 'react';
 
 export type Lesson = {
   id: number;
@@ -7,6 +8,7 @@ export type Lesson = {
   icon: string;
   color: LessonColor;
   type: LessonType;
+  section: LessonSection;
   description: string;
   instruction: string;
   initialCode: string;
@@ -22,6 +24,7 @@ export const lessons: Lesson[] = [
     icon: "fa-box",
     color: "purple",
     type: "javascript",
+    section: "javascript",
     description: "Imagina que tienes cajitas donde puedes guardar cosas. En programación, esas cajitas se llaman **Variables**. Podemos guardar números, textos (que llamamos 'strings') o incluso listas de cosas.",
     instruction: "Cambia el saludo original por uno que sea para ti, y cambia el número favorito. ¡Luego pulsa 'Ejecutar'!",
     initialCode: `let saludo = "¡Hola mundo soy Milita!";\nconsole.log(saludo);\n\nlet numeroFavorito = 8;\nconsole.log("Mi número favorito es: " + numeroFavorito);`,
@@ -39,6 +42,7 @@ export const lessons: Lesson[] = [
     icon: "fa-bell",
     color: "pink",
     type: "javascript",
+    section: "javascript",
     description: "A veces queremos que la página nos hable directamente. Para eso usamos \`alert()\`. ¡Es como una ventanita sorpresa!",
     instruction: "Ejecuta el código para ver el mensajito sorpresa.",
     initialCode: `alert("¡Te quiero mucho!");\nconsole.log("Mensaje enviado con amor ❤️");`,
@@ -56,6 +60,7 @@ export const lessons: Lesson[] = [
     icon: "fa-code-branch",
     color: "teal",
     type: "javascript",
+    section: "javascript",
     description: "La vida está llena de decisiones. 'Si tengo hambre, como'. 'Si tengo sueño, duermo'. En código es igualito, usamos \`if\` (si pasa esto) y \`else\` (si no).",
     instruction: "Cambia la variable \`tengoHambre\` a \`true\` (verdadero) para que el Gorilín te de comida.",
     initialCode: `let tengoHambre = false;\n\nif (tengoHambre) {\n  console.log("🦍 Gorilín dice: ¡Toma tu hamburguesa! 🍔");\n} else {\n  console.log("🦍 Gorilín dice: Bueno, más comida para mí...");\n}`,
@@ -74,6 +79,7 @@ export const lessons: Lesson[] = [
       icon: "fa-sync-alt",
       color: "purple",
       type: "javascript",
+      section: "javascript",
       description: "¿Te imaginas tener que escribir 'Te amo' 5 veces a mano? ¡Qué pereza! Mejor usamos un bucle \`for\` para que la compu lo haga por nosotros.",
       instruction: "Haz que el bucle se repita **5** veces en lugar de 3.",
       initialCode: `for (let abrazo = 1; abrazo <= 3; abrazo++) { \n  console.log("🤗 Abrazo número " + abrazo);\n}\nconsole.log(" ¡Ataque de cosquillas final! 👐");`,
@@ -91,6 +97,7 @@ export const lessons: Lesson[] = [
       icon: "fa-list-ul",
       color: "teal",
       type: "javascript",
+      section: "javascript",
       description: "A veces queremos guardar muchas cosas juntas, como una lista de compras. ¡Para eso usamos los **Arrays**! Se escriben con corchetes \`[]\`.",
       instruction: "Agrega 'Helado' a la lista de compras del Gorilín. (Usa compras.push('Helado'))",
       initialCode: `let compras = ["Bananas", "Galletas", "Leche"];\nconsole.log("Lista actual: " + compras);\n\n// ¡Agrega tu código aquí abajo!\n// Tip: compras.push("Algo rico");\n\nconsole.log("¡Ahora sí! Lista completa: " + compras);`,
@@ -108,6 +115,7 @@ export const lessons: Lesson[] = [
       icon: "fa-magic",
       color: "pink",
       type: "javascript",
+      section: "javascript",
       description: "Una **función** es como una receta mágica. Le dices qué hacer una vez, y luego puedes usarla cuantas veces quieras. Se escribe con \`function nombre() { ... }\`",
       instruction: "Crea una función llamada \`darAbrazo\` que muestre un mensaje de abrazo. Luego llámala 2 veces.",
       initialCode: `// ¡Crea tu función aquí!\n// function darAbrazo() { ... }\n\n// Luego llama a la función:\n// darAbrazo();\n// darAbrazo();`,
@@ -126,6 +134,7 @@ export const lessons: Lesson[] = [
       icon: "fa-star",
       color: "purple",
       type: "javascript",
+      section: "javascript",
       description: "Las funciones pueden recibir **parámetros** - como ingredientes para tu receta mágica. Así la misma función puede hacer cosas diferentes cada vez.",
       instruction: "Completa la función \`cantarCancion\` para que reciba un nombre y cante una canción personalizada. Luego cántale a 'Milita'.",
       initialCode: `function cantarCancion(nombre) {\n  // Completa aquí para mostrar: "🎵 ¡Milita, eres la mejor! 🎵"\n  // Tip: usa console.log con el parámetro nombre\n}\n\n// Llama a la función con "Milita":\n// cantarCancion("Milita");`,
@@ -144,6 +153,7 @@ export const lessons: Lesson[] = [
       icon: "fa-cube",
       color: "teal",
       type: "javascript",
+      section: "javascript",
       description: "Un **objeto** es como una cajita con compartimentos. Cada compartimento tiene un nombre y puede guardar cosas diferentes. Se escriben con llaves \`{}\`.",
       instruction: "Crea un objeto llamado \`mascota\` con propiedades \`nombre\` y \`animal\`. Luego muestra: 'Mi mascota se llama [nombre] y es un/a [animal]'.",
       initialCode: `// Crea tu objeto aquí:\n// let mascota = { nombre: "...", animal: "..." };\n\n// Muestra el mensaje con console.log\n// console.log("Mi mascota se llama " + mascota.nombre + ...);`,
@@ -163,6 +173,7 @@ export const lessons: Lesson[] = [
       icon: "fa-route",
       color: "pink",
       type: "javascript",
+      section: "javascript",
       description: "Podemos usar \`forEach\` para recorrer cada elemento de una lista y hacer algo con cada uno. ¡Es como saludar a cada amigo en una fila!",
       instruction: "Usa \`forEach\` para mostrar cada nombre de la lista \`amigos\` con un mensaje de saludo.",
       initialCode: `let amigos = ["Luna", "Sol", "Estrella"];\n\n// Usa amigos.forEach para saludar a cada uno:\n// amigos.forEach(function(amigo) {\n//   console.log("¡Hola " + amigo + "!");\n// });`,
@@ -181,6 +192,7 @@ export const lessons: Lesson[] = [
       icon: "fa-exchange-alt",
       color: "purple",
       type: "javascript",
+      section: "javascript",
       description: "\`map\` es súper poderoso: toma cada elemento de una lista, lo transforma, y crea una lista nueva. ¡Es como convertir todos los números en estrellas!",
       instruction: "Usa \`map\` para convertir cada número en la lista \`numeros\` multiplicándolo por 2, y muestra el resultado.",
       initialCode: `let numeros = [1, 2, 3, 4, 5];\n\n// Usa map para multiplicar cada número por 2:\n// let duplicados = numeros.map(function(num) {\n//   return num * 2;\n// });\n// console.log(duplicados);`,
@@ -199,6 +211,7 @@ export const lessons: Lesson[] = [
       icon: "fa-search",
       color: "teal",
       type: "javascript",
+      section: "javascript",
       description: "Con \`find\` podemos buscar el primer elemento de una lista que cumpla una condición. ¡Es como buscar tu juguete favorito en una caja!",
       instruction: "Usa \`find\` para encontrar el primer número mayor que 5 en la lista \`numeros\`.",
       initialCode: `let numeros = [3, 7, 2, 9, 1, 6];\n\n// Encuentra el primer número mayor que 5:\n// let encontrado = numeros.find(function(num) {\n//   return num > 5;\n// });\n// console.log("Encontrado: " + encontrado);`,
@@ -217,6 +230,7 @@ export const lessons: Lesson[] = [
       icon: "fa-filter",
       color: "pink",
       type: "javascript",
+      section: "javascript",
       description: "\`filter\` crea una lista nueva solo con los elementos que cumplan una condición. ¡Es como separar las galletas de chocolate de las demás!",
       instruction: "Usa \`filter\` para crear una lista solo con los números pares (que se pueden dividir entre 2) de \`numeros\`.",
       initialCode: `let numeros = [1, 2, 3, 4, 5, 6, 7, 8];\n\n// Filtra solo los números pares:\n// let pares = numeros.filter(function(num) {\n//   return num % 2 === 0;\n// });\n// console.log("Números pares: " + pares);`,
@@ -236,8 +250,9 @@ export const lessons: Lesson[] = [
       icon: "fa-font",
       color: "purple",
       type: "javascript",
+      section: "javascript",
       description: "Los textos (strings) tienen superpoderes. Puedes convertirlos a mayúsculas con \`toUpperCase()\`, a minúsculas con \`toLowerCase()\`, y más cosas chéveres.",
-      instruction: "Convierte el texto \`"Hola Mundo"\` a mayúsculas y también obtén su longitud con \`.length\`.",
+      instruction: "Convierte el texto \`\"Hola Mundo\"\` a mayúsculas y también obtén su longitud con \`.length\`.",
       initialCode: `let texto = "Hola Mundo";\n\n// Convierte a mayúsculas:\n// let mayusculas = texto.toUpperCase();\n// console.log(mayusculas);\n\n// Muestra la longitud:\n// console.log("Longitud: " + texto.length);`,
       validationLogic: (code, logs) => {
           const hasToUpperCase = code.includes("toUpperCase()");
@@ -255,6 +270,7 @@ export const lessons: Lesson[] = [
       icon: "fa-sitemap",
       color: "teal",
       type: "javascript",
+      section: "javascript",
       description: "A veces hay más de dos opciones. Con \`else if\` puedes tener muchos caminos. ¡Es como un menú con muchas opciones!",
       instruction: "Completa el código para que muestre diferentes mensajes según la hora del día: mañana (0-12), tarde (12-18), o noche (18-24).",
       initialCode: `let hora = 15; // Cambia este número para probar\n\nif (hora < 12) {\n  console.log("☀️ ¡Buenos días!");\n} else if (hora < 18) {\n  // Completa aquí para mostrar "🌤️ ¡Buenas tardes!"\n} else {\n  // Completa aquí para mostrar "🌙 ¡Buenas noches!"\n}`,
@@ -274,6 +290,7 @@ export const lessons: Lesson[] = [
       icon: "fa-redo",
       color: "pink",
       type: "javascript",
+      section: "javascript",
       description: "El bucle \`while\` repite algo mientras una condición sea verdadera. ¡Es como contar hasta que alguien te diga 'ya'!",
       instruction: "Usa un bucle \`while\` para contar desde 1 hasta 5 y mostrar cada número.",
       initialCode: `let contador = 1;\n\n// Completa el bucle while:\n// while (contador <= 5) {\n//   console.log("Número: " + contador);\n//   contador++;\n// }\n\nconsole.log("¡Listo!");`,
@@ -292,8 +309,9 @@ export const lessons: Lesson[] = [
       title: "HTML 1: Tu Primera Página",
       icon: "fa-file-code",
       color: "purple",
-      type: "html",
-      description: "HTML es el esqueleto de las páginas web. Cada página comienza con etiquetas básicas como \`<h1>\` para títulos y \`<p>\` para párrafos.",
+    type: "html",
+    section: "html",
+    description: "HTML es el esqueleto de las páginas web. Cada página comienza con etiquetas básicas como \`<h1>\` para títulos y \`<p>\` para párrafos.",
       instruction: "Crea un título \`<h1>\` que diga '¡Hola Milita!' y un párrafo \`<p>\` que diga 'Esta es mi primera página web'.",
       initialCode: `<!-- Escribe tu HTML aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -311,8 +329,9 @@ export const lessons: Lesson[] = [
       title: "HTML 2: Encabezados",
       icon: "fa-heading",
       color: "teal",
-      type: "html",
-      description: "Los encabezados van del \`<h1>\` (más grande) al \`<h6>\` (más pequeño). ¡Son como títulos de diferentes tamaños!",
+    type: "html",
+    section: "html",
+    description: "Los encabezados van del \`<h1>\` (más grande) al \`<h6>\` (más pequeño). ¡Son como títulos de diferentes tamaños!",
       instruction: "Crea un \`<h1>\`, un \`<h2>\` y un \`<h3>\` con diferentes textos.",
       initialCode: `<!-- Crea tus encabezados aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -331,8 +350,9 @@ export const lessons: Lesson[] = [
       title: "HTML 3: Listas Ordenadas",
       icon: "fa-list-ol",
       color: "pink",
-      type: "html",
-      description: "Las listas ordenadas \`<ol>\` muestran elementos numerados. ¡Perfectas para recetas o pasos!",
+    type: "html",
+    section: "html",
+    description: "Las listas ordenadas \`<ol>\` muestran elementos numerados. ¡Perfectas para recetas o pasos!",
       instruction: "Crea una lista ordenada \`<ol>\` con al menos 3 elementos \`<li>\` de tu comida favorita.",
       initialCode: `<!-- Crea tu lista ordenada aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -350,8 +370,9 @@ export const lessons: Lesson[] = [
       title: "HTML 4: Listas No Ordenadas",
       icon: "fa-list-ul",
       color: "purple",
-      type: "html",
-      description: "Las listas no ordenadas \`<ul>\` muestran viñetas. ¡Perfectas para listas de compras!",
+    type: "html",
+    section: "html",
+    description: "Las listas no ordenadas \`<ul>\` muestran viñetas. ¡Perfectas para listas de compras!",
       instruction: "Crea una lista no ordenada \`<ul>\` con al menos 3 elementos \`<li>\` de cosas que te gustan.",
       initialCode: `<!-- Crea tu lista no ordenada aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -369,8 +390,9 @@ export const lessons: Lesson[] = [
       title: "HTML 5: Enlaces",
       icon: "fa-link",
       color: "teal",
-      type: "html",
-      description: "Los enlaces \`<a>\` te llevan a otras páginas. Usa el atributo \`href\` para decir a dónde ir.",
+    type: "html",
+    section: "html",
+    description: "Los enlaces \`<a>\` te llevan a otras páginas. Usa el atributo \`href\` para decir a dónde ir.",
       instruction: "Crea un enlace \`<a href='https://www.google.com'>\` que diga 'Ir a Google'.",
       initialCode: `<!-- Crea tu enlace aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } a { color: blue; text-decoration: underline; }`,
@@ -388,8 +410,9 @@ export const lessons: Lesson[] = [
       title: "HTML 6: Imágenes",
       icon: "fa-image",
       color: "pink",
-      type: "html",
-      description: "Las imágenes \`<img>\` muestran fotos. Usa \`src\` para la ruta y \`alt\` para describir la imagen.",
+    type: "html",
+    section: "html",
+    description: "Las imágenes \`<img>\` muestran fotos. Usa \`src\` para la ruta y \`alt\` para describir la imagen.",
       instruction: "Crea una imagen \`<img src='https://via.placeholder.com/200' alt='Imagen de ejemplo'>\`.",
       initialCode: `<!-- Crea tu imagen aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -407,8 +430,9 @@ export const lessons: Lesson[] = [
       title: "HTML 7: Texto en Negrita",
       icon: "fa-bold",
       color: "purple",
-      type: "html",
-      description: "Usa \`<strong>\` o \`<b>\` para hacer texto en negrita. ¡Perfecto para resaltar cosas importantes!",
+    type: "html",
+    section: "html",
+    description: "Usa \`<strong>\` o \`<b>\` para hacer texto en negrita. ¡Perfecto para resaltar cosas importantes!",
       instruction: "Crea un párrafo con texto normal y una palabra en negrita usando \`<strong>\`.",
       initialCode: `<!-- Crea tu párrafo con texto en negrita aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -425,8 +449,9 @@ export const lessons: Lesson[] = [
       title: "HTML 8: Texto en Cursiva",
       icon: "fa-italic",
       color: "teal",
-      type: "html",
-      description: "Usa \`<em>\` o \`<i>\` para hacer texto en cursiva. ¡Perfecto para énfasis!",
+    type: "html",
+    section: "html",
+    description: "Usa \`<em>\` o \`<i>\` para hacer texto en cursiva. ¡Perfecto para énfasis!",
       instruction: "Crea un párrafo con una palabra en cursiva usando \`<em>\`.",
       initialCode: `<!-- Crea tu párrafo con texto en cursiva aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -443,8 +468,9 @@ export const lessons: Lesson[] = [
       title: "HTML 9: División (div)",
       icon: "fa-square",
       color: "pink",
-      type: "html",
-      description: "El \`<div>\` es como una caja invisible que agrupa elementos. ¡Muy útil para organizar!",
+    type: "html",
+    section: "html",
+    description: "El \`<div>\` es como una caja invisible que agrupa elementos. ¡Muy útil para organizar!",
       instruction: "Crea un \`<div>\` con un título y un párrafo dentro.",
       initialCode: `<!-- Crea tu div aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } div { border: 2px solid #ccc; padding: 15px; margin: 10px 0; }`,
@@ -461,8 +487,9 @@ export const lessons: Lesson[] = [
       title: "HTML 10: Span",
       icon: "fa-code",
       color: "purple",
-      type: "html",
-      description: "El \`<span>\` es como un div pero para texto. ¡Perfecto para cambiar el color de una palabra!",
+    type: "html",
+    section: "html",
+    description: "El \`<span>\` es como un div pero para texto. ¡Perfecto para cambiar el color de una palabra!",
       instruction: "Crea un párrafo y usa \`<span>\` para cambiar el color de una palabra.",
       initialCode: `<!-- Crea tu párrafo con span aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } .rojo { color: red; }`,
@@ -479,8 +506,9 @@ export const lessons: Lesson[] = [
       title: "HTML 11: Botones",
       icon: "fa-hand-pointer",
       color: "teal",
-      type: "html",
-      description: "Los botones \`<button>\` son clickeables. ¡Perfectos para acciones!",
+    type: "html",
+    section: "html",
+    description: "Los botones \`<button>\` son clickeables. ¡Perfectos para acciones!",
       instruction: "Crea un botón \`<button>\` que diga 'Haz clic aquí'.",
       initialCode: `<!-- Crea tu botón aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } button { padding: 10px 20px; background: blue; color: white; border: none; cursor: pointer; }`,
@@ -497,8 +525,9 @@ export const lessons: Lesson[] = [
       title: "HTML 12: Input de Texto",
       icon: "fa-keyboard",
       color: "pink",
-      type: "html",
-      description: "Los inputs \`<input>\` permiten que los usuarios escriban. Usa \`type='text'\` para texto.",
+    type: "html",
+    section: "html",
+    description: "Los inputs \`<input>\` permiten que los usuarios escriban. Usa \`type='text'\` para texto.",
       instruction: "Crea un \`<input type='text' placeholder='Escribe tu nombre'>\`.",
       initialCode: `<!-- Crea tu input aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } input { padding: 8px; border: 1px solid #ccc; }`,
@@ -516,8 +545,9 @@ export const lessons: Lesson[] = [
       title: "HTML 13: Formularios",
       icon: "fa-wpforms",
       color: "purple",
-      type: "html",
-      description: "Los formularios \`<form>\` agrupan inputs. ¡Perfectos para recopilar información!",
+    type: "html",
+    section: "html",
+    description: "Los formularios \`<form>\` agrupan inputs. ¡Perfectos para recopilar información!",
       instruction: "Crea un \`<form>\` con un input de texto y un botón de envío.",
       initialCode: `<!-- Crea tu formulario aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } form { display: flex; flex-direction: column; gap: 10px; } input, button { padding: 8px; }`,
@@ -536,8 +566,9 @@ export const lessons: Lesson[] = [
       title: "HTML 14: Tablas Básicas",
       icon: "fa-table",
       color: "teal",
-      type: "html",
-      description: "Las tablas \`<table>\` organizan datos en filas \`<tr>\` y celdas \`<td>\`.",
+    type: "html",
+    section: "html",
+    description: "Las tablas \`<table>\` organizan datos en filas \`<tr>\` y celdas \`<td>\`.",
       instruction: "Crea una tabla con 2 filas y 2 columnas.",
       initialCode: `<!-- Crea tu tabla aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } table { border-collapse: collapse; width: 100%; } td, th { border: 1px solid #ddd; padding: 8px; }`,
@@ -556,8 +587,9 @@ export const lessons: Lesson[] = [
       title: "HTML 15: Saltos de Línea",
       icon: "fa-arrow-down",
       color: "pink",
-      type: "html",
-      description: "El \`<br>\` crea un salto de línea. ¡Útil para separar texto!",
+    type: "html",
+    section: "html",
+    description: "El \`<br>\` crea un salto de línea. ¡Útil para separar texto!",
       instruction: "Crea un párrafo con dos líneas usando \`<br>\`.",
       initialCode: `<!-- Crea tu párrafo con salto de línea aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -574,8 +606,9 @@ export const lessons: Lesson[] = [
       title: "HTML 16: Línea Horizontal",
       icon: "fa-minus",
       color: "purple",
-      type: "html",
-      description: "El \`<hr>\` crea una línea horizontal. ¡Perfecto para separar secciones!",
+    type: "html",
+    section: "html",
+    description: "El \`<hr>\` crea una línea horizontal. ¡Perfecto para separar secciones!",
       instruction: "Crea dos párrafos separados por un \`<hr>\`.",
       initialCode: `<!-- Crea tus párrafos con línea horizontal aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -592,8 +625,9 @@ export const lessons: Lesson[] = [
       title: "HTML 17: Comentarios",
       icon: "fa-comment",
       color: "teal",
-      type: "html",
-      description: "Los comentarios \`<!-- -->\` son notas que no se ven en la página. ¡Útiles para recordar cosas!",
+    type: "html",
+    section: "html",
+    description: "Los comentarios \`<!-- -->\` son notas que no se ven en la página. ¡Útiles para recordar cosas!",
       instruction: "Crea un párrafo y agrega un comentario HTML explicando qué hace.",
       initialCode: `<!-- Crea tu párrafo con comentario aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -610,8 +644,9 @@ export const lessons: Lesson[] = [
       title: "HTML 18: Atributos",
       icon: "fa-tag",
       color: "pink",
-      type: "html",
-      description: "Los atributos dan información extra a las etiquetas. Como \`id\`, \`class\`, o \`style\`.",
+    type: "html",
+    section: "html",
+    description: "Los atributos dan información extra a las etiquetas. Como \`id\`, \`class\`, o \`style\`.",
       instruction: "Crea un párrafo con un atributo \`id='mi-parrafo'\`.",
       initialCode: `<!-- Crea tu párrafo con id aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -628,8 +663,9 @@ export const lessons: Lesson[] = [
       title: "HTML 19: Clases",
       icon: "fa-tags",
       color: "purple",
-      type: "html",
-      description: "Las clases \`class\` agrupan elementos para darles el mismo estilo. ¡Muy útiles con CSS!",
+    type: "html",
+    section: "html",
+    description: "Las clases \`class\` agrupan elementos para darles el mismo estilo. ¡Muy útiles con CSS!",
       instruction: "Crea dos párrafos con la misma clase \`class='destacado'\`.",
       initialCode: `<!-- Crea tus párrafos con clase aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } .destacado { background: yellow; padding: 10px; }`,
@@ -647,8 +683,9 @@ export const lessons: Lesson[] = [
       title: "HTML 20: Estilos Inline",
       icon: "fa-paint-brush",
       color: "teal",
-      type: "html",
-      description: "El atributo \`style\` permite agregar CSS directamente. ¡Útil para estilos rápidos!",
+    type: "html",
+    section: "html",
+    description: "El atributo \`style\` permite agregar CSS directamente. ¡Útil para estilos rápidos!",
       instruction: "Crea un párrafo con \`style='color: red; font-size: 20px;'\`.",
       initialCode: `<!-- Crea tu párrafo con estilo inline aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -665,8 +702,9 @@ export const lessons: Lesson[] = [
       title: "HTML 21: Secciones",
       icon: "fa-folder",
       color: "pink",
-      type: "html",
-      description: "La etiqueta \`<section>\` agrupa contenido relacionado. ¡Perfecta para organizar!",
+    type: "html",
+    section: "html",
+    description: "La etiqueta \`<section>\` agrupa contenido relacionado. ¡Perfecta para organizar!",
       instruction: "Crea una \`<section>\` con un título y un párrafo.",
       initialCode: `<!-- Crea tu sección aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } section { border: 1px solid #ccc; padding: 15px; margin: 10px 0; }`,
@@ -683,8 +721,9 @@ export const lessons: Lesson[] = [
       title: "HTML 22: Artículos",
       icon: "fa-newspaper",
       color: "purple",
-      type: "html",
-      description: "El \`<article>\` es para contenido independiente, como un post de blog.",
+    type: "html",
+    section: "html",
+    description: "El \`<article>\` es para contenido independiente, como un post de blog.",
       instruction: "Crea un \`<article>\` con un título y contenido.",
       initialCode: `<!-- Crea tu artículo aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } article { background: #f9f9f9; padding: 15px; margin: 10px 0; }`,
@@ -701,8 +740,9 @@ export const lessons: Lesson[] = [
       title: "HTML 23: Encabezado y Pie",
       icon: "fa-header",
       color: "teal",
-      type: "html",
-      description: "\`<header>\` y \`<footer>\` son para el encabezado y pie de página. ¡Estructura semántica!",
+    type: "html",
+    section: "html",
+    description: "\`<header>\` y \`<footer>\` son para el encabezado y pie de página. ¡Estructura semántica!",
       instruction: "Crea un \`<header>\` con un título y un \`<footer>\` con texto.",
       initialCode: `<!-- Crea tu header y footer aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } header, footer { background: #333; color: white; padding: 15px; }`,
@@ -720,8 +760,9 @@ export const lessons: Lesson[] = [
       title: "HTML 24: Navegación",
       icon: "fa-bars",
       color: "pink",
-      type: "html",
-      description: "El \`<nav>\` es para menús de navegación. ¡Perfecto para enlaces importantes!",
+    type: "html",
+    section: "html",
+    description: "El \`<nav>\` es para menús de navegación. ¡Perfecto para enlaces importantes!",
       instruction: "Crea un \`<nav>\` con al menos 2 enlaces.",
       initialCode: `<!-- Crea tu navegación aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } nav { background: #f0f0f0; padding: 10px; } nav a { margin: 0 10px; }`,
@@ -739,8 +780,9 @@ export const lessons: Lesson[] = [
       title: "HTML 25: Aside",
       icon: "fa-columns",
       color: "purple",
-      type: "html",
-      description: "El \`<aside>\` es para contenido secundario, como barras laterales.",
+    type: "html",
+    section: "html",
+    description: "El \`<aside>\` es para contenido secundario, como barras laterales.",
       instruction: "Crea un \`<aside>\` con información adicional.",
       initialCode: `<!-- Crea tu aside aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } aside { background: #e8e8e8; padding: 15px; border-left: 4px solid blue; }`,
@@ -757,8 +799,9 @@ export const lessons: Lesson[] = [
       title: "HTML 26: Main",
       icon: "fa-home",
       color: "teal",
-      type: "html",
-      description: "El \`<main>\` contiene el contenido principal de la página. ¡Solo uno por página!",
+    type: "html",
+    section: "html",
+    description: "El \`<main>\` contiene el contenido principal de la página. ¡Solo uno por página!",
       instruction: "Crea un \`<main>\` con contenido principal.",
       initialCode: `<!-- Crea tu main aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } main { padding: 20px; }`,
@@ -775,8 +818,9 @@ export const lessons: Lesson[] = [
       title: "HTML 27: Citas",
       icon: "fa-quote-left",
       color: "pink",
-      type: "html",
-      description: "El \`<blockquote>\` es para citas largas. ¡Perfecto para frases importantes!",
+    type: "html",
+    section: "html",
+    description: "El \`<blockquote>\` es para citas largas. ¡Perfecto para frases importantes!",
       instruction: "Crea un \`<blockquote>\` con una cita.",
       initialCode: `<!-- Crea tu blockquote aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } blockquote { border-left: 4px solid #ccc; padding-left: 20px; font-style: italic; }`,
@@ -793,8 +837,9 @@ export const lessons: Lesson[] = [
       title: "HTML 28: Código",
       icon: "fa-code",
       color: "purple",
-      type: "html",
-      description: "El \`<code>\` muestra código. ¡Perfecto para tutoriales!",
+    type: "html",
+    section: "html",
+    description: "El \`<code>\` muestra código. ¡Perfecto para tutoriales!",
       instruction: "Crea un párrafo que explique qué es HTML y usa \`<code>\` para mostrar 'HTML'.",
       initialCode: `<!-- Crea tu párrafo con código aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }`,
@@ -811,8 +856,9 @@ export const lessons: Lesson[] = [
       title: "HTML 29: Preformateado",
       icon: "fa-align-left",
       color: "teal",
-      type: "html",
-      description: "El \`<pre>\` mantiene el formato del texto, incluyendo espacios. ¡Perfecto para código!",
+    type: "html",
+    section: "html",
+    description: "El \`<pre>\` mantiene el formato del texto, incluyendo espacios. ¡Perfecto para código!",
       instruction: "Crea un \`<pre>\` con texto que tenga múltiples espacios.",
       initialCode: `<!-- Crea tu pre aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }`,
@@ -829,8 +875,9 @@ export const lessons: Lesson[] = [
       title: "HTML 30: Abreviaciones",
       icon: "fa-info-circle",
       color: "pink",
-      type: "html",
-      description: "El \`<abbr>\` muestra abreviaciones con un tooltip. Usa \`title\` para la explicación.",
+    type: "html",
+    section: "html",
+    description: "El \`<abbr>\` muestra abreviaciones con un tooltip. Usa \`title\` para la explicación.",
       instruction: "Crea un texto con \`<abbr title='HyperText Markup Language'>HTML</abbr>\`.",
       initialCode: `<!-- Crea tu abreviatura aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } abbr { text-decoration: underline dotted; }`,
@@ -848,8 +895,9 @@ export const lessons: Lesson[] = [
       title: "HTML 31: Marcado",
       icon: "fa-highlighter",
       color: "purple",
-      type: "html",
-      description: "El \`<mark>\` resalta texto como con un marcador. ¡Perfecto para destacar!",
+    type: "html",
+    section: "html",
+    description: "El \`<mark>\` resalta texto como con un marcador. ¡Perfecto para destacar!",
       instruction: "Crea un párrafo y usa \`<mark>\` para resaltar una palabra importante.",
       initialCode: `<!-- Crea tu párrafo con mark aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } mark { background: yellow; }`,
@@ -866,8 +914,9 @@ export const lessons: Lesson[] = [
       title: "HTML 32: Tachado",
       icon: "fa-strikethrough",
       color: "teal",
-      type: "html",
-      description: "El \`<del>\` muestra texto tachado. ¡Útil para mostrar cambios!",
+    type: "html",
+    section: "html",
+    description: "El \`<del>\` muestra texto tachado. ¡Útil para mostrar cambios!",
       instruction: "Crea un párrafo con texto normal y una palabra tachada usando \`<del>\`.",
       initialCode: `<!-- Crea tu párrafo con texto tachado aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -884,8 +933,9 @@ export const lessons: Lesson[] = [
       title: "HTML 33: Subíndice y Superíndice",
       icon: "fa-superscript",
       color: "pink",
-      type: "html",
-      description: "\`<sub>\` hace subíndices y \`<sup>\` hace superíndices. ¡Perfecto para fórmulas!",
+    type: "html",
+    section: "html",
+    description: "\`<sub>\` hace subíndices y \`<sup>\` hace superíndices. ¡Perfecto para fórmulas!",
       instruction: "Crea texto con H\`<sub>2</sub>\`O (agua) y E=mc\`<sup>2</sup>\`.",
       initialCode: `<!-- Crea tu texto con sub y sup aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -903,8 +953,9 @@ export const lessons: Lesson[] = [
       title: "HTML 34: Detalles",
       icon: "fa-chevron-down",
       color: "purple",
-      type: "html",
-      description: "El \`<details>\` crea contenido que se puede expandir/colapsar. ¡Interactivo!",
+    type: "html",
+    section: "html",
+    description: "El \`<details>\` crea contenido que se puede expandir/colapsar. ¡Interactivo!",
       instruction: "Crea un \`<details>\` con \`<summary>\` y contenido dentro.",
       initialCode: `<!-- Crea tu details aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } details { border: 1px solid #ccc; padding: 10px; } summary { cursor: pointer; font-weight: bold; }`,
@@ -922,8 +973,9 @@ export const lessons: Lesson[] = [
       title: "HTML 35: Progress",
       icon: "fa-tasks",
       color: "teal",
-      type: "html",
-      description: "El \`<progress>\` muestra una barra de progreso. ¡Perfecto para mostrar avance!",
+    type: "html",
+    section: "html",
+    description: "El \`<progress>\` muestra una barra de progreso. ¡Perfecto para mostrar avance!",
       instruction: "Crea un \`<progress value='50' max='100'>\` para mostrar 50%.",
       initialCode: `<!-- Crea tu barra de progreso aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -941,8 +993,9 @@ export const lessons: Lesson[] = [
       title: "HTML 36: Meter",
       icon: "fa-tachometer-alt",
       color: "pink",
-      type: "html",
-      description: "El \`<meter>\` muestra un valor dentro de un rango. ¡Como un medidor!",
+    type: "html",
+    section: "html",
+    description: "El \`<meter>\` muestra un valor dentro de un rango. ¡Como un medidor!",
       instruction: "Crea un \`<meter value='0.7' min='0' max='1'>\` para mostrar 70%.",
       initialCode: `<!-- Crea tu meter aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -960,8 +1013,9 @@ export const lessons: Lesson[] = [
       title: "HTML 37: Time",
       icon: "fa-clock",
       color: "purple",
-      type: "html",
-      description: "El \`<time>\` marca fechas y horas de forma semántica. Usa \`datetime\` para el formato estándar.",
+    type: "html",
+    section: "html",
+    description: "El \`<time>\` marca fechas y horas de forma semántica. Usa \`datetime\` para el formato estándar.",
       instruction: "Crea un \`<time datetime='2024-01-01'>1 de enero de 2024</time>\`.",
       initialCode: `<!-- Crea tu time aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; }`,
@@ -979,8 +1033,9 @@ export const lessons: Lesson[] = [
       title: "HTML 38: Address",
       icon: "fa-map-marker-alt",
       color: "teal",
-      type: "html",
-      description: "El \`<address>\` es para información de contacto. ¡Semánticamente correcto!",
+    type: "html",
+    section: "html",
+    description: "El \`<address>\` es para información de contacto. ¡Semánticamente correcto!",
       instruction: "Crea un \`<address>\` con una dirección de correo.",
       initialCode: `<!-- Crea tu address aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } address { font-style: italic; }`,
@@ -997,8 +1052,9 @@ export const lessons: Lesson[] = [
       title: "HTML 39: Figure",
       icon: "fa-image",
       color: "pink",
-      type: "html",
-      description: "El \`<figure>\` agrupa imágenes con \`<figcaption>\` para descripciones. ¡Semántico!",
+    type: "html",
+    section: "html",
+    description: "El \`<figure>\` agrupa imágenes con \`<figcaption>\` para descripciones. ¡Semántico!",
       instruction: "Crea un \`<figure>\` con una imagen y un \`<figcaption>\`.",
       initialCode: `<!-- Crea tu figure aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } figure { border: 1px solid #ccc; padding: 10px; } figcaption { font-style: italic; text-align: center; }`,
@@ -1016,8 +1072,9 @@ export const lessons: Lesson[] = [
       title: "HTML 40: Video",
       icon: "fa-video",
       color: "purple",
-      type: "html",
-      description: "El \`<video>\` muestra videos. Usa \`src\` para la ruta y \`controls\` para controles.",
+    type: "html",
+    section: "html",
+    description: "El \`<video>\` muestra videos. Usa \`src\` para la ruta y \`controls\` para controles.",
       instruction: "Crea un \`<video src='https://www.w3schools.com/html/mov_bbb.mp4' controls>\`.",
       initialCode: `<!-- Crea tu video aquí -->`,
       initialCSS: `body { font-family: Arial, sans-serif; padding: 20px; } video { width: 100%; max-width: 500px; }`,
@@ -1035,8 +1092,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 1: Introducción",
       icon: "fa-th",
       color: "teal",
-      type: "css",
-      description: "Flexbox es una forma poderosa de organizar elementos. Usa \`display: flex;\` en el contenedor para activarlo.",
+    type: "css",
+    section: "css",
+    description: "Flexbox es una forma poderosa de organizar elementos. Usa \`display: flex;\` en el contenedor para activarlo.",
       instruction: "Agrega \`display: flex;\` al contenedor para activar flexbox.",
       initialCode: `.container {\n  /* Agrega display: flex aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1054,8 +1112,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 2: Flex Direction Row",
       icon: "fa-arrows-alt-h",
       color: "pink",
-      type: "css",
-      description: "\`flex-direction: row;\` (por defecto) coloca elementos en fila horizontal. ¡De izquierda a derecha!",
+    type: "css",
+    section: "css",
+    description: "\`flex-direction: row;\` (por defecto) coloca elementos en fila horizontal. ¡De izquierda a derecha!",
       instruction: "Agrega \`flex-direction: row;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-direction: row aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
@@ -1073,8 +1132,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 3: Flex Direction Column",
       icon: "fa-arrows-alt-v",
       color: "purple",
-      type: "css",
-      description: "\`flex-direction: column;\` coloca elementos en columna vertical. ¡De arriba hacia abajo!",
+    type: "css",
+    section: "css",
+    description: "\`flex-direction: column;\` coloca elementos en columna vertical. ¡De arriba hacia abajo!",
       instruction: "Agrega \`flex-direction: column;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-direction: column aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1092,8 +1152,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 4: Justify Content Start",
       icon: "fa-align-left",
       color: "teal",
-      type: "css",
-      description: "\`justify-content: flex-start;\` alinea elementos al inicio (izquierda en fila, arriba en columna).",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: flex-start;\` alinea elementos al inicio (izquierda en fila, arriba en columna).",
       instruction: "Agrega \`justify-content: flex-start;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: flex-start aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">Inicio</div>\n  <div class="item">Medio</div>\n  <div class="item">Fin</div>\n</div>`,
@@ -1111,8 +1172,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 5: Justify Content Center",
       icon: "fa-align-center",
       color: "pink",
-      type: "css",
-      description: "\`justify-content: center;\` centra los elementos. ¡Perfecto para centrar contenido!",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: center;\` centra los elementos. ¡Perfecto para centrar contenido!",
       instruction: "Agrega \`justify-content: center;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1130,8 +1192,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 6: Justify Content End",
       icon: "fa-align-right",
       color: "purple",
-      type: "css",
-      description: "\`justify-content: flex-end;\` alinea elementos al final (derecha en fila, abajo en columna).",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: flex-end;\` alinea elementos al final (derecha en fila, abajo en columna).",
       instruction: "Agrega \`justify-content: flex-end;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: flex-end aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
@@ -1149,8 +1212,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 7: Justify Content Space Between",
       icon: "fa-arrows-alt",
       color: "teal",
-      type: "css",
-      description: "\`justify-content: space-between;\` distribuye espacio entre elementos. ¡Espaciado uniforme!",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: space-between;\` distribuye espacio entre elementos. ¡Espaciado uniforme!",
       instruction: "Agrega \`justify-content: space-between;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: space-between aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1168,8 +1232,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 8: Justify Content Space Around",
       icon: "fa-expand-arrows-alt",
       color: "pink",
-      type: "css",
-      description: "\`justify-content: space-around;\` distribuye espacio alrededor de cada elemento.",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: space-around;\` distribuye espacio alrededor de cada elemento.",
       instruction: "Agrega \`justify-content: space-around;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: space-around aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
@@ -1187,8 +1252,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 9: Justify Content Space Evenly",
       icon: "fa-equals",
       color: "purple",
-      type: "css",
-      description: "\`justify-content: space-evenly;\` distribuye espacio de forma completamente uniforme.",
+    type: "css",
+    section: "css",
+    description: "\`justify-content: space-evenly;\` distribuye espacio de forma completamente uniforme.",
       instruction: "Agrega \`justify-content: space-evenly;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega justify-content: space-evenly aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1206,8 +1272,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 10: Align Items Start",
       icon: "fa-arrow-up",
       color: "teal",
-      type: "css",
-      description: "\`align-items: flex-start;\` alinea elementos al inicio del eje cruzado (arriba en fila, izquierda en columna).",
+    type: "css",
+    section: "css",
+    description: "\`align-items: flex-start;\` alinea elementos al inicio del eje cruzado (arriba en fila, izquierda en columna).",
       instruction: "Agrega \`align-items: flex-start;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  height: 200px;\n  /* Agrega align-items: flex-start aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">Alto</div>\n  <div class="item">Medio</div>\n  <div class="item">Bajo</div>\n</div>`,
@@ -1225,8 +1292,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 11: Align Items Center",
       icon: "fa-arrows-alt-v",
       color: "pink",
-      type: "css",
-      description: "\`align-items: center;\` centra elementos en el eje cruzado. ¡Perfecto para centrar verticalmente!",
+    type: "css",
+    section: "css",
+    description: "\`align-items: center;\` centra elementos en el eje cruzado. ¡Perfecto para centrar verticalmente!",
       instruction: "Agrega \`align-items: center;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  height: 200px;\n  /* Agrega align-items: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1244,8 +1312,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 12: Align Items End",
       icon: "fa-arrow-down",
       color: "purple",
-      type: "css",
-      description: "\`align-items: flex-end;\` alinea elementos al final del eje cruzado (abajo en fila, derecha en columna).",
+    type: "css",
+    section: "css",
+    description: "\`align-items: flex-end;\` alinea elementos al final del eje cruzado (abajo en fila, derecha en columna).",
       instruction: "Agrega \`align-items: flex-end;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  height: 200px;\n  /* Agrega align-items: flex-end aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
@@ -1263,8 +1332,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 13: Align Items Stretch",
       icon: "fa-expand",
       color: "teal",
-      type: "css",
-      description: "\`align-items: stretch;\` (por defecto) estira elementos para llenar el contenedor.",
+    type: "css",
+    section: "css",
+    description: "\`align-items: stretch;\` (por defecto) estira elementos para llenar el contenedor.",
       instruction: "Agrega \`align-items: stretch;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  height: 200px;\n  /* Agrega align-items: stretch aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1282,8 +1352,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 14: Flex Wrap",
       icon: "fa-redo",
       color: "pink",
-      type: "css",
-      description: "\`flex-wrap: wrap;\` permite que los elementos se envuelvan a la siguiente línea si no caben.",
+    type: "css",
+    section: "css",
+    description: "\`flex-wrap: wrap;\` permite que los elementos se envuelvan a la siguiente línea si no caben.",
       instruction: "Agrega \`flex-wrap: wrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-wrap: wrap aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n</div>`,
@@ -1301,8 +1372,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 15: Flex Grow",
       icon: "fa-expand-arrows-alt",
       color: "purple",
-      type: "css",
-      description: "\`flex-grow: 1;\` permite que un elemento crezca para llenar espacio disponible.",
+    type: "css",
+    section: "css",
+    description: "\`flex-grow: 1;\` permite que un elemento crezca para llenar espacio disponible.",
       instruction: "Agrega \`flex-grow: 1;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega flex-grow: 1 aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">2 (crece)</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1320,8 +1392,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 16: Flex Shrink",
       icon: "fa-compress",
       color: "teal",
-      type: "css",
-      description: "\`flex-shrink: 0;\` previene que un elemento se encoja cuando no hay espacio.",
+    type: "css",
+    section: "css",
+    description: "\`flex-shrink: 0;\` previene que un elemento se encoja cuando no hay espacio.",
       instruction: "Agrega \`flex-shrink: 0;\` al primer elemento.",
       initialCode: `.item-1 {\n  /* Agrega flex-shrink: 0 aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">No se encoge</div>\n  <div class="item item-2">2</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1339,8 +1412,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 17: Flex Basis",
       icon: "fa-ruler",
       color: "pink",
-      type: "css",
-      description: "\`flex-basis: 200px;\` establece el tamaño inicial de un elemento antes de crecer o encogerse.",
+    type: "css",
+    section: "css",
+    description: "\`flex-basis: 200px;\` establece el tamaño inicial de un elemento antes de crecer o encogerse.",
       instruction: "Agrega \`flex-basis: 200px;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega flex-basis: 200px aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">200px base</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1358,8 +1432,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 18: Flex (Shorthand)",
       icon: "fa-compress-arrows-alt",
       color: "purple",
-      type: "css",
-      description: "\`flex: 1;\` es una forma corta de escribir \`flex-grow: 1; flex-shrink: 1; flex-basis: 0;\`.",
+    type: "css",
+    section: "css",
+    description: "\`flex: 1;\` es una forma corta de escribir \`flex-grow: 1; flex-shrink: 1; flex-basis: 0;\`.",
       instruction: "Agrega \`flex: 1;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega flex: 1 aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">Flex 1</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1377,8 +1452,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 19: Align Self",
       icon: "fa-user",
       color: "teal",
-      type: "css",
-      description: "\`align-self: center;\` permite alinear un elemento individual diferente al resto.",
+    type: "css",
+    section: "css",
+    description: "\`align-self: center;\` permite alinear un elemento individual diferente al resto.",
       instruction: "Agrega \`align-self: center;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega align-self: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">Centrado</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1396,8 +1472,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 20: Gap",
       icon: "fa-arrows-alt",
       color: "pink",
-      type: "css",
-      description: "\`gap: 20px;\` agrega espacio uniforme entre elementos flex. ¡Más fácil que margin!",
+    type: "css",
+    section: "css",
+    description: "\`gap: 20px;\` agrega espacio uniforme entre elementos flex. ¡Más fácil que margin!",
       instruction: "Agrega \`gap: 20px;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega gap: 20px aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1415,8 +1492,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 21: Row Gap",
       icon: "fa-arrows-alt-v",
       color: "purple",
-      type: "css",
-      description: "\`row-gap: 15px;\` controla el espacio entre filas cuando hay wrap.",
+    type: "css",
+    section: "css",
+    description: "\`row-gap: 15px;\` controla el espacio entre filas cuando hay wrap.",
       instruction: "Agrega \`row-gap: 15px;\` y \`flex-wrap: wrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  flex-wrap: wrap;\n  /* Agrega row-gap: 15px aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n</div>`,
@@ -1434,8 +1512,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 22: Column Gap",
       icon: "fa-arrows-alt-h",
       color: "teal",
-      type: "css",
-      description: "\`column-gap: 10px;\` controla el espacio entre columnas.",
+    type: "css",
+    section: "css",
+    description: "\`column-gap: 10px;\` controla el espacio entre columnas.",
       instruction: "Agrega \`column-gap: 10px;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega column-gap: 10px aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1453,8 +1532,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 23: Order",
       icon: "fa-sort",
       color: "pink",
-      type: "css",
-      description: "\`order: -1;\` cambia el orden visual de elementos sin cambiar el HTML.",
+    type: "css",
+    section: "css",
+    description: "\`order: -1;\` cambia el orden visual de elementos sin cambiar el HTML.",
       instruction: "Agrega \`order: -1;\` al tercer elemento para que aparezca primero.",
       initialCode: `.item-3 {\n  /* Agrega order: -1 aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">2</div>\n  <div class="item item-3">3 (primero)</div>\n</div>`,
@@ -1472,8 +1552,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 24: Flex Direction Row Reverse",
       icon: "fa-exchange-alt",
       color: "purple",
-      type: "css",
-      description: "\`flex-direction: row-reverse;\` invierte el orden de los elementos en fila.",
+    type: "css",
+    section: "css",
+    description: "\`flex-direction: row-reverse;\` invierte el orden de los elementos en fila.",
       instruction: "Agrega \`flex-direction: row-reverse;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-direction: row-reverse aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1491,8 +1572,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 25: Flex Direction Column Reverse",
       icon: "fa-sort-amount-down",
       color: "teal",
-      type: "css",
-      description: "\`flex-direction: column-reverse;\` invierte el orden de los elementos en columna.",
+    type: "css",
+    section: "css",
+    description: "\`flex-direction: column-reverse;\` invierte el orden de los elementos en columna.",
       instruction: "Agrega \`flex-direction: column-reverse;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-direction: column-reverse aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1510,8 +1592,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 26: Align Content Start",
       icon: "fa-align-left",
       color: "pink",
-      type: "css",
-      description: "\`align-content: flex-start;\` alinea líneas múltiples al inicio cuando hay wrap.",
+    type: "css",
+    section: "css",
+    description: "\`align-content: flex-start;\` alinea líneas múltiples al inicio cuando hay wrap.",
       instruction: "Agrega \`align-content: flex-start;\` y \`flex-wrap: wrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  flex-wrap: wrap;\n  height: 300px;\n  /* Agrega align-content: flex-start aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
@@ -1529,8 +1612,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 27: Align Content Center",
       icon: "fa-align-center",
       color: "purple",
-      type: "css",
-      description: "\`align-content: center;\` centra las líneas múltiples cuando hay wrap.",
+    type: "css",
+    section: "css",
+    description: "\`align-content: center;\` centra las líneas múltiples cuando hay wrap.",
       instruction: "Agrega \`align-content: center;\` y \`flex-wrap: wrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  flex-wrap: wrap;\n  height: 300px;\n  /* Agrega align-content: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
@@ -1548,8 +1632,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 28: Align Content Space Between",
       icon: "fa-arrows-alt",
       color: "teal",
-      type: "css",
-      description: "\`align-content: space-between;\` distribuye espacio entre líneas múltiples.",
+    type: "css",
+    section: "css",
+    description: "\`align-content: space-between;\` distribuye espacio entre líneas múltiples.",
       instruction: "Agrega \`align-content: space-between;\` y \`flex-wrap: wrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  flex-wrap: wrap;\n  height: 300px;\n  /* Agrega align-content: space-between aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
@@ -1567,8 +1652,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 29: Flex Wrap Nowrap",
       icon: "fa-lock",
       color: "pink",
-      type: "css",
-      description: "\`flex-wrap: nowrap;\` (por defecto) previene que los elementos se envuelvan.",
+    type: "css",
+    section: "css",
+    description: "\`flex-wrap: nowrap;\` (por defecto) previene que los elementos se envuelvan.",
       instruction: "Agrega \`flex-wrap: nowrap;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-wrap: nowrap aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n</div>`,
@@ -1586,8 +1672,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 30: Flex Wrap Wrap Reverse",
       icon: "fa-redo-alt",
       color: "purple",
-      type: "css",
-      description: "\`flex-wrap: wrap-reverse;\` envuelve elementos pero en orden inverso.",
+    type: "css",
+    section: "css",
+    description: "\`flex-wrap: wrap-reverse;\` envuelve elementos pero en orden inverso.",
       instruction: "Agrega \`flex-wrap: wrap-reverse;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-wrap: wrap-reverse aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n</div>`,
@@ -1605,8 +1692,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 31: Flex Shorthand 2",
       icon: "fa-compress",
       color: "teal",
-      type: "css",
-      description: "\`flex: 0 1 auto;\` es el valor por defecto (no crece, puede encogerse, tamaño automático).",
+    type: "css",
+    section: "css",
+    description: "\`flex: 0 1 auto;\` es el valor por defecto (no crece, puede encogerse, tamaño automático).",
       instruction: "Agrega \`flex: 0 1 auto;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega flex: 0 1 auto aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">0 1 auto</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1624,8 +1712,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 32: Flex Shorthand 3",
       icon: "fa-expand",
       color: "pink",
-      type: "css",
-      description: "\`flex: 2 1 0;\` significa crecer 2x, puede encogerse, tamaño base 0.",
+    type: "css",
+    section: "css",
+    description: "\`flex: 2 1 0;\` significa crecer 2x, puede encogerse, tamaño base 0.",
       instruction: "Agrega \`flex: 2 1 0;\` al segundo elemento.",
       initialCode: `.item-2 {\n  /* Agrega flex: 2 1 0 aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item item-1">1</div>\n  <div class="item item-2">2x más grande</div>\n  <div class="item item-3">3</div>\n</div>`,
@@ -1643,8 +1732,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 33: Centrado Perfecto",
       icon: "fa-crosshairs",
       color: "purple",
-      type: "css",
-      description: "Combina \`justify-content: center;\` y \`align-items: center;\` para centrar perfectamente.",
+    type: "css",
+    section: "css",
+    description: "Combina \`justify-content: center;\` y \`align-items: center;\` para centrar perfectamente.",
       instruction: "Agrega ambas propiedades al contenedor para centrar el elemento.",
       initialCode: `.container {\n  display: flex;\n  height: 300px;\n  /* Agrega justify-content: center y align-items: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">Centrado</div>\n</div>`,
@@ -1663,8 +1753,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 34: Espaciado Uniforme",
       icon: "fa-equals",
       color: "teal",
-      type: "css",
-      description: "Combina \`justify-content: space-evenly;\` y \`align-items: center;\` para espaciado perfecto.",
+    type: "css",
+    section: "css",
+    description: "Combina \`justify-content: space-evenly;\` y \`align-items: center;\` para espaciado perfecto.",
       instruction: "Agrega ambas propiedades al contenedor.",
       initialCode: `.container {\n  display: flex;\n  height: 200px;\n  /* Agrega justify-content: space-evenly y align-items: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>`,
@@ -1683,8 +1774,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 35: Layout de Tarjetas",
       icon: "fa-id-card",
       color: "pink",
-      type: "css",
-      description: "Crea un layout de tarjetas usando flexbox con wrap y gap.",
+    type: "css",
+    section: "css",
+    description: "Crea un layout de tarjetas usando flexbox con wrap y gap.",
       instruction: "Agrega \`flex-wrap: wrap;\` y \`gap: 20px;\` al contenedor.",
       initialCode: `.container {\n  display: flex;\n  /* Agrega flex-wrap: wrap y gap: 20px aquí */\n}`,
       initialHTML: `<div class="container">\n  <div class="card">Tarjeta 1</div>\n  <div class="card">Tarjeta 2</div>\n  <div class="card">Tarjeta 3</div>\n  <div class="card">Tarjeta 4</div>\n</div>`,
@@ -1703,8 +1795,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 36: Barra de Navegación",
       icon: "fa-bars",
       color: "purple",
-      type: "css",
-      description: "Crea una barra de navegación horizontal con flexbox.",
+    type: "css",
+    section: "css",
+    description: "Crea una barra de navegación horizontal con flexbox.",
       instruction: "Agrega \`justify-content: space-between;\` y \`align-items: center;\` al contenedor.",
       initialCode: `.navbar {\n  display: flex;\n  /* Agrega justify-content: space-between y align-items: center aquí */\n}`,
       initialHTML: `<div class="navbar">\n  <div class="logo">Logo</div>\n  <nav class="nav-links">\n    <a href="#">Inicio</a>\n    <a href="#">Acerca</a>\n    <a href="#">Contacto</a>\n  </nav>\n</div>`,
@@ -1723,8 +1816,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 37: Footer",
       icon: "fa-window-minimize",
       color: "teal",
-      type: "css",
-      description: "Crea un footer con elementos distribuidos uniformemente.",
+    type: "css",
+    section: "css",
+    description: "Crea un footer con elementos distribuidos uniformemente.",
       instruction: "Agrega \`justify-content: space-around;\` al contenedor.",
       initialCode: `.footer {\n  display: flex;\n  /* Agrega justify-content: space-around aquí */\n}`,
       initialHTML: `<div class="footer">\n  <div>© 2024</div>\n  <div>Privacidad</div>\n  <div>Términos</div>\n  <div>Contacto</div>\n</div>`,
@@ -1742,8 +1836,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 38: Sidebar Layout",
       icon: "fa-columns",
       color: "pink",
-      type: "css",
-      description: "Crea un layout con sidebar usando flexbox.",
+    type: "css",
+    section: "css",
+    description: "Crea un layout con sidebar usando flexbox.",
       instruction: "Agrega \`flex: 1;\` al contenido principal para que ocupe el espacio restante.",
       initialCode: `.main-content {\n  /* Agrega flex: 1 aquí */\n}`,
       initialHTML: `<div class="container">\n  <aside class="sidebar">Sidebar</aside>\n  <main class="main-content">Contenido Principal</main>\n</div>`,
@@ -1761,8 +1856,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 39: Centrado Vertical",
       icon: "fa-arrows-alt-v",
       color: "purple",
-      type: "css",
-      description: "Centra contenido verticalmente usando flexbox en una columna.",
+    type: "css",
+    section: "css",
+    description: "Centra contenido verticalmente usando flexbox en una columna.",
       instruction: "Agrega \`flex-direction: column;\`, \`justify-content: center;\` y \`align-items: center;\`.",
       initialCode: `.container {\n  display: flex;\n  height: 400px;\n  /* Agrega flex-direction: column, justify-content: center y align-items: center aquí */\n}`,
       initialHTML: `<div class="container">\n  <h1>Título</h1>\n  <p>Contenido centrado</p>\n</div>`,
@@ -1782,8 +1878,9 @@ export const lessons: Lesson[] = [
       title: "CSS Flexbox 40: Proyecto Final",
       icon: "fa-trophy",
       color: "teal",
-      type: "css",
-      description: "¡Proyecto final! Crea un layout completo usando todas las técnicas de flexbox aprendidas.",
+    type: "css",
+    section: "css",
+    description: "¡Proyecto final! Crea un layout completo usando todas las técnicas de flexbox aprendidas.",
       instruction: "Crea un header con \`justify-content: space-between;\`, un main con \`flex: 1;\`, y un footer con \`justify-content: center;\`.",
       initialCode: `.header {\n  display: flex;\n  /* Agrega justify-content: space-between aquí */\n}\n\n.main {\n  display: flex;\n  /* Agrega flex: 1 aquí */\n}\n\n.footer {\n  display: flex;\n  /* Agrega justify-content: center aquí */\n}`,
       initialHTML: `<div class="page">\n  <header class="header">\n    <div class="logo">Logo</div>\n    <nav>Navegación</nav>\n  </header>\n  <main class="main">Contenido Principal</main>\n  <footer class="footer">© 2024</footer>\n</div>`,
@@ -1795,6 +1892,509 @@ export const lessons: Lesson[] = [
           return {
               success: hasHeaderJustify && hasMainFlex && hasFooterJustify,
               message: "🏆 ¡Proyecto completado! ¡Eres una experta en Flexbox!"
+          };
+      }
+  },
+  // TypeScript Exercises (96-120)
+  {
+      id: 96,
+      title: "TypeScript 1: Tipos Básicos",
+      icon: "fa-tag",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "¡Bienvenido a TypeScript! 🎉 TypeScript es como JavaScript pero con **tipos**. Los tipos le dicen a la computadora qué tipo de dato guardamos: \`string\` (texto), \`number\` (número), o \`boolean\` (verdadero/falso).",
+      instruction: "Declara una variable \`nombre\` de tipo \`string\` con tu nombre, y una variable \`edad\` de tipo \`number\` con tu edad. Muestra ambas.",
+      initialCode: `// Declara variables con tipos:\n// let nombre: string = "Tu nombre";\n// let edad: number = 10;\n\n// console.log("Me llamo " + nombre + " y tengo " + edad + " años");`,
+      validationLogic: (code, logs) => {
+          const hasStringType = code.includes(": string");
+          const hasNumberType = code.includes(": number");
+          const hasLog = logs.some(l => l.toLowerCase().includes("llamo") || l.toLowerCase().includes("años"));
+          return {
+              success: hasStringType && hasNumberType && hasLog,
+              message: "🎯 ¡Tipos básicos aprendidos! TypeScript te ayuda a evitar errores."
+          };
+      }
+  },
+  {
+      id: 97,
+      title: "TypeScript 2: Arrays con Tipos",
+      icon: "fa-list-ol",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "En TypeScript, también podemos decirle qué tipo de cosas guarda un array. \`string[]\` significa 'un array de textos', y \`number[]\` significa 'un array de números'.",
+      instruction: "Crea un array de tipo \`string[]\` llamado \`frutas\` con al menos 3 frutas. Luego muestra la primera fruta.",
+      initialCode: `// Crea un array tipado:\n// let frutas: string[] = ["Manzana", "Banana", "Naranja"];\n\n// Muestra la primera fruta:\n// console.log("Mi fruta favorita es: " + frutas[0]);`,
+      validationLogic: (code, logs) => {
+          const hasArrayType = code.includes("string[]");
+          const hasFrutas = code.includes("frutas");
+          const hasLog = logs.some(l => l.toLowerCase().includes("fruta"));
+          return {
+              success: hasArrayType && hasFrutas && hasLog,
+              message: "🍎 ¡Arrays tipados dominados! Ahora TypeScript sabe qué guardas en tus listas."
+          };
+      }
+  },
+  {
+      id: 98,
+      title: "TypeScript 3: Funciones con Tipos",
+      icon: "fa-function",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Las funciones en TypeScript pueden tener tipos en sus parámetros y en lo que devuelven. \`function nombre(param: tipo): tipoRetorno { ... }\`",
+      instruction: "Crea una función \`saludar\` que reciba un \`nombre: string\` y devuelva un \`string\`. La función debe devolver '¡Hola [nombre]!'.",
+      initialCode: `// Crea una función tipada:\n// function saludar(nombre: string): string {\n//   return "¡Hola " + nombre + "!";\n// }\n\n// Llama a la función:\n// console.log(saludar("Milita"));`,
+      validationLogic: (code, logs) => {
+          const hasFunctionType = code.includes("saludar(nombre: string): string");
+          const hasReturn = code.includes("return");
+          const hasCall = logs.some(l => l.toLowerCase().includes("hola"));
+          return {
+              success: hasFunctionType && hasReturn && hasCall,
+              message: "✨ ¡Funciones tipadas aprendidas! TypeScript verifica que uses las funciones correctamente."
+          };
+      }
+  },
+  {
+      id: 99,
+      title: "TypeScript 4: El Tipo Boolean",
+      icon: "fa-check-square",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "El tipo \`boolean\` solo puede ser \`true\` (verdadero) o \`false\` (falso). ¡Es perfecto para decisiones!",
+      instruction: "Crea una variable \`esEstudiante\` de tipo \`boolean\` con valor \`true\`. Luego usa un \`if\` para mostrar un mensaje si es estudiante.",
+      initialCode: `// Declara un boolean:\n// let esEstudiante: boolean = true;\n\n// if (esEstudiante) {\n//   console.log("🎓 ¡Eres estudiante!");\n// }`,
+      validationLogic: (code, logs) => {
+          const hasBooleanType = code.includes(": boolean");
+          const hasTrue = code.includes("= true");
+          const hasLog = logs.some(l => l.toLowerCase().includes("estudiante"));
+          return {
+              success: hasBooleanType && hasTrue && hasLog,
+              message: "✅ ¡Boolean dominado! Ahora puedes hacer decisiones con tipos."
+          };
+      }
+  },
+  {
+      id: 100,
+      title: "TypeScript 5: Interfaces",
+      icon: "fa-file-contract",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "Las **interfaces** son como plantillas que definen cómo debe verse un objeto. ¡Es como un molde para galletas! Una vez definida, puedes usarla para crear objetos.",
+      instruction: "Crea una interfaz \`Persona\` con \`nombre: string\` y \`edad: number\`. Luego crea un objeto que use esa interfaz.",
+      initialCode: `// Define la interfaz:\n// interface Persona {\n//   nombre: string;\n//   edad: number;\n// }\n\n// Crea un objeto usando la interfaz:\n// let yo: Persona = {\n//   nombre: "Milita",\n//   edad: 8\n// };\n\n// console.log(yo.nombre + " tiene " + yo.edad + " años");`,
+      validationLogic: (code, logs) => {
+          const hasInterface = code.includes("interface Persona");
+          const hasPersonaType = code.includes(": Persona");
+          const hasLog = logs.some(l => l.toLowerCase().includes("años") || l.toLowerCase().includes("tiene"));
+          return {
+              success: hasInterface && hasPersonaType && hasLog,
+              message: "📋 ¡Interfaces aprendidas! Ahora puedes crear plantillas reutilizables."
+          };
+      }
+  },
+  {
+      id: 101,
+      title: "TypeScript 6: Parámetros Opcionales",
+      icon: "fa-question-circle",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "A veces queremos que un parámetro sea opcional (que puedas pasarlo o no). En TypeScript usamos \`?\` después del nombre: \`param?: tipo\`",
+      instruction: "Crea una función \`saludar\` que reciba \`nombre: string\` y \`apellido?: string\` (opcional). Si hay apellido, muestra nombre y apellido, si no, solo nombre.",
+      initialCode: `// Función con parámetro opcional:\n// function saludar(nombre: string, apellido?: string): string {\n//   if (apellido) {\n//     return "¡Hola " + nombre + " " + apellido + "!";\n//   }\n//   return "¡Hola " + nombre + "!";\n// }\n\n// console.log(saludar("Milita"));\n// console.log(saludar("Milita", "La Vaca"));`,
+      validationLogic: (code, logs) => {
+          const hasOptional = code.includes("apellido?: string");
+          const hasConditional = code.includes("if (apellido)");
+          const hasTwoCalls = (code.match(/saludar\(/g) || []).length >= 2;
+          return {
+              success: hasOptional && hasConditional && hasTwoCalls,
+              message: "❓ ¡Parámetros opcionales dominados! Tus funciones son más flexibles ahora."
+          };
+      }
+  },
+  {
+      id: 102,
+      title: "TypeScript 7: Tipos de Unión",
+      icon: "fa-code-branch",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "Un **tipo de unión** permite que una variable sea de varios tipos. Se escribe con \`|\`: \`string | number\` significa 'puede ser texto O número'.",
+      instruction: "Crea una variable \`id\` de tipo \`string | number\`. Asigna primero un número, luego un texto, y muestra ambos.",
+      initialCode: `// Tipo de unión:\n// let id: string | number = 123;\n// console.log("ID numérico: " + id);\n\n// id = "ABC-123";\n// console.log("ID texto: " + id);`,
+      validationLogic: (code, logs) => {
+          const hasUnion = code.includes("string | number");
+          const hasNumberAssign = code.includes("= 123") || !!code.match(/=\s*\d+/);
+          const hasStringAssign = code.includes('= "') || code.includes("= '");
+          return {
+              success: hasUnion && hasNumberAssign && hasStringAssign,
+              message: "🔀 ¡Tipos de unión aprendidos! Ahora puedes tener variables más flexibles."
+          };
+      }
+  },
+  {
+      id: 103,
+      title: "TypeScript 8: Arrays de Objetos Tipados",
+      icon: "fa-layer-group",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "Podemos crear arrays de objetos usando interfaces. \`Persona[]\` significa 'un array de objetos Persona'.",
+      instruction: "Crea una interfaz \`Animal\` con \`nombre: string\` y \`tipo: string\`. Luego crea un array \`animales: Animal[]\` con al menos 2 animales.",
+      initialCode: `// Define la interfaz:\n// interface Animal {\n//   nombre: string;\n//   tipo: string;\n// }\n\n// Crea un array tipado:\n// let animales: Animal[] = [\n//   { nombre: "Firulais", tipo: "Perro" },\n//   { nombre: "Michi", tipo: "Gato" }\n// ];\n\n// animales.forEach(function(animal) {\n//   console.log(animal.nombre + " es un " + animal.tipo);\n// });`,
+      validationLogic: (code, logs) => {
+          const hasInterface = code.includes("interface Animal");
+          const hasArrayType = code.includes("Animal[]");
+          const hasForEach = code.includes("forEach");
+          return {
+              success: hasInterface && hasArrayType && hasForEach,
+              message: "🐾 ¡Arrays de objetos tipados dominados! Estructuras de datos complejas aprendidas."
+          };
+      }
+  },
+  {
+      id: 104,
+      title: "TypeScript 9: Funciones Void",
+      icon: "fa-ban",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Algunas funciones no devuelven nada, solo hacen algo (como mostrar un mensaje). Para eso usamos \`: void\` en lugar de un tipo de retorno.",
+      instruction: "Crea una función \`mostrarMensaje\` que reciba un \`texto: string\` y no devuelva nada (\`: void\`). La función debe mostrar el texto en consola.",
+      initialCode: `// Función void:\n// function mostrarMensaje(texto: string): void {\n//   console.log(texto);\n// }\n\n// mostrarMensaje("¡Hola desde TypeScript!");`,
+      validationLogic: (code, logs) => {
+          const hasVoid = code.includes(": void");
+          const hasFunction = code.includes("function mostrarMensaje");
+          const hasCall = logs.length > 0;
+          return {
+              success: hasVoid && hasFunction && hasCall,
+              message: "🚫 ¡Void aprendido! Ahora sabes cuándo una función no devuelve nada."
+          };
+      }
+  },
+  {
+      id: 105,
+      title: "TypeScript 10: Tipos Literales",
+      icon: "fa-quote-left",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "Un **tipo literal** es cuando el valor solo puede ser exactamente ese texto o número. \`\"rojo\" | \"azul\" | \"verde\"\` significa que solo puede ser uno de esos tres colores.",
+      instruction: "Crea una variable \`color\` de tipo \`\"rojo\" | \"azul\" | \"verde\"\` y asígnala a \`\"rojo\"\`. Luego muéstrala.",
+      initialCode: `// Tipo literal:\n// let color: "rojo" | "azul" | "verde" = "rojo";\n// console.log("Mi color favorito es: " + color);`,
+      validationLogic: (code, logs) => {
+          const hasLiteral = code.includes('"rojo" | "azul" | "verde"');
+          const hasAssign = code.includes('= "rojo"');
+          const hasLog = logs.some(l => l.toLowerCase().includes("color"));
+          return {
+              success: hasLiteral && hasAssign && hasLog,
+              message: "📝 ¡Tipos literales aprendidos! Ahora puedes restringir valores específicos."
+          };
+      }
+  },
+  {
+      id: 106,
+      title: "TypeScript 11: Propiedades Opcionales",
+      icon: "fa-toggle-off",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "En las interfaces, también podemos hacer propiedades opcionales con \`?\`. Así algunos objetos pueden tener esa propiedad y otros no.",
+      instruction: "Crea una interfaz \`Usuario\` con \`nombre: string\` (obligatorio) y \`email?: string\` (opcional). Crea dos objetos: uno con email y otro sin email.",
+      initialCode: `// Interface con propiedad opcional:\n// interface Usuario {\n//   nombre: string;\n//   email?: string;\n// }\n\n// let usuario1: Usuario = { nombre: "Milita", email: "milita@ejemplo.com" };\n// let usuario2: Usuario = { nombre: "Gorilín" };\n\n// console.log(usuario1.nombre + " - " + usuario1.email);\n// console.log(usuario2.nombre);`,
+      validationLogic: (code, logs) => {
+          const hasOptionalProp = code.includes("email?: string");
+          const hasTwoObjects = (code.match(/Usuario\s*=/g) || []).length >= 2;
+          const hasLogs = logs.length >= 2;
+          return {
+              success: hasOptionalProp && hasTwoObjects && hasLogs,
+              message: "🔓 ¡Propiedades opcionales en interfaces dominadas! Objetos más flexibles."
+          };
+      }
+  },
+  {
+      id: 107,
+      title: "TypeScript 12: Enums",
+      icon: "fa-list-ul",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Un **enum** es una forma de crear un conjunto de valores constantes con nombres. ¡Es como una lista de opciones predefinidas!",
+      instruction: "Crea un enum \`Color\` con valores \`Rojo\`, \`Verde\`, \`Azul\`. Luego crea una variable de tipo \`Color\` y asígnala a \`Color.Rojo\`.",
+      initialCode: `// Define el enum:\n// enum Color {\n//   Rojo,\n//   Verde,\n//   Azul\n// }\n\n// Usa el enum:\n// let miColor: Color = Color.Rojo;\n// console.log("Mi color es: " + miColor);`,
+      validationLogic: (code, logs) => {
+          const hasEnum = code.includes("enum Color");
+          const hasColorType = code.includes(": Color");
+          const hasEnumValue = code.includes("Color.Rojo");
+          return {
+              success: hasEnum && hasColorType && hasEnumValue,
+              message: "📋 ¡Enums aprendidos! Ahora tienes valores constantes organizados."
+          };
+      }
+  },
+  {
+      id: 108,
+      title: "TypeScript 13: Funciones como Parámetros",
+      icon: "fa-code",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "En TypeScript puedes pasar funciones como parámetros. El tipo se escribe como \`(param: tipo) => tipoRetorno\`.",
+      instruction: "Crea una función \`ejecutar\` que reciba una función \`fn: () => void\` y la ejecute. Luego pásale una función que muestre '¡Hola!'.",
+      initialCode: `// Función que recibe otra función:\n// function ejecutar(fn: () => void): void {\n//   fn();\n// }\n\n// ejecutar(function() {\n//   console.log("¡Hola!");\n// });`,
+      validationLogic: (code, logs) => {
+          const hasFunctionType = code.includes("fn: () => void");
+          const hasCall = code.includes("fn()");
+          const hasLog = logs.some(l => l.toLowerCase().includes("hola"));
+          return {
+              success: hasFunctionType && hasCall && hasLog,
+              message: "🔧 ¡Funciones como parámetros aprendidas! Programación funcional avanzada."
+          };
+      }
+  },
+  {
+      id: 109,
+      title: "TypeScript 14: Tipos de Intersección",
+      icon: "fa-link",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "Un **tipo de intersección** combina varios tipos. \`A & B\` significa que el objeto debe tener todas las propiedades de A Y todas las de B.",
+      instruction: "Crea dos interfaces: \`Volador\` con \`volar: () => void\` y \`Nadador\` con \`nadar: () => void\`. Luego crea un tipo \`SuperAnimal\` que combine ambos.",
+      initialCode: `// Interfaces:\n// interface Volador {\n//   volar: () => void;\n// }\n\n// interface Nadador {\n//   nadar: () => void;\n// }\n\n// Tipo de intersección:\n// type SuperAnimal = Volador & Nadador;\n\n// let pato: SuperAnimal = {\n//   volar: function() { console.log("Volando..."); },\n//   nadar: function() { console.log("Nadando..."); }\n// };\n\n// pato.volar();\n// pato.nadar();`,
+      validationLogic: (code, logs) => {
+          const hasIntersection = code.includes("&");
+          const hasTwoInterfaces = code.includes("interface Volador") && code.includes("interface Nadador");
+          const hasBothCalls = logs.some(l => l.toLowerCase().includes("volando")) && logs.some(l => l.toLowerCase().includes("nadando"));
+          return {
+              success: hasIntersection && hasTwoInterfaces && hasBothCalls,
+              message: "🔗 ¡Tipos de intersección aprendidos! Combinación de tipos dominada."
+          };
+      }
+  },
+  {
+      id: 110,
+      title: "TypeScript 15: Genéricos Básicos",
+      icon: "fa-cogs",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Los **genéricos** permiten crear funciones y tipos que funcionan con diferentes tipos. Se escriben con \`<T>\` donde T es el tipo genérico.",
+      instruction: "Crea una función genérica \`obtenerPrimero\` que reciba un array de tipo \`T[]\` y devuelva el primer elemento de tipo \`T\`. Úsala con un array de números y otro de strings.",
+      initialCode: `// Función genérica:\n// function obtenerPrimero<T>(arr: T[]): T {\n//   return arr[0];\n// }\n\n// let numeros: number[] = [1, 2, 3];\n// let textos: string[] = ["a", "b", "c"];\n\n// console.log(obtenerPrimero(numeros));\n// console.log(obtenerPrimero(textos));`,
+      validationLogic: (code, logs) => {
+          const hasGeneric = code.includes("<T>");
+          const hasGenericArray = code.includes("arr: T[]");
+          const hasTwoCalls = (code.match(/obtenerPrimero\(/g) || []).length >= 2;
+          return {
+              success: hasGeneric && hasGenericArray && hasTwoCalls,
+              message: "⚙️ ¡Genéricos básicos aprendidos! Código reutilizable con tipos."
+          };
+      }
+  },
+  {
+      id: 111,
+      title: "TypeScript 16: Readonly",
+      icon: "fa-lock",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "La palabra clave \`readonly\` hace que una propiedad no se pueda cambiar después de crearla. ¡Es como una caja con candado!",
+      instruction: "Crea una interfaz \`Config\` con \`readonly nombre: string\` y \`puerto: number\`. Crea un objeto y muestra ambas propiedades.",
+      initialCode: `// Interface con readonly:\n// interface Config {\n//   readonly nombre: string;\n//   puerto: number;\n// }\n\n// let config: Config = { nombre: "MiApp", puerto: 3000 };\n// console.log("Nombre: " + config.nombre);\n// console.log("Puerto: " + config.puerto);`,
+      validationLogic: (code, logs) => {
+          const hasReadonly = code.includes("readonly nombre");
+          const hasInterface = code.includes("interface Config");
+          const hasLogs = logs.length >= 2;
+          return {
+              success: hasReadonly && hasInterface && hasLogs,
+              message: "🔒 ¡Readonly aprendido! Propiedades inmutables para mayor seguridad."
+          };
+      }
+  },
+  {
+      id: 112,
+      title: "TypeScript 17: Tipos en Callbacks",
+      icon: "fa-phone",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "Los **callbacks** son funciones que se pasan a otras funciones. En TypeScript podemos tipar los callbacks para mayor seguridad.",
+      instruction: "Crea una función \`procesar\` que reciba un array de números y un callback \`fn: (num: number) => number\`. Aplica el callback a cada número y muestra los resultados.",
+      initialCode: `// Función con callback tipado:\n// function procesar(numeros: number[], fn: (num: number) => number): void {\n//   numeros.forEach(function(num) {\n//     console.log(fn(num));\n//   });\n// }\n\n// let nums: number[] = [1, 2, 3];\n// procesar(nums, function(n: number): number {\n//   return n * 2;\n// });`,
+      validationLogic: (code, logs) => {
+          const hasCallbackType = code.includes("fn: (num: number) => number");
+          const hasForEach = code.includes("forEach");
+          const hasResults = logs.length >= 3;
+          return {
+              success: hasCallbackType && hasForEach && hasResults,
+              message: "📞 ¡Callbacks tipados dominados! Funciones más seguras y claras."
+          };
+      }
+  },
+  {
+      id: 113,
+      title: "TypeScript 18: Tuplas",
+      icon: "fa-brackets-curly",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Una **tupla** es un array con un número fijo de elementos, cada uno con un tipo específico. \`[string, number]\` significa 'un array con exactamente un string y un number'.",
+      instruction: "Crea una variable \`persona\` de tipo \`[string, number]\` (nombre y edad). Asigna valores y muestra ambos.",
+      initialCode: `// Tupla:\n// let persona: [string, number] = ["Milita", 8];\n// console.log("Nombre: " + persona[0]);\n// console.log("Edad: " + persona[1]);`,
+      validationLogic: (code, logs) => {
+          const hasTuple = code.includes("[string, number]");
+          const hasAssign = code.includes('= ["') || code.includes("= ['");
+          const hasLogs = logs.length >= 2;
+          return {
+              success: hasTuple && hasAssign && hasLogs,
+              message: "📦 ¡Tuplas aprendidas! Arrays con estructura fija dominados."
+          };
+      }
+  },
+  {
+      id: 114,
+      title: "TypeScript 19: Null y Undefined",
+      icon: "fa-question",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "En TypeScript, \`null\` y \`undefined\` son tipos especiales. Puedes combinarlos con otros tipos usando unión: \`string | null\` significa 'puede ser texto o null'.",
+      instruction: "Crea una variable \`nombre\` de tipo \`string | null\`. Asígnala primero a un string, luego a \`null\`, y muestra ambos casos.",
+      initialCode: `// Tipo con null:\n// let nombre: string | null = "Milita";\n// console.log("Nombre: " + nombre);\n\n// nombre = null;\n// if (nombre === null) {\n//   console.log("Nombre es null");\n// } else {\n//   console.log("Nombre: " + nombre);\n// }`,
+      validationLogic: (code, logs) => {
+          const hasNullUnion = code.includes("string | null");
+          const hasNullAssign = code.includes("= null");
+          const hasConditional = code.includes("if (nombre");
+          return {
+              success: hasNullUnion && hasNullAssign && hasConditional,
+              message: "❓ ¡Null y undefined aprendidos! Manejo de valores vacíos dominado."
+          };
+      }
+  },
+  {
+      id: 115,
+      title: "TypeScript 20: Type Assertions",
+      icon: "fa-hand-pointer",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "A veces TypeScript no sabe qué tipo tiene algo, pero tú sí. Puedes usar **type assertions** para decirle: \`valor as Tipo\` o \`<Tipo>valor\`.",
+      instruction: "Crea una variable \`dato\` de tipo \`any\` con valor \`\"123\"\`. Luego usa una aserción de tipo para tratarla como \`string\` y obtener su longitud.",
+      initialCode: `// Type assertion:\n// let dato: any = "123";\n\n// Trata dato como string:\n// let texto: string = dato as string;\n// console.log("Longitud: " + texto.length);`,
+      validationLogic: (code, logs) => {
+          const hasAssertion = code.includes("as string");
+          const hasLength = code.includes(".length");
+          const hasLog = logs.some(l => l.toLowerCase().includes("longitud"));
+          return {
+              success: hasAssertion && hasLength && hasLog,
+              message: "👆 ¡Type assertions aprendidas! Control total sobre los tipos."
+          };
+      }
+  },
+  {
+      id: 116,
+      title: "TypeScript 21: Tipos en Métodos de Array",
+      icon: "fa-list",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Los métodos de array como \`map\`, \`filter\`, y \`find\` también funcionan con tipos. TypeScript sabe qué tipo devuelve cada método.",
+      instruction: "Crea un array \`numeros: number[]\` con [1, 2, 3, 4, 5]. Usa \`map\` para multiplicar cada número por 2 y muestra el resultado.",
+      initialCode: `// Array tipado:\n// let numeros: number[] = [1, 2, 3, 4, 5];\n\n// Usa map con tipos:\n// let duplicados: number[] = numeros.map(function(num: number): number {\n//   return num * 2;\n// });\n\n// console.log(duplicados);`,
+      validationLogic: (code, logs) => {
+          const hasArrayType = code.includes("number[]");
+          const hasMap = code.includes(".map(");
+          const hasTypedFunction = code.includes("num: number");
+          const hasResult = logs.some(l => l.includes("2,4,6,8,10") || l.includes("2, 4, 6, 8, 10"));
+          return {
+              success: hasArrayType && hasMap && hasTypedFunction && hasResult,
+              message: "🔢 ¡Métodos de array tipados dominados! TypeScript ayuda en cada paso."
+          };
+      }
+  },
+  {
+      id: 117,
+      title: "TypeScript 22: Retornos Múltiples",
+      icon: "fa-exchange-alt",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "Una función puede devolver diferentes tipos usando unión. \`: string | number\` significa que puede devolver texto O número.",
+      instruction: "Crea una función \`obtenerValor\` que reciba un \`tipo: \"texto\" | \"numero\"\` y devuelva \`string | number\`. Si tipo es 'texto', devuelve 'Hola', si es 'numero', devuelve 42.",
+      initialCode: `// Función con retorno de unión:\n// function obtenerValor(tipo: "texto" | "numero"): string | number {\n//   if (tipo === "texto") {\n//     return "Hola";\n//   }\n//   return 42;\n// }\n\n// console.log(obtenerValor("texto"));\n// console.log(obtenerValor("numero"));`,
+      validationLogic: (code, logs) => {
+          const hasUnionReturn = code.includes("): string | number");
+          const hasConditional = code.includes("if (tipo");
+          const hasTwoCalls = (code.match(/obtenerValor\(/g) || []).length >= 2;
+          return {
+              success: hasUnionReturn && hasConditional && hasTwoCalls,
+              message: "🔄 ¡Retornos múltiples aprendidos! Funciones más versátiles."
+          };
+      }
+  },
+  {
+      id: 118,
+      title: "TypeScript 23: El Tipo Any",
+      icon: "fa-exclamation-triangle",
+      color: "teal",
+      type: "typescript",
+      section: "typescript",
+      description: "El tipo \`any\` significa 'cualquier tipo'. Es útil cuando no sabes qué tipo será, pero hay que usarlo con cuidado porque pierdes la protección de TypeScript.",
+      instruction: "Crea una variable \`dato\` de tipo \`any\` y asígnala primero a un número, luego a un texto. Muestra ambos valores.",
+      initialCode: `// Tipo any:\n// let dato: any = 100;\n// console.log("Número: " + dato);\n\n// dato = "Hola TypeScript";\n// console.log("Texto: " + dato);`,
+      validationLogic: (code, logs) => {
+          const hasAny = code.includes(": any");
+          const hasNumberAssign = !!code.match(/=\s*\d+/);
+          const hasStringAssign = code.includes('= "') || code.includes("= '");
+          return {
+              success: hasAny && hasNumberAssign && hasStringAssign,
+              message: "⚠️ ¡Tipo any aprendido! Úsalo con cuidado, pero a veces es necesario."
+          };
+      }
+  },
+  {
+      id: 119,
+      title: "TypeScript 24: Tipos en Objetos",
+      icon: "fa-cube",
+      color: "pink",
+      type: "typescript",
+      section: "typescript",
+      description: "Los objetos también pueden tener tipos. Podemos definir qué propiedades tiene un objeto y qué tipo tiene cada una.",
+      instruction: "Crea un objeto \`mascota\` con propiedades tipadas: \`nombre: string\` y \`edad: number\`. Luego muestra ambas propiedades.",
+      initialCode: `// Crea un objeto tipado:\n// let mascota: { nombre: string; edad: number } = {\n//   nombre: "Firulais",\n//   edad: 3\n// };\n\n// console.log(mascota.nombre + " tiene " + mascota.edad + " años");`,
+      validationLogic: (code, logs) => {
+          const hasObjectType = code.includes("{ nombre: string; edad: number }");
+          const hasLog = logs.some(l => l.toLowerCase().includes("años") || l.toLowerCase().includes("tiene"));
+          return {
+              success: hasObjectType && hasLog,
+              message: "📦 ¡Objetos tipados aprendidos! TypeScript verifica que uses las propiedades correctas."
+          };
+      }
+  },
+  {
+      id: 120,
+      title: "TypeScript 25: Proyecto Final",
+      icon: "fa-trophy",
+      color: "purple",
+      type: "typescript",
+      section: "typescript",
+      description: "¡Felicidades! 🎉 Has llegado al final de TypeScript. Ahora combina todo lo aprendido: interfaces, tipos, funciones, arrays, y más. ¡Crea algo genial!",
+      instruction: "Crea una interfaz \`Estudiante\` con \`nombre: string\`, \`edad: number\`, y \`cursos: string[]\`. Crea un array de estudiantes, usa \`map\` para obtener solo los nombres, y muéstralos.",
+      initialCode: `// Interface:\n// interface Estudiante {\n//   nombre: string;\n//   edad: number;\n//   cursos: string[];\n// }\n\n// Array de estudiantes:\n// let estudiantes: Estudiante[] = [\n//   { nombre: "Milita", edad: 8, cursos: ["Matemáticas", "Programación"] },\n//   { nombre: "Gorilín", edad: 10, cursos: ["Ciencias", "Arte"] }\n// ];\n\n// Obtén solo los nombres:\n// let nombres: string[] = estudiantes.map(function(e: Estudiante): string {\n//   return e.nombre;\n// });\n\n// console.log("Estudiantes: " + nombres.join(", "));`,
+      validationLogic: (code, logs) => {
+          const hasInterface = code.includes("interface Estudiante");
+          const hasArrayType = code.includes("Estudiante[]");
+          const hasMap = code.includes(".map(");
+          const hasJoin = code.includes(".join(");
+          const hasLog = logs.some(l => l.toLowerCase().includes("estudiantes"));
+          return {
+              success: hasInterface && hasArrayType && hasMap && hasJoin && hasLog,
+              message: "🏆 ¡PROYECTO FINAL COMPLETADO! ¡Eres una experta en TypeScript! ¡Increíble trabajo! 🎊"
           };
       }
   }

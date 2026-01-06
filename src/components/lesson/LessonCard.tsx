@@ -161,7 +161,7 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
                 initialCode={code} 
                 onChange={setCode}
                 onRun={handleRun}
-                language={lesson.type === 'html' ? 'html' : lesson.type === 'css' ? 'css' : (lesson.id >= 16 ? 'typescript' : 'javascript')}
+                language={lesson.type === 'html' ? 'html' : lesson.type === 'css' ? 'css' : lesson.type === 'typescript' ? 'typescript' : 'javascript'}
             />
             
             <div className={styles.controls}>
