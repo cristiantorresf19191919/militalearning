@@ -1,0 +1,339 @@
+.toggleButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--purple-gradient);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .toggleButton {
+        top: 10px;
+        left: 10px;
+    }
+}
+
+.toggleButton:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.toggleButton:active {
+    transform: scale(0.95);
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 320px;
+    background: white;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebarHeader {
+    padding: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #8A54F8 0%, #F8549B 100%);
+    color: white;
+}
+
+.sidebarTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.closeButton {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.sidebarContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+}
+
+.sidebarContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebarContent::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.sidebarContent::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.sidebarContent::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.section {
+    margin-bottom: 0.5rem;
+}
+
+.sectionHeader {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.sectionHeader:hover {
+    background: rgba(138, 84, 248, 0.05);
+}
+
+.sectionHeader.expanded {
+    background: rgba(138, 84, 248, 0.1);
+}
+
+.sectionIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(138, 84, 248, 0.1);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.sectionInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.sectionProgress {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.chevron {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    transition: transform 0.3s ease;
+}
+
+.chevron.rotated {
+    transform: rotate(180deg);
+}
+
+.completedIcon {
+    color: var(--teal-1);
+    font-size: 1rem;
+}
+
+.lessonsList {
+    overflow: hidden;
+    background: rgba(138, 84, 248, 0.02);
+}
+
+.lessonItem {
+    width: 100%;
+    padding: 0.75rem 1.5rem 0.75rem 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    position: relative;
+}
+
+.lessonItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: transparent;
+    transition: background 0.2s ease;
+}
+
+.lessonItem:hover {
+    background: rgba(138, 84, 248, 0.05);
+}
+
+.lessonItem:hover::before {
+    background: var(--purple-gradient);
+}
+
+.lessonItem.active {
+    background: rgba(138, 84, 248, 0.1);
+}
+
+.lessonItem.active::before {
+    background: var(--purple-gradient);
+}
+
+.lessonItem.completed {
+    opacity: 0.8;
+}
+
+.lessonIcon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    flex-shrink: 0;
+}
+
+.lessonItem.completed .lessonIcon {
+    color: var(--teal-1);
+}
+
+.lessonItem.active .lessonIcon {
+    color: var(--purple-1);
+}
+
+.lessonTitle {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.lessonItem.active .lessonTitle {
+    font-weight: 600;
+    color: var(--purple-1);
+}
+
+.starIcon {
+    color: #ffd700;
+    font-size: 0.8rem;
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.comingSoon {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.sidebarFooter {
+    padding: 1rem 1.5rem;
+    border-top: 2px solid #f0f0f0;
+    background: #fafafa;
+}
+
+.progressSummary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    padding: 0.75rem;
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.progressSummary i {
+    color: #ffd700;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 280px;
+    }
+
+    .toggleButton {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+/* Desktop: Show sidebar toggle button but keep it accessible */
+@media (min-width: 769px) {
+    .toggleButton {
+        position: fixed;
+    }
+}
+

@@ -111,7 +111,7 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
       });
   };
 
-  if (!isActive && !completed) return null;
+  // All lessons are now accessible - no blocking!
 
   return (
     <motion.div
@@ -161,12 +161,12 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
                 initialCode={code} 
                 onChange={setCode}
                 onRun={handleRun}
-                language={lesson.type === 'html' ? 'html' : lesson.type === 'css' ? 'css' : lesson.type === 'typescript' ? 'typescript' : 'javascript'}
+                language={lesson.type === 'html' ? 'html' : lesson.type === 'css' ? 'css' : lesson.type === 'typescript' ? 'typescript' : lesson.type === 'react' ? 'react' : 'javascript'}
             />
             
             <div className={styles.controls}>
                 <Button onClick={handleRun} variant="gradient" className={styles.runButton}>
-                    <i className="fas fa-play" style={{marginRight: 8}}></i> {lesson.type === 'html' || lesson.type === 'css' ? 'Ver Resultado' : 'Ejecutar Código'}
+                    <i className="fas fa-play" style={{marginRight: 8}}></i> {lesson.type === 'html' || lesson.type === 'css' ? 'Ver Resultado' : lesson.type === 'react' ? 'Verificar Código React' : 'Ejecutar Código'}
                 </Button>
             </div>
 

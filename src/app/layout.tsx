@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import FloatingChat from "@/components/chat/FloatingChat";
 import { HeartProgress } from "@/components/ui/HeartProgress";
+import { LessonSidebar } from "@/components/layout/LessonSidebar";
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700', '800'],
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={poppins.className}>
         <Providers>
+          <LessonSidebar />
           {children}
           <HeartProgress />
           <FloatingChat />

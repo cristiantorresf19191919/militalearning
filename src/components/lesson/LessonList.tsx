@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { lessons, LessonSection } from '@/data/lessons';
 import { useProgress } from '@/context/ProgressContext';
 import { LessonCard } from './LessonCard';
@@ -41,30 +43,6 @@ const sectionInfo: Record<LessonSection, { title: string; icon: string; descript
 
 export function LessonList() {
   const { completedLessons } = useProgress();
-  const [maxVisibleLesson, setMaxVisibleLesson] = useState(1);
-
-  useEffect(() => {
-    // Calculate how many lessons should be visible
-    let count = 1;
-    for (let i = 1; i <= lessons.length; i++) {
-        if (completedLessons.includes(i)) {
-            count = i + 1;
-        } else {
-            break;
-        }
-    }
-    if (count > lessons.length) count = lessons.length;
-    
-    if (count > maxVisibleLesson) {
-        setMaxVisibleLesson(count);
-        setTimeout(() => {
-            const el = document.getElementById(`lesson-${count}`);
-            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 500);
-    } else if (count < maxVisibleLesson) {
-        setMaxVisibleLesson(count);
-    }
-  }, [completedLessons, maxVisibleLesson]);
 
   // Group lessons by section
   const lessonsBySection = lessons.reduce((acc, lesson) => {
@@ -108,22 +86,34 @@ export function LessonList() {
         const sectionProgress = sectionLessons.filter(l => completedLessons.includes(l.id)).length;
 
         return (
-          <div key={section} className={styles.section}>
-            <div className={styles.sectionHeader}>
-              <div className={styles.sectionIcon} style={{ color: sectionData.color }}>
-                <i className={`fas ${sectionData.icon}`}></i>
+          <motion.div 
+            key={section} 
+            className={styles.section}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href={`/${section}`} className={styles.sectionLink}>
+              <div className={styles.sectionHeader}>
+                <div className={styles.sectionIcon} style={{ color: sectionData.color }}>
+                  <i className={`fas ${sectionData.icon}`}></i>
+                </div>
+                <div className={styles.sectionTitleContainer}>
+                  <h2 className={styles.sectionTitle}>{sectionData.title}</h2>
+                  <p className={styles.sectionDescription}>{sectionData.description}</p>
+                  {sectionLessons.length > 0 && (
+                    <div className={styles.sectionProgress}>
+                      {sectionProgress} / {sectionLessons.length} completadas
+                      {sectionCompleted && <span className={styles.completedBadge}> ✅</span>}
+                    </div>
+                  )}
+                </div>
+                <div className={styles.sectionArrow}>
+                  <i className="fas fa-arrow-right"></i>
+                </div>
               </div>
-              <div className={styles.sectionTitleContainer}>
-                <h2 className={styles.sectionTitle}>{sectionData.title}</h2>
-                <p className={styles.sectionDescription}>{sectionData.description}</p>
-                {sectionLessons.length > 0 && (
-                  <div className={styles.sectionProgress}>
-                    {sectionProgress} / {sectionLessons.length} completadas
-                    {sectionCompleted && <span className={styles.completedBadge}> ✅</span>}
-                  </div>
-                )}
-              </div>
-            </div>
+            </Link>
 
             {section === 'react' ? (
               <div className={styles.comingSoon}>
@@ -147,7 +137,7 @@ export function LessonList() {
                 <LessonCard 
                   key={lesson.id} 
                   lesson={lesson} 
-                  isActive={lesson.id <= maxVisibleLesson}
+                  isActive={true}
                   onComplete={() => { /* Handled in effect by context update */ }}
                 />
               ))
@@ -162,8 +152,8 @@ export function LessonList() {
               <h2>¡Lo hiciste genial! 🌟</h2>
               <img src="/cow.png" alt="Cow" style={{maxWidth: '200px', margin: '1rem auto', display: 'block'}} />
               <p>Has completado todas las lecciones disponibles. ¡Eres oficialmente una Programadora!</p>
-          </div>
-      )}
-    </div>
-  );
+              </div>
+            )}
+          </motion.div>
+        );
 }

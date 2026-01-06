@@ -1,4 +1,4 @@
-export type LessonType = 'javascript' | 'html' | 'css' | 'typescript';
+export type LessonType = 'javascript' | 'html' | 'css' | 'typescript' | 'react';
 export type LessonColor = 'purple' | 'pink' | 'teal';
 export type LessonSection = 'javascript' | 'html' | 'css' | 'typescript' | 'react';
 
@@ -2395,6 +2395,785 @@ export const lessons: Lesson[] = [
           return {
               success: hasInterface && hasArrayType && hasMap && hasJoin && hasLog,
               message: "🏆 ¡PROYECTO FINAL COMPLETADO! ¡Eres una experta en TypeScript! ¡Increíble trabajo! 🎊"
+          };
+      }
+  },
+  // ========== REACT LESSONS - ANIMAL THEME ==========
+  {
+      id: 121,
+      title: "React 1: ¡Hola Gatito! Tu Primer Componente",
+      icon: "fa-cat",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "¡Bienvenida a React! 🐱 Un **componente** es como un gatito adorable que puedes usar una y otra vez. En React, creamos componentes con funciones que devuelven JSX (parecido a HTML pero con superpoderes).",
+      instruction: "Crea tu primer componente React llamado \`Gatito\` que muestre '¡Miau! Soy un gatito feliz 🐱'. Usa \`function Gatito() { return <h1>...</h1>; }\`",
+      initialCode: `// Tu primer componente React:\n// function Gatito() {\n//   return <h1>¡Miau! Soy un gatito feliz 🐱</h1>;\n// }\n\n// Para usarlo, lo llamamos así:\n// console.log("Componente creado: Gatito");\n// Gatito();`,
+      validationLogic: (code, logs) => {
+          const hasFunction = code.includes("function Gatito") || code.includes("const Gatito");
+          const hasReturn = code.includes("return");
+          const hasJSX = code.includes("<h1>") || code.includes("Miau");
+          return {
+              success: hasFunction && hasReturn && hasJSX,
+              message: "🐱 ¡Miau! ¡Tu primer componente React está listo! ¡Eres increíble!"
+          };
+      }
+  },
+  {
+      id: 122,
+      title: "React 2: El Perrito que Saluda",
+      icon: "fa-dog",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Los componentes pueden recibir **props** (propiedades), como cuando le das un nombre a tu perrito. Las props son como regalitos que le pasas a tu componente para que sepa qué hacer.",
+      instruction: "Crea un componente \`Perrito\` que reciba una prop \`nombre\` y muestre '¡Guau! Soy {nombre} 🐶'. Usa \`function Perrito({ nombre }) { ... }\`",
+      initialCode: `// Componente con props:\n// function Perrito({ nombre }) {\n//   return <h2>¡Guau! Soy {nombre} 🐶</h2>;\n// }\n\n// Para usarlo:\n// console.log("Perrito con nombre: Max");\n// Perrito({ nombre: "Max" });`,
+      validationLogic: (code, logs) => {
+          const hasProps = code.includes("{ nombre }") || code.includes("props.nombre");
+          const hasJSXWithProp = code.includes("{nombre}") || code.includes("props.nombre");
+          return {
+              success: hasProps && hasJSXWithProp,
+              message: "🐶 ¡Guau! ¡Tu perrito ya sabe su nombre! ¡Props dominadas!"
+          };
+      }
+  },
+  {
+      id: 123,
+      title: "React 3: La Conejita Saltarina",
+      icon: "fa-bunny",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "En React, podemos usar **JSX** para crear HTML de forma mágica. JSX es como HTML pero dentro de JavaScript. ¡La conejita puede saltar entre etiquetas! 🐰",
+      instruction: "Crea un componente \`Conejita\` que muestre un div con un párrafo que diga '¡Hop! ¡Hop! Soy una conejita saltarina 🐰'. Usa \`<div><p>...</p></div>\`",
+      initialCode: `// Componente con JSX:\n// function Conejita() {\n//   return (\n//     <div>\n//       <p>¡Hop! ¡Hop! Soy una conejita saltarina 🐰</p>\n//     </div>\n//   );\n// }\n\n// console.log("Conejita creada");`,
+      validationLogic: (code, logs) => {
+          const hasDiv = code.includes("<div>");
+          const hasParagraph = code.includes("<p>");
+          const hasConejita = code.includes("Conejita");
+          return {
+              success: hasDiv && hasParagraph && hasConejita,
+              message: "🐰 ¡Hop! ¡Tu conejita salta perfectamente! ¡JSX aprendido!"
+          };
+      }
+  },
+  {
+      id: 124,
+      title: "React 4: El Pajarito que Canta",
+      icon: "fa-dove",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Los componentes pueden tener **múltiples props**. Es como darle al pajarito un nombre Y una canción favorita. ¡Puedes pasarle todas las propiedades que quieras! 🐦",
+      instruction: "Crea un componente \`Pajarito\` que reciba \`nombre\` y \`cancion\` como props, y muestre '{nombre} canta: {cancion} 🐦'",
+      initialCode: `// Componente con múltiples props:\n// function Pajarito({ nombre, cancion }) {\n//   return <p>{nombre} canta: {cancion} 🐦</p>;\n// }\n\n// console.log("Pajarito con nombre y canción");\n// Pajarito({ nombre: "Piolín", cancion: "Tweet tweet" });`,
+      validationLogic: (code, logs) => {
+          const hasMultipleProps = (code.match(/\{\s*\w+\s*,\s*\w+\s*\}/g) || []).length > 0;
+          const hasNombre = code.includes("nombre");
+          const hasCancion = code.includes("cancion");
+          return {
+              success: hasMultipleProps && hasNombre && hasCancion,
+              message: "🐦 ¡Tweet! ¡Tu pajarito canta hermoso! ¡Múltiples props dominadas!"
+          };
+      }
+  },
+  {
+      id: 125,
+      title: "React 5: El Osito Abrazador",
+      icon: "fa-bear",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **className** en JSX (en lugar de 'class') para darle estilos a nuestros componentes. El osito quiere un abrazo con estilo! 🐻",
+      instruction: "Crea un componente \`Osito\` que tenga un div con \`className=\"abrazador\"\` y muestre '¡Abrazo de osito! 🐻'",
+      initialCode: `// Componente con className:\n// function Osito() {\n//   return <div className="abrazador">¡Abrazo de osito! 🐻</div>;\n// }\n\n// console.log("Osito abrazador creado");`,
+      validationLogic: (code, logs) => {
+          const hasClassName = code.includes('className=') || code.includes('className =');
+          const hasOsito = code.includes("Osito");
+          return {
+              success: hasClassName && hasOsito,
+              message: "🐻 ¡Abrazo! ¡Tu osito tiene estilo! ¡className aprendido!"
+          };
+      }
+  },
+  {
+      id: 126,
+      title: "React 6: La Mariposa Voladora",
+      icon: "fa-butterfly",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Los componentes pueden tener **estilos inline** usando objetos JavaScript. La mariposa quiere volar con colores hermosos! 🦋",
+      instruction: "Crea un componente \`Mariposa\` con un div que tenga estilo inline \`style={{ color: 'pink', fontSize: '20px' }}\` y muestre '¡Vuelo libre! 🦋'",
+      initialCode: `// Componente con estilos inline:\n// function Mariposa() {\n//   return (\n//     <div style={{ color: 'pink', fontSize: '20px' }}>\n//       ¡Vuelo libre! 🦋\n//     </div>\n//   );\n// }\n\n// console.log("Mariposa voladora creada");`,
+      validationLogic: (code, logs) => {
+          const hasStyle = code.includes("style={{") || code.includes("style={{");
+          const hasColor = code.includes("color:");
+          return {
+              success: hasStyle && hasColor,
+              message: "🦋 ¡Vuelo! ¡Tu mariposa es hermosa! ¡Estilos inline dominados!"
+          };
+      }
+  },
+  {
+      id: 127,
+      title: "React 7: El Elefante Memorable",
+      icon: "fa-elephant",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **arrays** en JSX para mostrar listas de cosas. El elefante tiene una memoria increíble y recuerda a todos sus amigos! 🐘",
+      instruction: "Crea un componente \`Elefante\` que muestre una lista de amigos usando \`map\`. Crea un array \`amigos = ['Luna', 'Sol', 'Estrella']\` y muéstralos con \`{amigos.map(...)}\`",
+      initialCode: `// Componente con lista:\n// function Elefante() {\n//   const amigos = ['Luna', 'Sol', 'Estrella'];\n//   return (\n//     <ul>\n//       {amigos.map(amigo => <li key={amigo}>{amigo} 🐘</li>)}\n//     </ul>\n//   );\n// }\n\n// console.log("Elefante con amigos creado");`,
+      validationLogic: (code, logs) => {
+          const hasMap = code.includes(".map(");
+          const hasArray = code.includes("['") || code.includes('["');
+          const hasKey = code.includes("key=");
+          return {
+              success: hasMap && hasArray && hasKey,
+              message: "🐘 ¡Tromp! ¡Tu elefante recuerda a todos! ¡Listas en JSX dominadas!"
+          };
+      }
+  },
+  {
+      id: 128,
+      title: "React 8: El Pingüino Bailarín",
+      icon: "fa-penguin",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Los componentes pueden tener **condicionales** con \`&&\` o \`?\`. El pingüino baila solo si está feliz! 🐧",
+      instruction: "Crea un componente \`Pinguino\` que reciba una prop \`feliz\` (true/false). Si está feliz, muestra '¡Estoy bailando! 🐧', si no, muestra 'Estoy triste 😢'",
+      initialCode: `// Componente con condicional:\n// function Pinguino({ feliz }) {\n//   return (\n//     <div>\n//       {feliz ? <p>¡Estoy bailando! 🐧</p> : <p>Estoy triste 😢</p>}\n//     </div>\n//   );\n// }\n\n// console.log("Pingüino creado");\n// Pinguino({ feliz: true });`,
+      validationLogic: (code, logs) => {
+          const hasConditional = code.includes("?") && code.includes(":");
+          const hasFeliz = code.includes("feliz");
+          return {
+              success: hasConditional && hasFeliz,
+              message: "🐧 ¡Baila! ¡Tu pingüino está feliz! ¡Condicionales en JSX aprendidos!"
+          };
+      }
+  },
+  {
+      id: 129,
+      title: "React 9: El León Valiente",
+      icon: "fa-lion",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **fragmentos** \`<></>\` o \`<React.Fragment>\` para envolver múltiples elementos sin crear un div extra. El león es valiente y no necesita contenedores! 🦁",
+      instruction: "Crea un componente \`Leon\` que use un fragmento \`<>\` para mostrar dos párrafos: '¡Rugido poderoso! 🦁' y 'Soy el rey de la selva'",
+      initialCode: `// Componente con fragmento:\n// function Leon() {\n//   return (\n//     <>\n//       <p>¡Rugido poderoso! 🦁</p>\n//       <p>Soy el rey de la selva</p>\n//     </>\n//   );\n// }\n\n// console.log("León creado");`,
+      validationLogic: (code, logs) => {
+          const hasFragment = code.includes("<>") || code.includes("<React.Fragment>");
+          const hasMultipleElements = (code.match(/<p>/g) || []).length >= 2;
+          return {
+              success: hasFragment && hasMultipleElements,
+              message: "🦁 ¡Rugido! ¡Tu león es valiente! ¡Fragmentos dominados!"
+          };
+      }
+  },
+  {
+      id: 130,
+      title: "React 10: El Delfín Juguetón",
+      icon: "fa-dolphin",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Los componentes pueden tener **eventos** como \`onClick\`. El delfín quiere jugar cuando haces clic! 🐬",
+      instruction: "Crea un componente \`Delfin\` con un botón que tenga \`onClick\` y muestre '¡Splash! Estoy jugando 🐬' cuando hagas clic. Usa \`const handleClick = () => { ... }\`",
+      initialCode: `// Componente con evento:\n// function Delfin() {\n//   const handleClick = () => {\n//     console.log("¡Splash! Estoy jugando 🐬");\n//   };\n//   return <button onClick={handleClick}>¡Hazme clic!</button>;\n// }\n\n// console.log("Delfín creado");`,
+      validationLogic: (code, logs) => {
+          const hasOnClick = code.includes("onClick=");
+          const hasHandleClick = code.includes("handleClick");
+          return {
+              success: hasOnClick && hasHandleClick,
+              message: "🐬 ¡Splash! ¡Tu delfín juega perfecto! ¡Eventos aprendidos!"
+          };
+      }
+  },
+  {
+      id: 131,
+      title: "React 11: El Canguro Saltarín con Estado",
+      icon: "fa-kangaroo",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "¡Hora de aprender **useState**! Es como una cajita mágica que recuerda cosas. El canguro quiere contar sus saltos! 🦘",
+      instruction: "Crea un componente \`Canguro\` que use \`useState\` para contar saltos. Usa \`const [saltos, setSaltos] = useState(0)\` y un botón que incremente los saltos.",
+      initialCode: `// Componente con useState:\n// import { useState } from 'react';\n// function Canguro() {\n//   const [saltos, setSaltos] = useState(0);\n//   return (\n//     <div>\n//       <p>Saltos: {saltos} 🦘</p>\n//       <button onClick={() => setSaltos(saltos + 1)}>Saltar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Canguro con estado creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseState = code.includes("useState");
+          const hasSetState = code.includes("setSaltos") || code.includes("setState");
+          const hasOnClick = code.includes("onClick");
+          return {
+              success: hasUseState && hasSetState && hasOnClick,
+              message: "🦘 ¡Salto! ¡Tu canguro cuenta perfecto! ¡useState dominado!"
+          };
+      }
+  },
+  {
+      id: 132,
+      title: "React 12: La Jirafa que Crece",
+      icon: "fa-giraffe",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useState** con diferentes tipos de datos. La jirafa quiere crecer y cambiar su altura! 🦒",
+      instruction: "Crea un componente \`Jirafa\` con \`useState\` para la altura (número). Muestra la altura y un botón que la aumente en 10cm cada vez.",
+      initialCode: `// useState con número:\n// import { useState } from 'react';\n// function Jirafa() {\n//   const [altura, setAltura] = useState(200);\n//   return (\n//     <div>\n//       <p>Altura: {altura}cm 🦒</p>\n//       <button onClick={() => setAltura(altura + 10)}>Crecer</button>\n//     </div>\n//   );\n// }\n\n// console.log("Jirafa que crece creada");`,
+      validationLogic: (code, logs) => {
+          const hasUseState = code.includes("useState");
+          const hasNumber = code.includes("useState(") && (code.includes("200") || code.includes("0"));
+          const hasIncrement = code.includes("+ 10") || code.includes("+10");
+          return {
+              success: hasUseState && hasNumber && hasIncrement,
+              message: "🦒 ¡Crece! ¡Tu jirafa es alta! ¡useState con números dominado!"
+          };
+      }
+  },
+  {
+      id: 133,
+      title: "React 13: El Mono Charlatán",
+      icon: "fa-monkey",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useState** con strings (textos). El mono quiere cambiar lo que dice! 🐵",
+      instruction: "Crea un componente \`Mono\` con \`useState\` para un mensaje (string). Muestra el mensaje y un input que lo cambie con \`onChange\`.",
+      initialCode: `// useState con string:\n// import { useState } from 'react';\n// function Mono() {\n//   const [mensaje, setMensaje] = useState("¡Ooh ooh!");\n//   return (\n//     <div>\n//       <p>{mensaje} 🐵</p>\n//       <input value={mensaje} onChange={(e) => setMensaje(e.target.value)} />\n//     </div>\n//   );\n// }\n\n// console.log("Mono charlatán creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseState = code.includes("useState");
+          const hasString = code.includes('useState("') || code.includes("useState('");
+          const hasOnChange = code.includes("onChange=");
+          return {
+              success: hasUseState && hasString && hasOnChange,
+              message: "🐵 ¡Ooh! ¡Tu mono habla perfecto! ¡useState con strings dominado!"
+          };
+      }
+  },
+  {
+      id: 134,
+      title: "React 14: El Panda que Cambia de Humor",
+      icon: "fa-panda",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useState** con booleanos (true/false). El panda cambia entre feliz y triste! 🐼",
+      instruction: "Crea un componente \`Panda\` con \`useState\` para \`feliz\` (boolean). Muestra un emoji diferente según si está feliz o no, y un botón que cambie el estado.",
+      initialCode: `// useState con booleano:\n// import { useState } from 'react';\n// function Panda() {\n//   const [feliz, setFeliz] = useState(true);\n//   return (\n//     <div>\n//       <p>{feliz ? '😊 Feliz' : '😢 Triste'} 🐼</p>\n//       <button onClick={() => setFeliz(!feliz)}>Cambiar humor</button>\n//     </div>\n//   );\n// }\n\n// console.log("Panda creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseState = code.includes("useState");
+          const hasBoolean = code.includes("useState(true)") || code.includes("useState(false)");
+          const hasToggle = code.includes("!feliz") || code.includes("setFeliz(!");
+          return {
+              success: hasUseState && hasBoolean && hasToggle,
+              message: "🐼 ¡Cambio! ¡Tu panda cambia de humor! ¡useState con booleanos dominado!"
+          };
+      }
+  },
+  {
+      id: 135,
+      title: "React 15: El Zorro Astuto",
+      icon: "fa-fox",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **múltiples useState** en un componente. El zorro es astuto y puede recordar muchas cosas a la vez! 🦊",
+      instruction: "Crea un componente \`Zorro\` con dos \`useState\`: uno para \`nombre\` y otro para \`edad\`. Muestra ambos y botones para cambiarlos.",
+      initialCode: `// Múltiples useState:\n// import { useState } from 'react';\n// function Zorro() {\n//   const [nombre, setNombre] = useState("Zorro");\n//   const [edad, setEdad] = useState(3);\n//   return (\n//     <div>\n//       <p>{nombre}, {edad} años 🦊</p>\n//       <button onClick={() => setNombre("Astuto")}>Cambiar nombre</button>\n//       <button onClick={() => setEdad(edad + 1)}>Cumplir años</button>\n//     </div>\n//   );\n// }\n\n// console.log("Zorro astuto creado");`,
+      validationLogic: (code, logs) => {
+          const useStateCount = (code.match(/useState/g) || []).length;
+          const hasMultiple = useStateCount >= 2;
+          return {
+              success: hasMultiple,
+              message: "🦊 ¡Astuto! ¡Tu zorro recuerda todo! ¡Múltiples useState dominados!"
+          };
+      }
+  },
+  {
+      id: 136,
+      title: "React 16: El Koala Dormilón",
+      icon: "fa-koala",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "¡Hora de aprender **useEffect**! Es como un asistente que hace cosas cuando algo cambia. El koala se despierta cuando cambias algo! 🐨",
+      instruction: "Crea un componente \`Koala\` con \`useState\` para \`despierto\` y \`useEffect\` que muestre en consola 'El koala se despertó' cuando \`despierto\` cambie a true.",
+      initialCode: `// useEffect básico:\n// import { useState, useEffect } from 'react';\n// function Koala() {\n//   const [despierto, setDespierto] = useState(false);\n//   useEffect(() => {\n//     if (despierto) {\n//       console.log("El koala se despertó 🐨");\n//     }\n//   }, [despierto]);\n//   return (\n//     <div>\n//       <p>{despierto ? 'Despierto' : 'Durmiendo'} 🐨</p>\n//       <button onClick={() => setDespierto(!despierto)}>Despertar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Koala creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseEffect = code.includes("useEffect");
+          const hasDependency = code.includes("[despierto]") || code.includes("[");
+          return {
+              success: hasUseEffect && hasDependency,
+              message: "🐨 ¡Despierta! ¡Tu koala usa useEffect! ¡Efectos aprendidos!"
+          };
+      }
+  },
+  {
+      id: 137,
+      title: "React 17: El Lobo que Aúlla",
+      icon: "fa-wolf",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "**useEffect** puede ejecutarse solo una vez al montar el componente (con array vacío []). El lobo aúlla cuando aparece por primera vez! 🐺",
+      instruction: "Crea un componente \`Lobo\` con \`useEffect\` que solo se ejecute una vez (array vacío []) y muestre en consola '¡Auuuu! 🐺' cuando el componente se monte.",
+      initialCode: `// useEffect una sola vez:\n// import { useEffect } from 'react';\n// function Lobo() {\n//   useEffect(() => {\n//     console.log("¡Auuuu! 🐺");\n//   }, []);\n//   return <p>Lobo aullador 🐺</p>;\n// }\n\n// console.log("Lobo creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseEffect = code.includes("useEffect");
+          const hasEmptyArray = code.includes("], []") || code.includes("],[])");
+          return {
+              success: hasUseEffect && hasEmptyArray,
+              message: "🐺 ¡Auuuu! ¡Tu lobo aúlla perfecto! ¡useEffect con [] dominado!"
+          };
+      }
+  },
+  {
+      id: 138,
+      title: "React 18: El Tigre Feroz",
+      icon: "fa-tiger",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useEffect** con cleanup (limpieza). El tigre limpia después de sí mismo! 🐅",
+      instruction: "Crea un componente \`Tigre\` con \`useEffect\` que retorne una función de limpieza. La función debe mostrar en consola 'El tigre se fue 🐅' cuando el componente se desmonte.",
+      initialCode: `// useEffect con cleanup:\n// import { useEffect } from 'react';\n// function Tigre() {\n//   useEffect(() => {\n//     console.log("El tigre llegó 🐅");\n//     return () => {\n//       console.log("El tigre se fue 🐅");\n//     };\n//   }, []);\n//   return <p>Tigre feroz 🐅</p>;\n// }\n\n// console.log("Tigre creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseEffect = code.includes("useEffect");
+          const hasReturn = code.includes("return () =>") || code.includes("return() =>");
+          return {
+              success: hasUseEffect && hasReturn,
+              message: "🐅 ¡Rugido! ¡Tu tigre limpia perfecto! ¡Cleanup aprendido!"
+          };
+      }
+  },
+  {
+      id: 139,
+      title: "React 19: El Caballo Galopante",
+      icon: "fa-horse",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos pasar **funciones como props**. El caballo puede recibir una función para galopar! 🐴",
+      instruction: "Crea un componente \`Caballo\` que reciba una prop \`onGalopar\` (función) y un botón que la llame. También crea un componente padre que pase la función.",
+      initialCode: `// Funciones como props:\n// function Caballo({ onGalopar }) {\n//   return (\n//     <div>\n//       <p>Caballo 🐴</p>\n//       <button onClick={onGalopar}>Galopar</button>\n//     </div>\n//   );\n// }\n\n// function Establo() {\n//   const handleGalopar = () => console.log("¡Galopando! 🐴");\n//   return <Caballo onGalopar={handleGalopar} />;\n// }\n\n// console.log("Caballo creado");`,
+      validationLogic: (code, logs) => {
+          const hasFunctionProp = code.includes("onGalopar") && code.includes("function");
+          const hasParent = code.includes("Establo") || code.includes("handleGalopar");
+          return {
+              success: hasFunctionProp && hasParent,
+              message: "🐴 ¡Galopa! ¡Tu caballo funciona perfecto! ¡Funciones como props dominadas!"
+          };
+      }
+  },
+  {
+      id: 140,
+      title: "React 20: El Oso Polar en el Frío",
+      icon: "fa-snowflake",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **children** para pasar contenido a componentes. El oso polar puede tener hijos (otros componentes) dentro! 🐻‍❄️",
+      instruction: "Crea un componente \`OsoPolar\` que reciba \`children\` y los muestre dentro de un div. Luego úsalo envolviendo un párrafo con 'Estoy en el frío 🐻‍❄️'",
+      initialCode: `// Children prop:\n// function OsoPolar({ children }) {\n//   return <div className="oso-polar">{children}</div>;\n// }\n\n// function App() {\n//   return (\n//     <OsoPolar>\n//       <p>Estoy en el frío 🐻‍❄️</p>\n//     </OsoPolar>\n//   );\n// }\n\n// console.log("Oso polar creado");`,
+      validationLogic: (code, logs) => {
+          const hasChildren = code.includes("{ children }") || code.includes("children");
+          const hasUsage = code.includes("<OsoPolar>") || code.includes("</OsoPolar>");
+          return {
+              success: hasChildren && hasUsage,
+              message: "🐻‍❄️ ¡Frío! ¡Tu oso polar tiene hijos! ¡Children dominados!"
+          };
+      }
+  },
+  {
+      id: 141,
+      title: "React 21: El Cangrejo que Camina de Lado",
+      icon: "fa-crab",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "¡Hora de **useRef**! Es como una cajita que guarda una referencia sin causar re-renders. El cangrejo guarda su posición! 🦀",
+      instruction: "Crea un componente \`Cangrejo\` con \`useRef\` para un input. Usa \`const inputRef = useRef(null)\` y \`inputRef.current.focus()\` en un botón.",
+      initialCode: `// useRef básico:\n// import { useRef } from 'react';\n// function Cangrejo() {\n//   const inputRef = useRef(null);\n//   const handleFocus = () => {\n//     inputRef.current.focus();\n//   };\n//   return (\n//     <div>\n//       <input ref={inputRef} placeholder="Cangrejo 🦀" />\n//       <button onClick={handleFocus}>Enfocar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Cangrejo creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseRef = code.includes("useRef");
+          const hasRef = code.includes("ref={") || code.includes("ref =");
+          return {
+              success: hasUseRef && hasRef,
+              message: "🦀 ¡Camina! ¡Tu cangrejo usa refs! ¡useRef dominado!"
+          };
+      }
+  },
+  {
+      id: 142,
+      title: "React 22: El Pulpo con Muchos Brazos",
+      icon: "fa-octopus",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useMemo** para memorizar cálculos costosos. El pulpo tiene muchos brazos pero solo calcula cuando es necesario! 🐙",
+      instruction: "Crea un componente \`Pulpo\` con \`useMemo\` que calcule el cuadrado de un número. Usa \`const resultado = useMemo(() => numero * numero, [numero])\`",
+      initialCode: `// useMemo básico:\n// import { useState, useMemo } from 'react';\n// function Pulpo() {\n//   const [numero, setNumero] = useState(5);\n//   const resultado = useMemo(() => numero * numero, [numero]);\n//   return (\n//     <div>\n//       <p>Número: {numero}, Cuadrado: {resultado} 🐙</p>\n//       <button onClick={() => setNumero(numero + 1)}>Aumentar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Pulpo creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseMemo = code.includes("useMemo");
+          const hasDependency = code.includes("[numero]") || code.includes("[");
+          return {
+              success: hasUseMemo && hasDependency,
+              message: "🐙 ¡Brazos! ¡Tu pulpo memoriza perfecto! ¡useMemo dominado!"
+          };
+      }
+  },
+  {
+      id: 143,
+      title: "React 23: El Camello del Desierto",
+      icon: "fa-camel",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "¡Hora de **useCallback**! Memoriza funciones para evitar recrearlas. El camello guarda energía como agua en el desierto! 🐪",
+      instruction: "Crea un componente \`Camello\` con \`useCallback\` para una función. Usa \`const handleClick = useCallback(() => { ... }, [])\`",
+      initialCode: `// useCallback básico:\n// import { useCallback } from 'react';\n// function Camello() {\n//   const handleClick = useCallback(() => {\n//     console.log("Camello caminando 🐪");\n//   }, []);\n//   return (\n//     <div>\n//       <p>Camello 🐪</p>\n//       <button onClick={handleClick}>Caminar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Camello creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseCallback = code.includes("useCallback");
+          const hasDependency = code.includes("], [") || code.includes("],[]");
+          return {
+              success: hasUseCallback && hasDependency,
+              message: "🐪 ¡Desierto! ¡Tu camello usa callbacks! ¡useCallback dominado!"
+          };
+      }
+  },
+  {
+      id: 144,
+      title: "React 24: El Hipopótamo en el Agua",
+      icon: "fa-hippo",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos crear **hooks personalizados** para reutilizar lógica. El hipopótamo crea su propio hook para nadar! 🦛",
+      instruction: "Crea un hook personalizado \`useNadar\` que retorne \`{ nadando, empezarNadar }\`. Luego úsalo en un componente \`Hipopotamo\`.",
+      initialCode: `// Hook personalizado:\n// function useNadar() {\n//   const [nadando, setNadando] = useState(false);\n//   const empezarNadar = () => setNadando(true);\n//   return { nadando, empezarNadar };\n// }\n\n// function Hipopotamo() {\n//   const { nadando, empezarNadar } = useNadar();\n//   return (\n//     <div>\n//       <p>{nadando ? 'Nadando' : 'En tierra'} 🦛</p>\n//       <button onClick={empezarNadar}>Nadar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Hipopótamo creado");`,
+      validationLogic: (code, logs) => {
+          const hasCustomHook = code.includes("function useNadar") || code.includes("const useNadar");
+          const hasUsage = code.includes("useNadar()");
+          return {
+              success: hasCustomHook && hasUsage,
+              message: "🦛 ¡Agua! ¡Tu hipopótamo tiene hook personalizado! ¡Hooks custom dominados!"
+          };
+      }
+  },
+  {
+      id: 145,
+      title: "React 25: El Flamenco Elegante",
+      icon: "fa-flamingo",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **contexto** con \`createContext\` y \`useContext\` para compartir datos. El flamenco comparte su elegancia con todos! 🦩",
+      instruction: "Crea un contexto \`EleganteContext\` con \`createContext\` y úsalo en un componente \`Flamenco\` con \`useContext\`.",
+      initialCode: `// Context API:\n// import { createContext, useContext } from 'react';\n// const EleganteContext = createContext("Elegante");\n\n// function Flamenco() {\n//   const elegante = useContext(EleganteContext);\n//   return <p>{elegante} 🦩</p>;\n// }\n\n// function App() {\n//   return (\n//     <EleganteContext.Provider value="Soy elegante">\n//       <Flamenco />\n//     </EleganteContext.Provider>\n//   );\n// }\n\n// console.log("Flamenco creado");`,
+      validationLogic: (code, logs) => {
+          const hasCreateContext = code.includes("createContext");
+          const hasUseContext = code.includes("useContext");
+          const hasProvider = code.includes("Provider");
+          return {
+              success: hasCreateContext && hasUseContext && hasProvider,
+              message: "🦩 ¡Elegante! ¡Tu flamenco usa contexto! ¡Context API dominado!"
+          };
+      }
+  },
+  {
+      id: 146,
+      title: "React 26: El Erizo Espinoso",
+      icon: "fa-hedgehog",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **useReducer** para manejar estados complejos. El erizo tiene muchas espinas (estados) que necesita organizar! 🦔",
+      instruction: "Crea un componente \`Erizo\` con \`useReducer\` que tenga acciones 'agregar' y 'quitar' espinas. Usa \`const [espinas, dispatch] = useReducer(...)\`",
+      initialCode: `// useReducer básico:\n// import { useReducer } from 'react';\n// function reducer(estado, accion) {\n//   switch(accion.tipo) {\n//     case 'agregar': return estado + 1;\n//     case 'quitar': return Math.max(0, estado - 1);\n//     default: return estado;\n//   }\n// }\n\n// function Erizo() {\n//   const [espinas, dispatch] = useReducer(reducer, 0);\n//   return (\n//     <div>\n//       <p>Espinas: {espinas} 🦔</p>\n//       <button onClick={() => dispatch({ tipo: 'agregar' })}>Agregar</button>\n//       <button onClick={() => dispatch({ tipo: 'quitar' })}>Quitar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Erizo creado");`,
+      validationLogic: (code, logs) => {
+          const hasUseReducer = code.includes("useReducer");
+          const hasReducer = code.includes("function reducer") || code.includes("const reducer");
+          const hasDispatch = code.includes("dispatch");
+          return {
+              success: hasUseReducer && hasReducer && hasDispatch,
+              message: "🦔 ¡Espinas! ¡Tu erizo usa reducer! ¡useReducer dominado!"
+          };
+      }
+  },
+  {
+      id: 147,
+      title: "React 27: El Búho Sabio",
+      icon: "fa-owl",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **lazy loading** con \`React.lazy\` y \`Suspense\` para cargar componentes cuando se necesiten. El búho es sabio y carga solo lo necesario! 🦉",
+      instruction: "Crea un componente \`Buho\` con \`React.lazy\` y envuélvelo en \`Suspense\` con un fallback 'Cargando...'",
+      initialCode: `// Lazy loading:\n// import { lazy, Suspense } from 'react';\n// const Buho = lazy(() => Promise.resolve({ default: () => <p>Búho sabio 🦉</p> }));\n\n// function App() {\n//   return (\n//     <Suspense fallback={<p>Cargando...</p>}>\n//       <Buho />\n//     </Suspense>\n//   );\n// }\n\n// console.log("Búho creado");`,
+      validationLogic: (code, logs) => {
+          const hasLazy = code.includes("lazy(") || code.includes("React.lazy");
+          const hasSuspense = code.includes("Suspense");
+          const hasFallback = code.includes("fallback");
+          return {
+              success: hasLazy && hasSuspense && hasFallback,
+              message: "🦉 ¡Sabio! ¡Tu búho carga lazy! ¡Lazy loading dominado!"
+          };
+      }
+  },
+  {
+      id: 148,
+      title: "React 28: El Pato que Nada",
+      icon: "fa-duck",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **memo** para evitar re-renders innecesarios. El pato solo se actualiza cuando es necesario! 🦆",
+      instruction: "Crea un componente \`Pato\` envuelto en \`React.memo\`. El componente debe recibir props y solo re-renderizarse si las props cambian.",
+      initialCode: `// React.memo:\n// import { memo } from 'react';\n// const Pato = memo(function Pato({ nombre }) {\n//   console.log("Pato renderizado");\n//   return <p>{nombre} 🦆</p>;\n// });\n\n// function App() {\n//   const [contador, setContador] = useState(0);\n//   return (\n//     <div>\n//       <p>Contador: {contador}</p>\n//       <button onClick={() => setContador(contador + 1)}>Incrementar</button>\n//       <Pato nombre="Donald" />\n//     </div>\n//   );\n// }\n\n// console.log("Pato creado");`,
+      validationLogic: (code, logs) => {
+          const hasMemo = code.includes("memo(") || code.includes("React.memo");
+          const hasComponent = code.includes("function Pato") || code.includes("const Pato");
+          return {
+              success: hasMemo && hasComponent,
+              message: "🦆 ¡Nada! ¡Tu pato usa memo! ¡Optimización dominada!"
+          };
+      }
+  },
+  {
+      id: 149,
+      title: "React 29: El Conejo Veloz",
+      icon: "fa-rabbit",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **forwardRef** para pasar refs a componentes hijos. El conejo es veloz y necesita pasar referencias! 🐰",
+      instruction: "Crea un componente \`Conejo\` con \`forwardRef\` que reciba una ref y la pase a un input. Usa \`const Conejo = forwardRef((props, ref) => { ... })\`",
+      initialCode: `// forwardRef:\n// import { forwardRef } from 'react';\n// const Conejo = forwardRef((props, ref) => {\n//   return <input ref={ref} placeholder="Conejo veloz 🐰" />;\n// });\n\n// function App() {\n//   const inputRef = useRef(null);\n//   return (\n//     <div>\n//       <Conejo ref={inputRef} />\n//       <button onClick={() => inputRef.current.focus()}>Enfocar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Conejo creado");`,
+      validationLogic: (code, logs) => {
+          const hasForwardRef = code.includes("forwardRef");
+          const hasRefParam = code.includes("(props, ref)") || code.includes("(props,ref)");
+          return {
+              success: hasForwardRef && hasRefParam,
+              message: "🐰 ¡Veloz! ¡Tu conejo usa forwardRef! ¡Refs avanzados dominados!"
+          };
+      }
+  },
+  {
+      id: 150,
+      title: "React 30: El Pez Dorado",
+      icon: "fa-fish",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **portales** con \`createPortal\` para renderizar fuera del árbol DOM. El pez puede nadar fuera de su pecera! 🐠",
+      instruction: "Crea un componente \`Pez\` que use \`createPortal\` para renderizar un mensaje fuera del componente. Usa \`import { createPortal } from 'react-dom'\`",
+      initialCode: `// Portal:\n// import { createPortal } from 'react-dom';\n// function Pez() {\n//   return (\n//     <div>\n//       <p>Pez en la pecera 🐠</p>\n//       {createPortal(\n//         <p>Pez fuera de la pecera 🐠</p>,\n//         document.body\n//       )}\n//     </div>\n//   );\n// }\n\n// console.log("Pez creado");`,
+      validationLogic: (code, logs) => {
+          const hasCreatePortal = code.includes("createPortal");
+          const hasReactDom = code.includes("react-dom");
+          return {
+              success: hasCreatePortal && hasReactDom,
+              message: "🐠 ¡Nada! ¡Tu pez usa portales! ¡Portales dominados!"
+          };
+      }
+  },
+  {
+      id: 151,
+      title: "React 31: La Ardilla Acumuladora",
+      icon: "fa-squirrel",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos combinar múltiples hooks. La ardilla acumula nueces (datos) usando varios hooks a la vez! 🐿️",
+      instruction: "Crea un componente \`Ardilla\` que use \`useState\`, \`useEffect\`, y \`useMemo\` juntos. Acumula 'nueces' y muestra el total.",
+      initialCode: `// Múltiples hooks:\n// import { useState, useEffect, useMemo } from 'react';\n// function Ardilla() {\n//   const [nueces, setNueces] = useState(0);\n//   useEffect(() => {\n//     console.log("Nueces cambiaron:", nueces);\n//   }, [nueces]);\n//   const total = useMemo(() => nueces * 2, [nueces]);\n//   return (\n//     <div>\n//       <p>Nueces: {nueces}, Total: {total} 🐿️</p>\n//       <button onClick={() => setNueces(nueces + 1)}>Agregar nuez</button>\n//     </div>\n//   );\n// }\n\n// console.log("Ardilla creada");`,
+      validationLogic: (code, logs) => {
+          const hasUseState = code.includes("useState");
+          const hasUseEffect = code.includes("useEffect");
+          const hasUseMemo = code.includes("useMemo");
+          return {
+              success: hasUseState && hasUseEffect && hasUseMemo,
+              message: "🐿️ ¡Acumula! ¡Tu ardilla usa múltiples hooks! ¡Combinación dominada!"
+          };
+      }
+  },
+  {
+      id: 152,
+      title: "React 32: El Mapache Nocturno",
+      icon: "fa-raccoon",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos crear **componentes controlados** donde el estado controla el input. El mapache controla todo de noche! 🦝",
+      instruction: "Crea un componente \`Mapache\` con un input controlado. Usa \`value\` y \`onChange\` para controlar completamente el input.",
+      initialCode: `// Componente controlado:\n// import { useState } from 'react';\n// function Mapache() {\n//   const [valor, setValor] = useState("");\n//   return (\n//     <div>\n//       <input\n//         value={valor}\n//         onChange={(e) => setValor(e.target.value)}\n//         placeholder="Mapache 🦝"\n//       />\n//       <p>Valor: {valor}</p>\n//     </div>\n//   );\n// }\n\n// console.log("Mapache creado");`,
+      validationLogic: (code, logs) => {
+          const hasValue = code.includes("value={") || code.includes("value =");
+          const hasOnChange = code.includes("onChange=");
+          const hasSetState = code.includes("setValor") || code.includes("setState");
+          return {
+              success: hasValue && hasOnChange && hasSetState,
+              message: "🦝 ¡Nocturno! ¡Tu mapache controla perfecto! ¡Componentes controlados dominados!"
+          };
+      }
+  },
+  {
+      id: 153,
+      title: "React 33: El Loro Parlanchín",
+      icon: "fa-parrot",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **formularios** en React. El loro quiere un formulario para repetir lo que dice! 🦜",
+      instruction: "Crea un componente \`Loro\` con un formulario que tenga un input y un botón submit. Usa \`onSubmit\` y \`preventDefault\`.",
+      initialCode: `// Formulario:\n// import { useState } from 'react';\n// function Loro() {\n//   const [mensaje, setMensaje] = useState("");\n//   const handleSubmit = (e) => {\n//     e.preventDefault();\n//     console.log("El loro dice:", mensaje);\n//   };\n//   return (\n//     <form onSubmit={handleSubmit}>\n//       <input\n//         value={mensaje}\n//         onChange={(e) => setMensaje(e.target.value)}\n//         placeholder="¿Qué dice el loro? 🦜"\n//       />\n//       <button type="submit">Repetir</button>\n//     </form>\n//   );\n// }\n\n// console.log("Loro creado");`,
+      validationLogic: (code, logs) => {
+          const hasForm = code.includes("<form");
+          const hasOnSubmit = code.includes("onSubmit=");
+          const hasPreventDefault = code.includes("preventDefault");
+          return {
+              success: hasForm && hasOnSubmit && hasPreventDefault,
+              message: "🦜 ¡Parlanchín! ¡Tu loro usa formularios! ¡Forms dominados!"
+          };
+      }
+  },
+  {
+      id: 154,
+      title: "React 34: El Cangrejo Ermitaño",
+      icon: "fa-hermit-crab",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **render props** para compartir lógica. El cangrejo ermitaño comparte su casita (lógica) con otros! 🦀",
+      instruction: "Crea un componente \`CangrejoErmitano\` que use render props. El componente debe recibir una función \`render\` y llamarla con datos.",
+      initialCode: `// Render props:\n// function CangrejoErmitano({ render }) {\n//   const casita = "Cómoda";\n//   return render(casita);\n// }\n\n// function App() {\n//   return (\n//     <CangrejoErmitano\n//       render={(casita) => <p>Mi casita es {casita} 🦀</p>}\n//     />\n//   );\n// }\n\n// console.log("Cangrejo ermitaño creado");`,
+      validationLogic: (code, logs) => {
+          const hasRender = code.includes("render");
+          const hasRenderCall = code.includes("render(") || code.includes("render (");
+          return {
+              success: hasRender && hasRenderCall,
+              message: "🦀 ¡Ermitaño! ¡Tu cangrejo usa render props! ¡Patrón dominado!"
+          };
+      }
+  },
+  {
+      id: 155,
+      title: "React 35: El Unicornio Mágico",
+      icon: "fa-unicorn",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **Higher Order Components (HOC)** para envolver componentes. El unicornio es mágico y puede dar superpoderes a otros! 🦄",
+      instruction: "Crea un HOC \`conMagia\` que envuelva un componente y le agregue una prop \`magico\`. Luego úsalo en un componente \`Unicornio\`.",
+      initialCode: `// HOC:\n// function conMagia(Componente) {\n//   return function ComponenteMagico(props) {\n//     return <Componente {...props} magico={true} />;\n//   };\n// }\n\n// function Unicornio({ magico }) {\n//   return <p>{magico ? 'Mágico' : 'Normal'} 🦄</p>;\n// }\n\n// const UnicornioMagico = conMagia(Unicornio);\n\n// console.log("Unicornio creado");`,
+      validationLogic: (code, logs) => {
+          const hasHOC = code.includes("function conMagia") || code.includes("const conMagia");
+          const hasSpread = code.includes("{...props}");
+          return {
+              success: hasHOC && hasSpread,
+              message: "🦄 ¡Mágico! ¡Tu unicornio usa HOC! ¡HOCs dominados!"
+          };
+      }
+  },
+  {
+      id: 156,
+      title: "React 36: El Dragón Feroz",
+      icon: "fa-dragon",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **error boundaries** con \`componentDidCatch\` para manejar errores. El dragón protege contra errores! 🐉",
+      instruction: "Crea un componente \`Dragon\` que sea un error boundary. Usa \`class ErrorBoundary extends React.Component\` con \`componentDidCatch\`.",
+      initialCode: `// Error Boundary:\n// class ErrorBoundary extends React.Component {\n//   constructor(props) {\n//     super(props);\n//     this.state = { hasError: false };\n//   }\n//   static getDerivedStateFromError(error) {\n//     return { hasError: true };\n//   }\n//   componentDidCatch(error, errorInfo) {\n//     console.log("Error capturado:", error);\n//   }\n//   render() {\n//     if (this.state.hasError) {\n//       return <p>Algo salió mal 🐉</p>;\n//     }\n//     return this.props.children;\n//   }\n// }\n\n// console.log("Dragón creado");`,
+      validationLogic: (code, logs) => {
+          const hasClass = code.includes("class ErrorBoundary") || code.includes("extends");
+          const hasComponentDidCatch = code.includes("componentDidCatch");
+          return {
+              success: hasClass && hasComponentDidCatch,
+              message: "🐉 ¡Feroz! ¡Tu dragón captura errores! ¡Error boundaries dominados!"
+          };
+      }
+  },
+  {
+      id: 157,
+      title: "React 37: El Fénix que Renace",
+      icon: "fa-phoenix",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **lifecycle methods** en componentes de clase. El fénix renace en cada ciclo de vida! 🦅",
+      instruction: "Crea un componente de clase \`Fenix\` con \`componentDidMount\`, \`componentDidUpdate\`, y \`componentWillUnmount\`.",
+      initialCode: `// Lifecycle methods:\n// class Fenix extends React.Component {\n//   componentDidMount() {\n//     console.log("Fénix montado 🦅");\n//   }\n//   componentDidUpdate() {\n//     console.log("Fénix actualizado 🦅");\n//   }\n//   componentWillUnmount() {\n//     console.log("Fénix desmontado 🦅");\n//   }\n//   render() {\n//     return <p>Fénix 🦅</p>;\n//   }\n// }\n\n// console.log("Fénix creado");`,
+      validationLogic: (code, logs) => {
+          const hasDidMount = code.includes("componentDidMount");
+          const hasDidUpdate = code.includes("componentDidUpdate");
+          const hasWillUnmount = code.includes("componentWillUnmount");
+          return {
+              success: hasDidMount && hasDidUpdate && hasWillUnmount,
+              message: "🦅 ¡Renace! ¡Tu fénix usa lifecycle! ¡Lifecycle dominado!"
+          };
+      }
+  },
+  {
+      id: 158,
+      title: "React 38: El Grillo Cantor",
+      icon: "fa-cricket",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "Podemos usar **custom hooks** para compartir lógica entre componentes. El grillo canta la misma canción en diferentes lugares! 🦗",
+      instruction: "Crea un custom hook \`useCantar\` que retorne \`{ cancion, cambiarCancion }\`. Luego úsalo en un componente \`Grillo\`.",
+      initialCode: `// Custom hook:\n// function useCantar() {\n//   const [cancion, setCancion] = useState("Cri cri");\n//   const cambiarCancion = (nueva) => setCancion(nueva);\n//   return { cancion, cambiarCancion };\n// }\n\n// function Grillo() {\n//   const { cancion, cambiarCancion } = useCantar();\n//   return (\n//     <div>\n//       <p>{cancion} 🦗</p>\n//       <button onClick={() => cambiarCancion("Nueva canción")}>Cambiar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Grillo creado");`,
+      validationLogic: (code, logs) => {
+          const hasCustomHook = code.includes("function useCantar") || code.includes("const useCantar");
+          const hasUsage = code.includes("useCantar()");
+          return {
+              success: hasCustomHook && hasUsage,
+              message: "🦗 ¡Canta! ¡Tu grillo usa custom hook! ¡Hooks personalizados dominados!"
+          };
+      }
+  },
+  {
+      id: 159,
+      title: "React 39: El Colibrí Veloz",
+      icon: "fa-hummingbird",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "Podemos optimizar con **React.memo** y comparadores personalizados. El colibrí es tan veloz que solo se actualiza cuando es necesario! 🐦",
+      instruction: "Crea un componente \`Colibri\` con \`React.memo\` y una función comparadora personalizada. La función debe comparar props y decidir si re-renderizar.",
+      initialCode: `// memo con comparador:\n// import { memo } from 'react';\n// const Colibri = memo(function Colibri({ velocidad }) {\n//   return <p>Velocidad: {velocidad} 🐦</p>;\n// }, (prevProps, nextProps) => {\n//   return prevProps.velocidad === nextProps.velocidad;\n// });\n\n// function App() {\n//   const [velocidad, setVelocidad] = useState(100);\n//   return (\n//     <div>\n//       <Colibri velocidad={velocidad} />\n//       <button onClick={() => setVelocidad(velocidad + 10)}>Acelerar</button>\n//     </div>\n//   );\n// }\n\n// console.log("Colibrí creado");`,
+      validationLogic: (code, logs) => {
+          const hasMemo = code.includes("memo(");
+          const hasComparator = code.includes("(prevProps, nextProps)") || code.includes("prevProps") && code.includes("nextProps");
+          return {
+              success: hasMemo && hasComparator,
+              message: "🐦 ¡Veloz! ¡Tu colibrí está optimizado! ¡Memo avanzado dominado!"
+          };
+      }
+  },
+  {
+      id: 160,
+      title: "React 40: El Zoológico Completo",
+      icon: "fa-zoo",
+      color: "purple",
+      type: "react",
+      section: "react",
+      description: "¡Felicidades! 🎉 Has llegado al final de React. Ahora combina TODO lo aprendido: hooks, context, memo, formularios, y más. ¡Crea un zoológico completo con todos los animales!",
+      instruction: "Crea un componente \`Zoologico\` que use múltiples componentes de animales, useState, useEffect, useContext, y formularios. Muestra al menos 3 animales diferentes con sus propias funcionalidades.",
+      initialCode: `// Proyecto final - Zoológico:\n// import { useState, useEffect, createContext, useContext } from 'react';\n// const ZoologicoContext = createContext();\n\n// function Gatito({ nombre }) {\n//   return <p>{nombre} 🐱</p>;\n// }\n\n// function Perrito({ nombre }) {\n//   return <p>{nombre} 🐶</p>;\n// }\n\n// function Zoologico() {\n//   const [animales, setAnimales] = useState(["Gatito", "Perrito"]);\n//   useEffect(() => {\n//     console.log("Zoológico abierto");\n//   }, []);\n//   return (\n//     <ZoologicoContext.Provider value={{ animales }}>\n//       <div>\n//         <h1>Mi Zoológico 🦁</h1>\n//         {animales.map(animal => (\n//           animal === "Gatito" ? <Gatito key={animal} nombre="Miau" /> :\n//           <Perrito key={animal} nombre="Guau" />\n//         ))}\n//       </div>\n//     </ZoologicoContext.Provider>\n//   );\n// }\n\n// console.log("Zoológico completo creado");`,
+      validationLogic: (code, logs) => {
+          const hasMultipleComponents = (code.match(/function \w+/g) || []).length >= 3;
+          const hasUseState = code.includes("useState");
+          const hasUseEffect = code.includes("useEffect");
+          const hasContext = code.includes("createContext") || code.includes("useContext");
+          const hasMap = code.includes(".map(");
+          return {
+              success: hasMultipleComponents && hasUseState && hasUseEffect && (hasContext || hasMap),
+              message: "🦁 🐱 🐶 🐰 🐻 🦊 🐼 🐨 🦘 🐘 🐧 🦁 🐺 🐅 🐴 🐻‍❄️ 🦀 🐙 🐪 🦛 🦩 🦔 🦉 🦆 🐰 🐠 🐿️ 🦝 🦜 🦀 🦄 🐉 🦅 🦗 🐦 ¡ZOOLOGICO COMPLETO! ¡ERES UNA EXPERTA EN REACT! 🎊🏆✨"
           };
       }
   }

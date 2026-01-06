@@ -8,8 +8,8 @@
     position: relative;
     z-index: 1;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .editorWrapper.hidden {
@@ -17,15 +17,19 @@
 }
 
 .editorWrapper.fullscreen {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
-    border-radius: var(--radius-xl);
-    border: 1px solid rgba(138, 84, 248, 0.3);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(138, 84, 248, 0.1);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
     overflow: hidden;
+    z-index: 10000;
 }
 
 .editorWrapper.animating.fullscreen {
@@ -34,15 +38,13 @@
 
 @keyframes fullscreenEnter {
     0% {
-        transform: scale(0.7) translateY(30px);
+        transform: scale(0.8);
         opacity: 0;
-        filter: blur(8px);
+        filter: blur(4px);
     }
-    50% {
-        transform: scale(1.02) translateY(-5px);
-    }
+
     100% {
-        transform: scale(1) translateY(0);
+        transform: scale(1);
         opacity: 1;
         filter: blur(0);
     }
@@ -54,15 +56,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 9998;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
     animation: backdropFadeIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 0;
 }
 
 @keyframes backdropFadeIn {
@@ -71,6 +75,7 @@
         backdrop-filter: blur(0px);
         -webkit-backdrop-filter: blur(0px);
     }
+
     to {
         opacity: 1;
         backdrop-filter: blur(12px);
@@ -78,28 +83,6 @@
     }
 }
 
-.fullscreenModal {
-    width: 100%;
-    max-width: 1400px;
-    height: 90vh;
-    max-height: 900px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes modalSlideIn {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
 
 .toolbar {
     background: #252526;
@@ -174,7 +157,7 @@
 }
 
 .editorWrapper.fullscreen .editorContainer {
-    height: calc(100% - 60px);
+    height: calc(100vh - 60px);
     max-height: none;
     flex: 1;
     display: flex;
@@ -184,21 +167,12 @@
 
 /* Mobile responsiveness for fullscreen */
 @media (max-width: 768px) {
-    .fullscreenBackdrop {
-        padding: 1rem;
-    }
-
-    .fullscreenModal {
-        height: 95vh;
-        max-height: none;
-    }
-
     .editorWrapper.fullscreen .toolbar {
         padding: 0.5rem 1rem;
     }
 
     .editorWrapper.fullscreen .editorContainer {
-        height: calc(100% - 50px);
+        height: calc(100vh - 50px);
     }
 }
 

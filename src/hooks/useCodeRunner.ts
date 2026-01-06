@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 
 type CodeRunnerResult = {
   logs: string[];
@@ -41,23 +41,36 @@ export function useCodeRunner() {
         .replace(/\s+as\s+\w+(?:\s*\|\s*\w+)*/g, '')
         // Remove return type annotations: function name(): Type -> function name()
         .replace(/\):\s*(?:string|number|boolean|void|any|\w+\s*\|\s*\w+)\s*{/g, ') {')
-        // Remove type annotations from function parameters: (param: Type) -> (param)
-        // Handle complex cases like (param: string | number) or (param?: string)
-        .replace(/\(([^)]*)\)/g, (match, params) => {
-          if (!params.trim()) return match;
-          const cleaned = params.split(',').map((p: string) => {
+        // Remove type annotations from arrow function parameters: (param: Type) => or param: Type =>
+        .replace(/(\([^)]*\))\s*=>/g, (match, params) => {
+          if (!params || params === '()') return match;
+          const paramList = params.slice(1, -1);
+          if (!paramList.trim()) return match;
+          const cleaned = paramList.split(',').map((p: string) => {
             const param = p.trim();
-            // Remove optional marker and type
             return param.replace(/\?:\s*[^,]+/, '').replace(/:\s*[^,]+/, '').trim();
           }).join(', ');
-          return `(${cleaned})`;
+          return `(${cleaned}) =>`;
+        })
+        // Remove type annotations from single arrow function parameter: param: Type =>
+        .replace(/(\w+):\s*[^=,=>\n]+(?=\s*=>)/g, '$1')
+        // Remove type annotations from function declarations: function name(param: Type)
+        .replace(/function\s+\w+\s*(\([^)]*\))/g, (match, params) => {
+          if (!params || params === '()') return match;
+          const paramList = params.slice(1, -1);
+          if (!paramList.trim()) return match;
+          const cleaned = paramList.split(',').map((p: string) => {
+            const param = p.trim();
+            return param.replace(/\?:\s*[^,]+/, '').replace(/:\s*[^,]+/, '').trim();
+          }).join(', ');
+          return match.replace(params, `(${cleaned})`);
         })
         // Remove type annotations from variable declarations: let x: Type -> let x
         .replace(/(let|const|var)\s+(\w+):\s*[^=;,\n\[\]]+(?:\[\])?/g, '$1 $2')
         // Remove array type annotations: string[] -> (keep the array syntax)
         .replace(/(\w+):\s*\w+\[\]/g, '$1')
-        // Clean up any remaining type annotations
-        .replace(/:\s*(?:string|number|boolean|void|any|\w+\s*\|\s*\w+)(?:\[\])?/g, '');
+        // Clean up any remaining type annotations (but be careful not to break strings)
+        .replace(/:\s*(?:string|number|boolean|void|any|\w+\s*\|\s*\w+)(?:\[\])?(?=\s*[=,;\)\]\n])/g, '');
       
       // Create a function that takes console and alert as arguments
       // We treat the user code as the body of this function
