@@ -34,9 +34,9 @@ export function useCodeRunner() {
       // This is a simple approach - remove type annotations from function parameters and variables
       let jsCode = code
         // Remove interface/type/enum declarations first (they're compile-time only)
-        .replace(/interface\s+\w+\s*\{[^}]*\}/gs, '')
+        .replace(/interface\s+\w+\s*\{[\s\S]*?\}/g, '')
         .replace(/type\s+\w+\s*=\s*[^;]+;/g, '')
-        .replace(/enum\s+\w+\s*\{[^}]*\}/gs, '')
+        .replace(/enum\s+\w+\s*\{[\s\S]*?\}/g, '')
         // Remove type assertions: value as Type -> value
         .replace(/\s+as\s+\w+(?:\s*\|\s*\w+)*/g, '')
         // Remove return type annotations: function name(): Type -> function name()

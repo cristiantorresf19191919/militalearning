@@ -108,6 +108,9 @@ const getApiKey = () => {
   return process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
 };
 
+// Mark route as dynamic to prevent static generation
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -135,7 +138,7 @@ export async function POST(request: NextRequest) {
       const genAI = new GoogleGenerativeAI(apiKey);
 
       // Construir el historial de conversación
-      const chatHistory = [];
+      const chatHistory: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
       
       if (Array.isArray(history) && history.length > 0) {
         history.forEach((msg) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Editor from 'react-simple-code-editor';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-javascript';
@@ -23,10 +23,34 @@ interface CodeEditorProps {
 
 export function CodeEditor({ initialCode, onChange, onRun, readOnly = false, language = 'javascript', filename }: CodeEditorProps) {
   const [code, setCode] = useState(initialCode);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const normalEditorRef = useRef<HTMLDivElement>(null);
+  const fullscreenEditorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setCode(initialCode);
   }, [initialCode]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isFullscreen) {
+        setIsFullscreen(false);
+      }
+    };
+
+    if (isFullscreen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [isFullscreen]);
 
   const handleChange = (newCode: string) => {
     setCode(newCode);
@@ -61,33 +85,112 @@ export function CodeEditor({ initialCode, onChange, onRun, readOnly = false, lan
     return Prism.highlight(code, prismLang, langName);
   };
 
+  const handleFullscreenToggle = () => {
+    if (!isFullscreen) {
+      setIsAnimating(true);
+      setIsFullscreen(true);
+      
+      // Trigger animation after state update
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsAnimating(false);
+        });
+      });
+    } else {
+      setIsAnimating(true);
+      setIsFullscreen(false);
+      
+      // Wait for animation to complete
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 400);
+    }
+  };
+
   return (
-    <div className={styles.editorWrapper}>
-      <div className={styles.toolbar}>
-        <div className={styles.dots}>
-          <span className={styles.dot} style={{ background: '#ff5f56' }} />
-          <span className={styles.dot} style={{ background: '#ffbd2e' }} />
-          <span className={styles.dot} style={{ background: '#27c93f' }} />
+    <>
+      {isFullscreen && (
+        <div className={styles.fullscreenBackdrop} onClick={handleFullscreenToggle}>
+          <div className={styles.fullscreenModal} onClick={(e) => e.stopPropagation()}>
+            <div 
+              ref={fullscreenEditorRef}
+              className={`${styles.editorWrapper} ${styles.fullscreen} ${isAnimating ? styles.animating : ''}`}
+            >
+              <div className={styles.toolbar}>
+                <div className={styles.dots}>
+                  <span className={styles.dot} style={{ background: '#ff5f56' }} />
+                  <span className={styles.dot} style={{ background: '#ffbd2e' }} />
+                  <span className={styles.dot} style={{ background: '#27c93f' }} />
+                </div>
+                <span className={styles.filename}>{getFilename()}</span>
+                <button 
+                  className={styles.fullscreenButton}
+                  onClick={handleFullscreenToggle}
+                  aria-label="Exit fullscreen"
+                  title="Exit fullscreen (Esc)"
+                >
+                  <i className="fas fa-compress" />
+                </button>
+              </div>
+              <div className={styles.editorContainer}>
+                <Editor
+                  value={code}
+                  onValueChange={handleChange}
+                  highlight={highlight}
+                  padding={20}
+                  className={styles.editor}
+                  style={{
+                    fontFamily: '"Fira code", "Fira Mono", monospace',
+                    fontSize: 16,
+                    minHeight: '100%',
+                    backgroundColor: '#1e1e1e',
+                    color: '#d4d4d4'
+                  }}
+                  textareaClassName={styles.textarea}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <span className={styles.filename}>{getFilename()}</span>
+      )}
+      <div 
+        ref={normalEditorRef}
+        className={`${styles.editorWrapper} ${isFullscreen ? styles.hidden : ''}`}
+      >
+        <div className={styles.toolbar}>
+          <div className={styles.dots}>
+            <span className={styles.dot} style={{ background: '#ff5f56' }} />
+            <span className={styles.dot} style={{ background: '#ffbd2e' }} />
+            <span className={styles.dot} style={{ background: '#27c93f' }} />
+          </div>
+          <span className={styles.filename}>{getFilename()}</span>
+          <button 
+            className={styles.fullscreenButton}
+            onClick={handleFullscreenToggle}
+            aria-label="Enter fullscreen"
+            title="Enter fullscreen"
+          >
+            <i className="fas fa-expand" />
+          </button>
+        </div>
+        <div className={styles.editorContainer}>
+          <Editor
+            value={code}
+            onValueChange={handleChange}
+            highlight={highlight}
+            padding={15}
+            className={styles.editor}
+            style={{
+              fontFamily: '"Fira code", "Fira Mono", monospace',
+              fontSize: 14,
+              minHeight: '150px',
+              backgroundColor: '#1e1e1e',
+              color: '#d4d4d4'
+            }}
+            textareaClassName={styles.textarea}
+          />
+        </div>
       </div>
-      <div className={styles.editorContainer}>
-        <Editor
-          value={code}
-          onValueChange={handleChange}
-          highlight={highlight}
-          padding={15}
-          className={styles.editor}
-          style={{
-            fontFamily: '"Fira code", "Fira Mono", monospace',
-            fontSize: 14,
-            minHeight: '150px',
-            backgroundColor: '#1e1e1e', // Match VS Code Dark
-            color: '#d4d4d4'
-          }}
-          textareaClassName={styles.textarea}
-        />
-      </div>
-    </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import FloatingChat from "@/components/chat/FloatingChat";
+import { HeartProgress } from "@/components/ui/HeartProgress";
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700', '800'],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Providers>
           {children}
+          <HeartProgress />
           <FloatingChat />
         </Providers>
       </body>

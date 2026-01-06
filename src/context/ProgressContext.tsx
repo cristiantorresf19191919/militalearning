@@ -11,10 +11,13 @@ import {
 
 interface ProgressContextType {
   completedLessons: number[];
+  hearts: number;
+  gorillaHearts: number;
   markLessonComplete: (lessonId: number) => void;
   isLessonComplete: (lessonId: number) => boolean;
   resetProgress: () => void;
   isLoading: boolean;
+  heartsToNextGorillaHeart: number;
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined);
@@ -31,8 +34,13 @@ function getUserId(): string {
   return userId;
 }
 
+const HEARTS_PER_LESSON = 1;
+const HEARTS_FOR_GORILLA_HEART = 5; // Every 5 hearts = 1 GorillaHeart
+
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [completedLessons, setCompletedLessons] = useState<number[]>([]);
+  const [hearts, setHearts] = useState<number>(0);
+  const [gorillaHearts, setGorillaHearts] = useState<number>(0);
   const [mounted, setMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [useFirebase, setUseFirebase] = useState(false);
@@ -69,10 +77,19 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
         if (docSnapshot.exists()) {
           const data = docSnapshot.data();
           setCompletedLessons(data.completedLessons || []);
+          setHearts(data.hearts || 0);
+          setGorillaHearts(data.gorillaHearts || 0);
         } else {
           // Create initial document
-          setDoc(progressRef, { completedLessons: [], createdAt: new Date() });
+          setDoc(progressRef, { 
+            completedLessons: [], 
+            hearts: 0,
+            gorillaHearts: 0,
+            createdAt: new Date() 
+          });
           setCompletedLessons([]);
+          setHearts(0);
+          setGorillaHearts(0);
         }
         setIsLoading(false);
       }, (error) => {
@@ -94,7 +111,10 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('milita_progress');
     if (saved) {
       try {
-        setCompletedLessons(JSON.parse(saved));
+        const data = JSON.parse(saved);
+        setCompletedLessons(data.completedLessons || []);
+        setHearts(data.hearts || 0);
+        setGorillaHearts(data.gorillaHearts || 0);
       } catch (e) {
         console.error("Failed to parse progress", e);
       }
@@ -102,13 +122,15 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
   };
 
-  const saveToFirebase = async (lessons: number[]) => {
+  const saveToFirebase = async (lessons: number[], heartsCount: number, gorillaHeartsCount: number) => {
     if (!useFirebase || !userId || !db) return;
     
     try {
       const progressRef = doc(db, 'progress', userId);
       await setDoc(progressRef, {
         completedLessons: lessons,
+        hearts: heartsCount,
+        gorillaHearts: gorillaHeartsCount,
         updatedAt: new Date(),
       }, { merge: true });
     } catch (error) {
@@ -116,25 +138,44 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const saveToLocalStorage = (lessons: number[]) => {
+  const saveToLocalStorage = (lessons: number[], heartsCount: number, gorillaHeartsCount: number) => {
     if (mounted) {
-      localStorage.setItem('milita_progress', JSON.stringify(lessons));
+      localStorage.setItem('milita_progress', JSON.stringify({
+        completedLessons: lessons,
+        hearts: heartsCount,
+        gorillaHearts: gorillaHeartsCount,
+      }));
     }
   };
 
   useEffect(() => {
     if (mounted && completedLessons.length >= 0) {
       if (useFirebase) {
-        saveToFirebase(completedLessons);
+        saveToFirebase(completedLessons, hearts, gorillaHearts);
       } else {
-        saveToLocalStorage(completedLessons);
+        saveToLocalStorage(completedLessons, hearts, gorillaHearts);
       }
     }
-  }, [completedLessons, mounted, useFirebase]);
+  }, [completedLessons, hearts, gorillaHearts, mounted, useFirebase]);
 
   const markLessonComplete = (lessonId: number) => {
     if (!completedLessons.includes(lessonId)) {
       setCompletedLessons(prev => [...prev, lessonId]);
+      
+      // Award heart for completing a lesson
+      setHearts(prev => {
+        const newHearts = prev + HEARTS_PER_LESSON;
+        
+        // Check if we've reached a GorillaHeart milestone
+        const currentGorillaHearts = Math.floor(prev / HEARTS_FOR_GORILLA_HEART);
+        const newGorillaHearts = Math.floor(newHearts / HEARTS_FOR_GORILLA_HEART);
+        
+        if (newGorillaHearts > currentGorillaHearts) {
+          setGorillaHearts(newGorillaHearts);
+        }
+        
+        return newHearts;
+      });
     }
   };
 
@@ -142,10 +183,16 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
 
   const resetProgress = async () => {
     setCompletedLessons([]);
+    setHearts(0);
+    setGorillaHearts(0);
     if (useFirebase && userId && db) {
       try {
         const progressRef = doc(db, 'progress', userId);
-        await updateDoc(progressRef, { completedLessons: [] });
+        await updateDoc(progressRef, { 
+          completedLessons: [],
+          hearts: 0,
+          gorillaHearts: 0
+        });
       } catch (error) {
         console.error("Failed to reset in Firebase:", error);
       }
@@ -154,13 +201,18 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const heartsToNextGorillaHeart = HEARTS_FOR_GORILLA_HEART - (hearts % HEARTS_FOR_GORILLA_HEART);
+
   return (
     <ProgressContext.Provider value={{ 
-      completedLessons, 
+      completedLessons,
+      hearts,
+      gorillaHearts,
       markLessonComplete, 
       isLessonComplete, 
       resetProgress,
-      isLoading 
+      isLoading,
+      heartsToNextGorillaHeart
     }}>
       {children}
     </ProgressContext.Provider>
