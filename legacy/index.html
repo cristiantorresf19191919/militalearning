@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Milita - Aprendiendo Frontend</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism VS Code Dark Theme -->
+    <!-- Prism Okaidia (Dark Theme) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <style>
+        /* Override Prism font to match the requested 'editor' look if needed */
+        code[class*="language-"],
+        pre[class*="language-"] {
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 1rem;
+            text-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cute Header -->
+    <nav class="main-header">
+        <div class="logo-container">
+            <span class="logo-icon">💜</span>
+            <span class="logo-text">Milita<span class="highlight">Code</span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="mascot-container">
+                <!-- Using one of the existing cute assets -->
+                <img src="cute-watercolor-safari-animal_23-2151220254.avif" alt="Cute Mascot" class="mascot-img">
+            </div>
+            <h1 class="hero-title">Hola <span class="text-pink">Milita</span> 💜</h1>
+            <p class="hero-subtitle" style="font-size: 1.2rem; color: var(--text-light);">
+                Esta página es un regalito de tu <span class="text-purple" style="font-weight: 600;">Gorilín</span>
+                🦍<br>
+                Para que aprendas a crear cosas hermosas en la web paso a paso.<br>
+                ¡Vamos a divertirnos con JavaScript!
+            </p>
+            <a href="#leccion-1" class="cta-button primary" style="margin-top: 2rem;">
+                Comenzar Aventura ✨
+            </a>
+        </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main>
+
+        <!-- Lesson 1: Variables -->
+        <!-- Added 'active' class to show first lesson by default -->
+        <section id="leccion-1" class="lesson-container active">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Lección 1: Las Cajitas (Variables)</h3>
+                </div>
+                <p>
+                    Imagina que tienes cajitas donde puedes guardar cosas. En programación, esas cajitas se llaman
+                    <strong>Variables</strong>.
+                    Podemos guardar números, textos (que llamamos "strings") o incluso listas de cosas.
+                </p>
+                <!-- Instructions for the user -->
+                <div class="instruction-box"
+                    style="background: #f0f4ff; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--purple-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Cambia el saludo original por uno que sea para ti, y cambia el
+                        número favorito. ¡Luego pulsa "Ejecutar"!
+                    </p>
+                </div>
+
+                <div class="editor-container" id="editor-1">
+                    <!-- Changed textarea to div for syntax highlighting -->
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-1">let saludo = "¡Hola mundo soy Milita!";
+                            console.log(saludo);
+
+                            let numeroFavorito = 8;
+                            console.log("Mi número favorito es: " + numeroFavorito);</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 2: Alerts -->
+        <!-- Removed 'animate-on-scroll is-visible' to rely on 'active' class logic -->
+        <section id="leccion-2" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon pink">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Lección 2: Mensajitos (Alertas)</h3>
+                </div>
+                <p>
+                    A veces queremos que la página nos hable directamente. Para eso usamos <code>alert()</code>.
+                    ¡Es como una ventanita sorpresa!
+                </p>
+
+                <div class="instruction-box"
+                    style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Ejecuta el código para ver el mensajito sorpresa.
+                    </p>
+                </div>
+
+                <div class="editor-container" id="editor-2">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-2">alert("¡Te quiero mucho!");
+                            console.log("Mensaje enviado con amor ❤️");</div>
+                    </div>
+                    <button class="run-btn" id="run-alert"><i class="fas fa-play"></i> Probar Alerta</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 3: Conditionals (Fun) -->
+        <section id="leccion-3" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon teal">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3>Lección 3: Decisiones (If/Else)</h3>
+                </div>
+                <p>
+                    La vida está llena de decisiones. "Si tengo hambre, como". "Si tengo sueño, duermo".
+                    En código es igualito, usamos <code>if</code> (si pasa esto) y <code>else</code> (si no).
+                </p>
+
+                <div class="instruction-box"
+                    style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Cambia la variable <code>tengoHambre</code> a <code>true</code>
+                        (verdadero) para que el Gorilín te de comida.
+                    </p>
+                </div>
+
+                <div class="editor-container" id="editor-3">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-3">let tengoHambre = false;
+
+                            if (tengoHambre) {
+                            console.log("🦍 Gorilín dice: ¡Toma tu hamburguesa! 🍔");
+                            } else {
+                            console.log("🦍 Gorilín dice: Bueno, más comida para mí...");
+                            }</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 4: Loops (Fun) -->
+        <section id="leccion-4" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Lección 4: Repetir cosas (Bucles)</h3>
+                </div>
+                <p>
+                    ¿Te imaginas tener que escribir "Te amo" 5 veces a mano? ¡Qué pereza!
+                    Mejor usamos un bucle <code>for</code> para que la compu lo haga por nosotros.
+                </p>
+
+                <div class="instruction-box"
+                    style="background: #f3e5f5; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--purple-2); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Haz que el bucle se repita <strong>5</strong> veces en lugar de
+                        3.
+                    </p>
+                </div>
+
+                <div class="editor-container" id="editor-4">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-4">for (let abrazo = 1; abrazo <= 3;
+                                abrazo++) { console.log("🤗 Abrazo número " + abrazo);
+}
+console.log(" ¡Ataque de cosquillas final! 👐");</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- Lesson 5: Arrays -->
+        <section id="leccion-5" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon teal">
+                        <i class="fas fa-list-ul"></i>
+                    </div>
+                    <h3>Lección 5: Las Listas (Arrays)</h3>
+                </div>
+                <p>
+                    A veces queremos guardar muchas cosas juntas, como una lista de compras.
+                    ¡Para eso usamos los <strong>Arrays</strong>! Se escriben con corchetes <code>[]</code>.
+                </p>
+                <div class="instruction-box"
+                    style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Agrega "Helado" a la lista de compras del Gorilín.
+                    </p>
+                </div>
+                <div class="editor-container" id="editor-5">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-5">let compras = ["Bananas", "Galletas",
+                            "Leche"];
+                            console.log("Lista actual: " + compras);
+
+                            // ¡Agrega tu código aquí abajo!
+                            compras.push("Helado");
+                            console.log("¡Ahora sí! Lista completa: " + compras);</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 6: Objects -->
+        <section id="leccion-6" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon pink">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Lección 6: Objetos Mágicos</h3>
+                </div>
+                <p>
+                    Los objetos sirven para describir cosas. Por ejemplo, ¿cómo es el Gorilín?
+                    Tiene nombre, color, y nivel de hambre. ¡Usamos llaves <code>{}</code>!
+                </p>
+                <div class="instruction-box"
+                    style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Cambia el color del gorilín a "Morado" y haz que tenga mucha
+                        hambre.
+                    </p>
+                </div>
+                <div class="editor-container" id="editor-6">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-6">let mascota = {
+                            nombre: "Gorilín",
+                            color: "Café",
+                            hambre: 10
+                            };
+
+                            // Cambia las propiedades aquí
+                            mascota.color = "Morado";
+                            mascota.hambre = 100;
+
+                            console.log("Mascota: " + mascota.nombre + ", Color: " + mascota.color + ", Hambre: " +
+                            mascota.hambre);</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 7: Functions -->
+        <section id="leccion-7" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon purple">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Lección 7: Tus Propias Recetas (Funciones)</h3>
+                </div>
+                <p>
+                    Las funciones son como recetas mágicas. Les pones nombre y hacen algo cuando las llamas.
+                    ¡Así no repites código!
+                </p>
+                <div class="instruction-box"
+                    style="background: #f3e5f5; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--purple-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Crea una función llamada <code>lanzarHechizo</code> que diga
+                        "¡Abra Cadabra!".
+                    </p>
+                </div>
+                <div class="editor-container" id="editor-7">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-7">function saludar() {
+                            console.log("¡Hola amiga!");
+                            }
+                            saludar();
+
+                            // ¡Crea tu función lanzarHechizo aquí!
+                            function lanzarHechizo() {
+                            console.log("¡Abra Cadabra!");
+                            }
+                            lanzarHechizo();</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 8: Return -->
+        <section id="leccion-8" class="lesson-container">
+            <div class="lesson-card">
+                <div class="card-header">
+                    <div class="card-icon teal">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>Lección 8: El Retorno (Return)</h3>
+                </div>
+                <p>
+                    A veces queremos que la función nos <strong>devuelva</strong> un resultado para usarlo después.
+                    Usamos la palabra mágica <code>return</code>.
+                </p>
+                <div class="instruction-box"
+                    style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                    <p style="margin: 0; font-size: 0.95rem;">
+                        <strong>🎯 Tu Misión:</strong> Haz que la función <code>sumarCorazones</code> devuelva la suma
+                        de a + b.
+                    </p>
+                </div>
+                <div class="editor-container" id="editor-8">
+                    <div class="editor-wrapper">
+                        <button class="maximize-btn" title="Pantalla Completa"><i class="fas fa-expand"></i></button>
+                        <div class="jar-editor language-javascript" id="code-8">function sumarCorazones(a, b) {
+                            return a + b;
+                            }
+
+                            let total = sumarCorazones(5, 5);
+                            console.log("Total de corazones: " + total);</div>
+                    </div>
+                    <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                    <div class="code-output output-content"></div>
+                </div>
+            </div>
+
+            <!-- Lesson 9: DOM Text -->
+            <section id="leccion-9" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon pink">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h3>Lección 9: Magia Visual (Cambiar Texto)</h3>
+                    </div>
+                    <p>
+                        ¡JavaScript puede cambiar lo que ves en la pantalla!
+                        Usamos <code>document.getElementById()</code> para encontrar cosas y <code>innerText</code> para
+                        cambiar su texto.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Cambia el texto del título secreto para que diga "¡Te
+                            encontré!".
+                        </p>
+                        <h4 id="titulo-secreto"
+                            style="color: var(--text-light); margin-top: 1rem; border: 1px dashed #ccc; padding: 0.5rem;">
+                            Soy un texto secreto... shhh</h4>
+                    </div>
+                    <div class="editor-container" id="editor-9">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-9">// Buscamos el elemento y cambiamos
+                                el texto
+                                const titulo = document.getElementById("titulo-secreto");
+                                titulo.innerText = "¡Te encontré!";
+                                // ¡Prueba cambiar el mensaje!</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 10: DOM Style -->
+            <section id="leccion-10" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Lección 10: Pintora Digital (Colores)</h3>
+                    </div>
+                    <p>
+                        ¡También podemos pintar! Usamos <code>style.color</code> o <code>style.backgroundColor</code>.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #f3e5f5; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--purple-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Pinta el cuadro de abajo de color "pink" (rosa) o "purple"
+                            (morado).
+                        </p>
+                        <div id="cuadro-magico"
+                            style="width: 100px; height: 100px; background: #ddd; margin: 1rem auto; transition: 0.3s; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <div class="editor-container" id="editor-10">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-10">const cuadro =
+                                document.getElementById("cuadro-magico");
+
+                                // Cambia 'blue' por 'pink' o tu color favorito en inglés
+                                cuadro.style.backgroundColor = "blue";</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 11: Events Click -->
+            <section id="leccion-11" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon teal">
+                            <i class="fas fa-mouse-pointer"></i>
+                        </div>
+                        <h3>Lección 11: El Botón Mágico (Eventos)</h3>
+                    </div>
+                    <p>
+                        Para que pasen cosas cuando hacemos click, usamos "Event Listeners" (Escuchadores de Eventos).
+                        Es como decirle al botón: "¡Avísame cuando te toquen!".
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Haz que al hacer click en el botón de prueba, aparezca una
+                            alerta diciendo "¡Click!".
+                        </p>
+                        <button id="boton-prueba"
+                            style="padding: 10px 20px; background: #eee; border: none; border-radius: 8px; cursor: pointer; margin-top: 5px;">¡Hazme
+                            Click!</button>
+                    </div>
+                    <div class="editor-container" id="editor-11">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-11">const miBoton =
+                                document.getElementById("boton-prueba");
+
+                                miBoton.addEventListener("click", function() {
+                                alert("¡Funcionó!");
+                                });</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 12: Inputs -->
+            <section id="leccion-12" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon pink">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3>Lección 12: Escribiendo Cartitas (Inputs)</h3>
+                    </div>
+                    <p>
+                        Podemos leer lo que el usuario escribe en las cajitas de texto (inputs) usando
+                        <code>.value</code>.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Escribe tu nombre en la cajita y presiona Ejecutar para ver
+                            el saludo personalizado.
+                        </p>
+                        <input type="text" id="input-nombre" placeholder="Escribe tu nombre aquí"
+                            style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; margin-top: 5px;">
+                    </div>
+                    <div class="editor-container" id="editor-12">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-12">const cajita =
+                                document.getElementById("input-nombre");
+                                const nombreUsuario = cajita.value;
+
+                                if (nombreUsuario !== "") {
+                                console.log("¡Hola hermosa " + nombreUsuario + "!");
+                                } else {
+                                console.log("Escribe tu nombre en la cajita de arriba primero :)");
+                                }</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+            </section>
+
+            <!-- Lesson 13: Math -->
+            <section id="leccion-13" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon teal">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Lección 13: Calculadora de Amor (Matemáticas)</h3>
+                    </div>
+                    <p>
+                        JavaScript es muy buena con los números. Sumar <code>+</code>, restar <code>-</code>,
+                        multiplicar <code>*</code> y dividir <code>/</code>.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Calcula cuántos besos hay en total si das 10 besos por 5
+                            días.
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-13">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-13">let besosPorDia = 10;
+                                let dias = 5;
+
+                                // Multiplica aquí
+                                let totalBesos = besosPorDia * 1;
+
+                                console.log("Total de besos: " + totalBesos);</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 14: Logic -->
+            <section id="leccion-14" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon pink">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Lección 14: Decisiones Complejas (Lógica)</h3>
+                    </div>
+                    <p>
+                        A veces necesitamos cumplir DOS condiciones a la vez.
+                        Usamos <code>&&</code> (Y) para que ambas sean verdad.
+                        Usamos <code>||</code> (O) para que al menos una sea verdad.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Haz que el chico sea <code>guapo</code> Y <code>amable</code>
+                            para aceptarlo.
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-14">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-14">let esGuapo = false;
+                                let esAmable = true;
+
+                                if (esGuapo && esAmable) {
+                                console.log("¡Me caso! 💍");
+                                } else {
+                                console.log("Next! 💅");
+                                }</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 15: While Loops -->
+            <section id="leccion-15" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon purple">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3>Lección 15: Cuenta Regresiva (While)</h3>
+                    </div>
+                    <p>
+                        El bucle <code>while</code> repite cosas MIENTRAS una condición sea verdadera.
+                        ¡Cuidado con los bucles infinitos!
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #f3e5f5; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--purple-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Completa la cuenta regresiva hasta llegar a 0.
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-15">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-15">let tiempo = 5;
+
+                                while (tiempo > 0) {
+                                console.log("Faltan " + tiempo + " segundos...");
+                                tiempo = tiempo - 1; // ¡Muy importante restar!
+                                }
+                                console.log("¡Despegue! 🚀");</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 16: Arrow Functions -->
+            <section id="leccion-16" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon teal">
+                            <i class="fas fa-location-arrow"></i>
+                        </div>
+                        <h3>Lección 16: Flechas Mágicas (Arrow Functions)</h3>
+                    </div>
+                    <p>
+                        Hay una forma más moderna y corta de escribir funciones.
+                        Se llaman "Funciones Flecha" porque usan una flechita <code>=></code>.
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Crea una función flecha que diga "¡Hola moderna!".
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-16">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-16">const antigua = function() {
+                                console.log("Soy vieja escuela");
+                                };
+
+                                // Crea tu arrow function 'moderna' aquí
+                                const moderna = () => {
+                                // Tu código
+                                };
+                                moderna();</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <strong>🎯 Tu Misión:</strong> Crea un mensaje que aparezca después de 3 segundos (3000ms).
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-18">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-18">console.log("Esperando 3
+                                segundos...");
+
+                                setTimeout(() => {
+                                console.log("¡Hola desde el futuro! ⏰");
+                                }, 3000);</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 19: LocalStorage -->
+            <section id="leccion-19" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon teal">
+                            <i class="fas fa-save"></i>
+                        </div>
+                        <h3>Lección 19: Recuerdos (Guardar Datos)</h3>
+                    </div>
+                    <p>
+                        Si recargas la página, las variables se borran. 😱
+                        Pero <code>localStorage</code> guarda cosas en el navegador para siempre (hasta que las borres).
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #e6ffFA; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--teal-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Guarda tu nombre en el "diario" del navegador.
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-19">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-19">// Guardar
+                                localStorage.setItem("diario_milita", "¡Hoy aprendí a programar!");
+                                console.log("Guardado en la memoria.");
+
+                                // Leer (para comprobar)
+                                const nota = localStorage.getItem("diario_milita");
+                                console.log("Leído de memoria: " + nota);</div>
+                        </div>
+                        <button class="run-btn"><i class="fas fa-play"></i> Ejecutar Código</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lesson 20: Final Project -->
+            <section id="leccion-20" class="lesson-container">
+                <div class="lesson-card">
+                    <div class="card-header">
+                        <div class="card-icon pink">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Lección 20: El Gran Proyecto Final</h3>
+                    </div>
+                    <p>
+                        ¡Llegaste al final! Vamos a juntarlo todo.
+                        Crea un "Medidor de Amor" para Gorilín. ❤️
+                    </p>
+                    <div class="instruction-box"
+                        style="background: #fff0f6; padding: 1rem; border-radius: 12px; border-left: 4px solid var(--pink-1); margin: 1rem 0;">
+                        <p style="margin: 0; font-size: 0.95rem;">
+                            <strong>🎯 Tu Misión:</strong> Haz que si el amor es mayor a 90, diga "¡Amor Infinito!".
+                        </p>
+                    </div>
+                    <div class="editor-container" id="editor-20">
+                        <div class="editor-wrapper">
+                            <button class="maximize-btn" title="Pantalla Completa"><i
+                                    class="fas fa-expand"></i></button>
+                            <div class="jar-editor language-javascript" id="code-20">let nivelAmor = 100;
+
+                                if (nivelAmor > 90) {
+                                console.log("¡Amor Infinito! ❤️❤️❤️");
+                                } else {
+                                console.log("Poquito amor...");
+                                }</div>
+                        </div>
+                        <button class="run-btn" style="background: var(--cta-gradient); font-size: 1.1rem;"><i
+                                class="fas fa-play"></i> ¡GRADUARME! 🎓</button>
+                        <div class="code-output output-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Message -->
+            <section id="final-section" class="full-width-cta">
+                <h2 class="section-title">¡Lo hiciste genial! 🌟</h2>
+                <img src="66-663974_funny-cowsfunny-cute-farm-animal-clipart.png"
+                    style="max-width: 200px; margin: 1rem auto; display: block;" alt="Cow">
+                <p style="font-size: 1.3rem; font-weight: 500;">
+                    Paso a paso irás creando cosas increíbles.<br>
+                    Estoy muy orgulloso de ti.
+                </p>
+            </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>Hecho con mucho amor <i class="fas fa-heart heart"></i> para <strong>Milita</strong></p>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">De tu Gorilín que te adora</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <!-- CodeJar Local UMD (Fix for CORS/Module issues) -->
+    <script src="codejar.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+```

@@ -1,0 +1,20 @@
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    transition: transform var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -10px rgba(138, 43, 226, 0.15);
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: var(--space-md);
+    }
+}

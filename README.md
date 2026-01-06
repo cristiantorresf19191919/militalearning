@@ -18,7 +18,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Firebase Setup (Optional)
+
+This project uses Firebase Firestore to track progress across devices. If you want to enable Firebase:
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/)
+2. Enable Firestore Database in your Firebase project
+3. Copy `.env.local.example` to `.env.local`
+4. Get your Firebase config from Project Settings > General > Your apps > Web app
+5. Fill in the values in `.env.local`
+
+**Note:** The app will automatically fall back to localStorage if Firebase is not configured, so it works out of the box without Firebase setup.
+
+## Features
+
+- 🎓 Interactive JavaScript lessons with code editor
+- 🔥 Firebase integration for progress tracking (with localStorage fallback)
+- ✨ Real-time progress sync across devices
+- 🎨 Beautiful, fun UI with animations
+- 🎯 15 engaging challenges covering JavaScript fundamentals
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load fonts.
 
 ## Learn More
 

@@ -1,0 +1,476 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* Colors */
+    --purple-1: #6f42c1;
+    --purple-2: #8a2be2;
+    --pink-1: #ff69b4;
+    --pink-2: #d63384;
+    --teal-1: #20c997;
+    --teal-2: #17a2b8;
+    --dark-blue: #192231;
+    --light-bg: #fdfcff;
+    --text-dark: #212529;
+    --text-light: #6c757d;
+    --white: #fff;
+    --border-color: #e9ecef;
+
+    /* Enhanced Gradients */
+    --purple-gradient: linear-gradient(135deg, #8A54F8 0%, #A06AF9 50%, #8A54F8 100%);
+    --pink-gradient: linear-gradient(135deg, #F8549B 0%, #F96A88 50%, #F8549B 100%);
+    --teal-gradient: linear-gradient(135deg, #2EDC9B 0%, #35E4B2 50%, #2EDC9B 100%);
+    --cta-gradient: linear-gradient(135deg, #A06AF9 0%, #F8549B 50%, #A06AF9 100%);
+
+    /* Enhanced Shadows */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    /* Spacing System */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 6rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+
+    --bg-dark: #181c22;
+    --bg-light: #fdfcff;
+    --card-dark: #23243a;
+    --card-light: #fff;
+    --border-dark: #23243a;
+    --border-light: #e9ecef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header & Logo */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(160, 106, 249, 0.1);
+    display: flex;
+    justify-content: center;
+    /* Center initially, or space-between if links added later */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.logo-text {
+    color: var(--text-dark);
+    letter-spacing: -1px;
+}
+
+.logo-text .highlight {
+    background: var(--cta-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-icon {
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-6px);
+    }
+
+    60% {
+        transform: translateY(-3px);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 18px;
+    /* Increased base size */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
+    background-color: var(--white);
+    color: var(--text-dark);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(111, 66, 193, 0.05) 0%, rgba(255, 105, 180, 0.05) 100%);
+    /* Softer background */
+    padding: var(--space-xl) var(--space-md);
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    /* Larger title */
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+    background: var(--purple-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(160, 106, 249, 0.2));
+}
+
+.mascot-container {
+    margin-bottom: var(--space-lg);
+    animation: float 6s ease-in-out infinite;
+}
+
+.mascot-img {
+    max-width: 280px;
+    /* Slightly larger mascot */
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    border: 4px solid var(--white);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.lesson-container {
+    max-width: 1000px;
+    margin: var(--space-2xl) auto;
+    padding: 0 var(--space-md);
+    opacity: 0;
+    /* Hidden by default for logic to handle, or animation */
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
+    /* Hidden by default */
+}
+
+.lesson-container.active {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+}
+
+/* .lesson-container.fullscreen-parent removed (DOM teleport approach used instead) */
+
+.lesson-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    margin-bottom: var(--space-xl);
+    transition: transform var(--transition-normal);
+}
+
+.lesson-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px -10px rgba(138, 43, 226, 0.15);
+}
+
+/* VS Code Style Editor */
+.editor-wrapper {
+    background: #1e1e1e;
+    /* VS Code Dark bg */
+    border-radius: var(--radius-md);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #333;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.jar-editor {
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #d4d4d4;
+    min-height: 150px;
+    padding: var(--space-sm);
+    outline: none;
+    tab-size: 2;
+}
+
+/* Syntax Highlighting overrides if needed, but Prism VSC Dark handles most */
+
+.editor-container {
+    background: var(--dark-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+    color: var(--white);
+    position: relative;
+}
+
+.code-area {
+    width: 100%;
+    height: 150px;
+    background: #23243a;
+    color: #f8f8f2;
+    border: 1px solid #6c757d;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.code-output {
+    margin-top: var(--space-md);
+    padding: var(--space-sm);
+    background: #fdfcff;
+    border-radius: var(--radius-md);
+    color: var(--text-dark);
+    min-height: 50px;
+    border: 1px dashed var(--purple-1);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+/* Fullscreen Editor Mode */
+.editor-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10002;
+    /* Higher than parent */
+    background: var(--dark-blue);
+    /* Solid background, no transparency */
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0;
+
+    /* Animation for "Popup" effect */
+    animation: openFullscreen 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes openFullscreen {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.editor-container.fullscreen .editor-wrapper {
+    flex-grow: 1;
+    height: auto;
+    border: 1px solid var(--purple-1);
+    box-shadow: 0 0 30px rgba(160, 106, 249, 0.2);
+}
+
+.editor-container.fullscreen .jar-editor {
+    height: 100%;
+    min-height: 100%;
+    font-size: 1.2rem;
+    /* Larger font in fullscreen */
+}
+
+/* Fullscreen Run Button Design */
+.editor-container.fullscreen .run-btn {
+    position: absolute;
+    bottom: 3rem;
+    right: 3rem;
+    width: auto;
+    margin: 0;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    /* Pill shape */
+    background: var(--cta-gradient);
+    /* Stand out more */
+    box-shadow: 0 10px 30px rgba(160, 106, 249, 0.4);
+    z-index: 10003;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: slideUp 0.5s ease-out 0.2s backwards;
+}
+
+.editor-container.fullscreen .run-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(160, 106, 249, 0.6);
+}
+
+.editor-container.fullscreen .run-btn::before {
+    content: '🚀 ';
+    margin-right: 8px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Maximize Toggle Button */
+.maximize-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 1rem;
+    z-index: 10;
+    transition: color 0.3s;
+}
+
+.maximize-btn:hover {
+    color: var(--white);
+}
+
+.editor-wrapper {
+    /* ... existing ... */
+    position: relative;
+    /* Ensure button positions relative to this */
+}
+
+.run-btn {
+    background: var(--teal-gradient);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: var(--space-sm);
+    transition: transform var(--transition-fast);
+}
+
+.run-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Final Section */
+.full-width-cta {
+    display: none;
+    /* Hidden by default */
+    text-align: center;
+    padding: 4rem 1rem;
+    background: var(--white);
+    border: 2px dashed var(--purple-1);
+    /* Cute border */
+    border-radius: var(--radius-xl);
+    margin: var(--space-2xl);
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.full-width-cta.active {
+    display: block;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--dark-blue);
+    color: var(--white);
+    margin-top: var(--space-3xl);
+}
+
+.footer .heart {
+    color: var(--pink-1);
+}
+
+/* Utilities */
+.text-purple {
+    color: var(--purple-1);
+}
+
+.text-pink {
+    color: var(--pink-1);
+}

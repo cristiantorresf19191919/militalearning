@@ -1,0 +1,64 @@
+.editorWrapper {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    border: 1px solid #333;
+    margin-bottom: var(--space-md);
+    background: #1e1e1e;
+}
+
+.toolbar {
+    background: #252526;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.dots {
+    display: flex;
+    gap: 6px;
+    margin-right: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.filename {
+    font-family: monospace;
+    color: #9cdcfe;
+    font-size: 0.9rem;
+}
+
+.editorContainer {
+    position: relative;
+    max-height: 400px;
+    /* Prevent it from getting too tall */
+    overflow-y: auto;
+}
+
+/* Customize scrollbar for the editor */
+.editorContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.editorContainer::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.editorContainer::-webkit-scrollbar-thumb {
+    background: #424242;
+    border-radius: 5px;
+}
+
+.editorContainer::-webkit-scrollbar-thumb:hover {
+    background: #4f4f4f;
+}
+
+/* Ensure textarea doesn't display outline */
+.textarea:focus {
+    outline: none;
+}
