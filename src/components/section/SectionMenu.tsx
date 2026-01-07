@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { LessonSection, lessons } from '@/data/lessons';
 import { useProgress } from '@/context/ProgressContext';
 import styles from './SectionMenu.module.css';
@@ -78,7 +78,7 @@ export function SectionMenu() {
     }
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { 
       opacity: 0, 
       y: 30,

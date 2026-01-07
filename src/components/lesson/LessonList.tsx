@@ -123,7 +123,7 @@ export function LessonList() {
                 onComplete={() => { /* Handled in effect by context update */ }}
               />
             ))}
-          </div>
+          </motion.div>
         );
       })}
       
@@ -135,6 +135,6 @@ export function LessonList() {
               <p>Has completado todas las lecciones disponibles. ¡Eres oficialmente una Programadora!</p>
               </div>
             )}
-          </motion.div>
-        );
+    </div>
+  );
 }

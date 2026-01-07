@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { lessons, LessonSection } from '@/data/lessons';
 import { useProgress } from '@/context/ProgressContext';
@@ -78,7 +78,7 @@ export function SectionPage({ section }: SectionPageProps) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -89,7 +89,7 @@ export function SectionPage({ section }: SectionPageProps) {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -101,7 +101,7 @@ export function SectionPage({ section }: SectionPageProps) {
     }
   };
 
-  const heroVariants = {
+  const heroVariants: Variants = {
     hidden: { opacity: 0, scale: 0.9, y: -30 },
     visible: {
       opacity: 1,
