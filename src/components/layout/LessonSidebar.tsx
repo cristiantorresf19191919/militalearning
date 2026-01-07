@@ -207,11 +207,6 @@ export function LessonSidebar() {
                       )}
                     </AnimatePresence>
 
-                    {section === 'react' && sectionLessons.length === 0 && (
-                      <div className={styles.comingSoon}>
-                        <i className="fas fa-clock" /> Próximamente
-                      </div>
-                    )}
                   </div>
                 );
               })}

@@ -51,7 +51,7 @@ const sectionInfo: Record<LessonSection, {
   react: {
     title: "React",
     icon: "fa-atom",
-    description: "Próximamente - La habilidad mejor pagada",
+    description: "La habilidad mejor pagada",
     color: "#20c997",
     gradient: "linear-gradient(135deg, #20c997 0%, #2EDC9B 50%, #20c997 100%)",
     emoji: "⚛️"

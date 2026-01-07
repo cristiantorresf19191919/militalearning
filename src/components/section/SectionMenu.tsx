@@ -55,7 +55,7 @@ const sectionInfo: Record<LessonSection, {
   react: {
     title: "React",
     icon: "fa-atom",
-    description: "Próximamente - La habilidad mejor pagada",
+    description: "La habilidad mejor pagada",
     color: "#20c997",
     gradient: "linear-gradient(135deg, #20c997 0%, #2EDC9B 50%, #20c997 100%)",
     emoji: "⚛️",
@@ -127,7 +127,7 @@ export function SectionMenu() {
           const sectionProgress = sectionLessons.filter(l => completedLessons.includes(l.id)).length;
           const sectionCompleted = sectionLessons.length > 0 && sectionLessons.every(l => completedLessons.includes(l.id));
           const progressPercentage = sectionLessons.length > 0 ? (sectionProgress / sectionLessons.length) * 100 : 0;
-          const isComingSoon = section === 'react' || sectionLessons.length === 0;
+          const isComingSoon = sectionLessons.length === 0;
 
           const cardContent = (
             <>

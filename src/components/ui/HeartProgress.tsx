@@ -7,12 +7,13 @@ import { useProgress } from '@/context/ProgressContext';
 import styles from './HeartProgress.module.css';
 
 export function HeartProgress() {
-  const { hearts, gorillaHearts, heartsToNextGorillaHeart, isLoading } = useProgress();
+  const { hearts, gorillaHearts, heartsToNextGorillaHeart, isLoading, resetProgress } = useProgress();
   const [showCelebration, setShowCelebration] = useState(false);
   const [isGorillaHeartCelebration, setIsGorillaHeartCelebration] = useState(false);
   const prevHeartsRef = useRef(hearts);
   const prevGorillaHeartsRef = useRef(gorillaHearts);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
 
   useEffect(() => {
     if (isLoading) return;
@@ -48,6 +49,17 @@ export function HeartProgress() {
 
   const progressPercentage = ((5 - heartsToNextGorillaHeart) / 5) * 100;
 
+  const handleReset = () => {
+    if (showResetConfirm) {
+      resetProgress();
+      setShowResetConfirm(false);
+      setIsExpanded(false);
+    } else {
+      setShowResetConfirm(true);
+      setTimeout(() => setShowResetConfirm(false), 3000);
+    }
+  };
+
   if (isLoading) {
     return null;
   }
@@ -61,6 +73,7 @@ export function HeartProgress() {
         transition={{ duration: 0.5, delay: 0.3 }}
         onHoverStart={() => setIsExpanded(true)}
         onHoverEnd={() => setIsExpanded(false)}
+        onClick={() => setIsExpanded(!isExpanded)}
       >
         <div className={styles.content}>
           {/* Hearts Display */}
@@ -96,6 +109,7 @@ export function HeartProgress() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
+                onClick={(e) => e.stopPropagation()}
               >
                 <div className={styles.progressLabel}>
                   {heartsToNextGorillaHeart} corazón{heartsToNextGorillaHeart !== 1 ? 'es' : ''} para el próximo GorillaHeart 🦍
@@ -108,6 +122,26 @@ export function HeartProgress() {
                     transition={{ duration: 0.5, ease: "easeOut" }}
                   />
                 </div>
+                {/* Reset Button */}
+                <button
+                  className={styles.resetButton}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleReset();
+                  }}
+                >
+                  {showResetConfirm ? (
+                    <>
+                      <i className="fas fa-check"></i>
+                      <span>Confirmar</span>
+                    </>
+                  ) : (
+                    <>
+                      <i className="fas fa-redo"></i>
+                      <span>Resetear</span>
+                    </>
+                  )}
+                </button>
               </motion.div>
             )}
           </AnimatePresence>

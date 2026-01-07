@@ -36,7 +36,7 @@ const sectionInfo: Record<LessonSection, { title: string; icon: string; descript
   react: {
     title: "React",
     icon: "fa-atom",
-    description: "Próximamente - La habilidad mejor pagada",
+    description: "La habilidad mejor pagada",
     color: "var(--teal-1)"
   }
 };
@@ -115,33 +115,14 @@ export function LessonList() {
               </div>
             </Link>
 
-            {section === 'react' ? (
-              <div className={styles.comingSoon}>
-                <div className={styles.comingSoonContent}>
-                  <i className={`fas ${sectionData.icon} ${styles.comingSoonIcon}`}></i>
-                  <h3 className={styles.comingSoonTitle}>¡React Próximamente! 🚀</h3>
-                  <p className={styles.comingSoonText}>
-                    <strong>React es la habilidad mejor pagada en el mundo del desarrollo frontend</strong>, 
-                    pero ¡no te preocupes! Es más fácil de usar de lo que parece. 💪
-                  </p>
-                  <p className={styles.comingSoonText}>
-                    Una vez que domines JavaScript, HTML, CSS y TypeScript, estarás lista para 
-                    aprender React y crear aplicaciones web increíbles. ¡Estamos trabajando 
-                    en las lecciones para ti! ⚛️✨
-                  </p>
-                  <div className={styles.comingSoonEmoji}>🎯💼🌟</div>
-                </div>
-              </div>
-            ) : (
-              sectionLessons.map(lesson => (
-                <LessonCard 
-                  key={lesson.id} 
-                  lesson={lesson} 
-                  isActive={true}
-                  onComplete={() => { /* Handled in effect by context update */ }}
-                />
-              ))
-            )}
+            {sectionLessons.map(lesson => (
+              <LessonCard 
+                key={lesson.id} 
+                lesson={lesson} 
+                isActive={true}
+                onComplete={() => { /* Handled in effect by context update */ }}
+              />
+            ))}
           </div>
         );
       })}
