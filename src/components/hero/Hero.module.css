@@ -1,0 +1,255 @@
+.hero {
+  position: relative;
+  min-height: 90vh;
+  padding: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 2.75rem);
+  display: flex;
+  align-items: center;
+  background: #0b0d0c;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 25%, rgba(46, 238, 101, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 15%, rgba(19, 202, 96, 0.12), transparent 40%);
+  z-index: 0;
+}
+
+.glowPink,
+.glowPurple {
+  position: absolute;
+  width: 45vw;
+  height: 45vw;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.glowPink {
+  background: #3fff95;
+  top: -18%;
+  right: -14%;
+}
+
+.glowPurple {
+  background: #1fbf63;
+  bottom: -18%;
+  left: -12%;
+}
+
+.inner {
+  position: relative;
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  z-index: 1;
+}
+
+.copy {
+  max-width: 620px;
+  color: #e6f7ea;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #74ffb8;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  margin: 1.2rem 0 0.8rem 0;
+  font-size: clamp(2.6rem, 4vw, 3.9rem);
+  line-height: 1.05;
+  font-weight: 800;
+  color: #f0fff6;
+}
+
+.subtitle {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cfe9d8;
+  max-width: 620px;
+}
+
+.phrases {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.phrases li {
+  position: relative;
+  padding-left: 1.2rem;
+  color: #e9fff1;
+  line-height: 1.5;
+}
+
+.phrases li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #7affb9;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.primaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.4rem;
+  border-radius: 14px;
+  background: linear-gradient(120deg, #3fff95 0%, #12b95f 100%);
+  color: #0e100f;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 18px 44px rgba(34, 255, 149, 0.35);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.primaryAction:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 26px 60px rgba(34, 255, 149, 0.45);
+}
+
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.2rem;
+  border-radius: 14px;
+  border: 1px solid rgba(14, 16, 15, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: #e6f7ea;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease, color 200ms ease;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.secondaryAction:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 255, 149, 0.5);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  color: #9dffd2;
+}
+
+.hint {
+  margin-top: 0.9rem;
+  color: #8bc6a0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+}
+
+.logoOuter {
+  width: min(720px, 92vw);
+  aspect-ratio: 16 / 9;
+  border-radius: 44px;
+  background: radial-gradient(50% 120% at 50% 0%, #9dffb9 0%, #52f28e 38%, #0fb35a 100%),
+    url("https://assets.codepen.io/16327/noise-e82662fe.png");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+  transform-style: preserve-3d;
+  transform-origin: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-content: center;
+  color: #0b0d0c;
+  text-align: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.logoMark {
+  display: block;
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.logoTag {
+  display: block;
+  margin-top: 0.2rem;
+  color: rgba(11, 13, 12, 0.72);
+  font-weight: 700;
+}
+
+.badges {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(248, 247, 255, 0.86);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: unset;
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 7vw, 3rem);
+  }
+
+  .logoOuter {
+    width: min(560px, 96vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoOuter,
+  .logo {
+    transition: none;
+  }
+}

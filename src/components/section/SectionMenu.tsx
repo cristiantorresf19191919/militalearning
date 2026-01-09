@@ -219,6 +219,47 @@ export function SectionMenu() {
             </motion.div>
           );
         })}
+
+        <motion.div
+          key="playground"
+          variants={cardVariants}
+          whileHover={{ 
+            scale: 1.05,
+            y: -8,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            href="/playground"
+            className={`${styles.sectionCard} ${styles.playgroundCard}`}
+            style={{ 
+              '--section-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #8A54F8 100%)',
+              '--section-color': '#8A54F8',
+            } as React.CSSProperties}
+          >
+            <div className={styles.cardBackground} />
+            <div className={styles.cardContent}>
+              <div className={styles.iconWrapper}>
+                <div className={styles.iconContainer}>
+                  <i className={`fas fa-flask ${styles.icon}`}></i>
+                  <span className={styles.emoji}>🧪</span>
+                </div>
+              </div>
+              <div className={styles.playgroundLabel}>
+                <span>Nuevo</span>
+              </div>
+              <h3 className={styles.cardTitle}>Playground</h3>
+              <p className={styles.cardDescription}>
+                Escribe y ejecuta JavaScript con autocompletado estilo VS Code.
+              </p>
+              <div className={styles.cardArrow}>
+                <i className="fas fa-arrow-right"></i>
+              </div>
+            </div>
+            <div className={styles.decorativePattern}>⚡️</div>
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div 

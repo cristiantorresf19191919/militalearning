@@ -252,6 +252,22 @@
   transform: translate(4px, -4px) scale(1.1);
 }
 
+.playgroundCard {
+  border: 2px solid rgba(14, 165, 233, 0.18);
+  background: linear-gradient(145deg, rgba(14, 165, 233, 0.06), rgba(138, 84, 248, 0.06));
+}
+
+.playgroundLabel {
+  background: rgba(14, 165, 233, 0.15);
+  color: #0ea5e9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
 .decorativePattern {
   position: absolute;
   top: var(--space-md);

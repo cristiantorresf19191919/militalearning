@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 import { Providers } from "./providers";
 import FloatingChat from "@/components/chat/FloatingChat";
@@ -27,6 +28,19 @@ export default function RootLayout({
     <html lang="es">
       <body className={poppins.className}>
         <Providers>
+          <header className="topNav">
+            <div className="topNav__inner">
+              <div className="topNav__logo">
+                <Link href="/">Milita</Link>
+              </div>
+              <nav className="topNav__links">
+                <Link href="/">Inicio</Link>
+                <Link href="/playground" className="topNav__cta">
+                  Playground
+                </Link>
+              </nav>
+            </div>
+          </header>
           <LessonSidebar />
           {children}
           <HeartProgress />
