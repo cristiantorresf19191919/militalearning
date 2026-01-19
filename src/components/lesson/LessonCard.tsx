@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
+import * as Babel from '@babel/standalone';
 import { Lesson } from '@/data/lessons';
 import { useCodeRunner } from '@/hooks/useCodeRunner';
 import { useHTMLCSSRunner } from '@/hooks/useHTMLCSSRunner';
 import { useProgress } from '@/context/ProgressContext';
+import { buildReactPreviewHTML, detectReactComponentName } from '@/lib/buildReactPreviewHTML';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { CodeEditor } from '@/components/editor/CodeEditor';
@@ -28,6 +30,10 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
   const [outputLogs, setOutputLogs] = useState<string[]>([]);
   const [renderedHTML, setRenderedHTML] = useState<string>('');
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error' | 'info'; message: string } | null>(null);
+  // React lesson: live preview (iframe)
+  const [previewHtml, setPreviewHtml] = useState<string>('');
+  const [previewError, setPreviewError] = useState<string | null>(null);
+  const previewFirstRunRef = useRef(true);
 
   const completed = isLessonComplete(lesson.id);
 
@@ -38,7 +44,45 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
     setRenderedHTML('');
     setOutputLogs([]);
     setFeedback(null);
+    setPreviewHtml('');
+    setPreviewError(null);
+    previewFirstRunRef.current = true;
   }, [lesson.id]);
+
+  const compileReactPreview = useCallback(() => {
+    if (lesson.type !== 'react') return;
+    setPreviewError(null);
+    try {
+      const result = Babel.transform(code, {
+        presets: [
+          ['env', { modules: 'commonjs' }],
+          ['react', { runtime: 'classic' }],
+          'typescript',
+        ],
+        sourceType: 'module',
+        filename: 'Component.jsx',
+      }).code;
+      if (!result) throw new Error('No se pudo compilar.');
+      const hint = detectReactComponentName(code);
+      const html = buildReactPreviewHTML(result, { componentHint: hint });
+      setPreviewHtml(html);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setPreviewError(msg);
+      setPreviewHtml('');
+    }
+  }, [code, lesson.type]);
+
+  useEffect(() => {
+    if (lesson.type !== 'react') return;
+    if (previewFirstRunRef.current) {
+      previewFirstRunRef.current = false;
+      compileReactPreview();
+      return;
+    }
+    const t = setTimeout(compileReactPreview, 500);
+    return () => clearTimeout(t);
+  }, [code, lesson.type, compileReactPreview]);
 
   const handleRun = () => {
     if (lesson.type === 'html' || lesson.type === 'css') {
@@ -70,7 +114,8 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
         setFeedback({ type: 'info', message: validation.message || "Casi lo tienes... intenta de nuevo." });
       }
     } else {
-      // Handle JavaScript lessons
+      // Handle JavaScript / React lessons: refresh live preview when verifying
+      if (lesson.type === 'react') compileReactPreview();
       const { logs, alertCalled, error } = runCode(code);
       setOutputLogs(logs);
 
@@ -137,38 +182,71 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
         </div>
 
         <div className={styles.editorSection}>
-            {lesson.type === 'css' && lesson.initialHTML && (
-              <div style={{ marginBottom: '1rem' }}>
-                <CodeEditor 
+            {/* Row 1: Code editor — full width */}
+            <div className={styles.editorRow}>
+              {lesson.type === 'css' && lesson.initialHTML && (
+                <div className={styles.extraEditor}>
+                  <CodeEditor 
                     initialCode={lesson.initialHTML} 
                     onChange={setHtmlCode}
                     language="html"
                     readOnly={true}
-                />
-              </div>
-            )}
-            {lesson.type === 'html' && lesson.initialCSS && (
-              <div style={{ marginBottom: '1rem' }}>
-                <CodeEditor 
+                  />
+                </div>
+              )}
+              {lesson.type === 'html' && lesson.initialCSS && (
+                <div className={styles.extraEditor}>
+                  <CodeEditor 
                     initialCode={lesson.initialCSS} 
                     onChange={setCssCode}
                     language="css"
                     readOnly={true}
-                />
-              </div>
-            )}
-            <CodeEditor 
+                  />
+                </div>
+              )}
+              <CodeEditor 
                 initialCode={code} 
                 onChange={setCode}
                 onRun={handleRun}
                 language={lesson.type === 'html' ? 'html' : lesson.type === 'css' ? 'css' : lesson.type === 'typescript' ? 'typescript' : lesson.type === 'react' ? 'react' : 'javascript'}
-            />
-            
-            <div className={styles.controls}>
-                <Button onClick={handleRun} variant="gradient" className={styles.runButton}>
-                    <i className="fas fa-play" style={{marginRight: 8}}></i> {lesson.type === 'html' || lesson.type === 'css' ? 'Ver Resultado' : lesson.type === 'react' ? 'Verificar Código React' : 'Ejecutar Código'}
-                </Button>
+              />
             </div>
+
+            <div className={styles.controls}>
+              <Button onClick={handleRun} variant="gradient" className={styles.runButton}>
+                <i className="fas fa-play" style={{marginRight: 8}}></i> {lesson.type === 'html' || lesson.type === 'css' ? 'Ver Resultado' : lesson.type === 'react' ? 'Verificar Código React' : 'Ejecutar Código'}
+              </Button>
+            </div>
+
+            {/* Row 2: React live preview — full width, one row */}
+            {lesson.type === 'react' && (
+              <div className={styles.previewSection}>
+                <div className={styles.previewCard}>
+                  <div className={styles.previewHeader}>
+                    <span>Preview en vivo</span>
+                    {previewError ? (
+                      <span className={styles.badgeError}>Error</span>
+                    ) : (
+                      <span className={styles.badgeOk}>React 18</span>
+                    )}
+                  </div>
+                  <div className={styles.previewBody}>
+                    {previewError ? (
+                      <pre className={styles.previewError}>{previewError}</pre>
+                    ) : previewHtml ? (
+                      <iframe
+                        title="React Preview"
+                        className={styles.previewFrame}
+                        srcDoc={previewHtml}
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    ) : (
+                      <span className={styles.placeholder}>Compilando…</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {(lesson.type === 'html' || lesson.type === 'css') ? (
               <div className={styles.output}>
@@ -216,9 +294,10 @@ export function LessonCard({ lesson, isActive, onComplete }: LessonCardProps) {
   );
 }
 
-// Simple markdown parser for bold/code
+// Simple markdown parser for bold/code and paragraph breaks
 function parseMarkdown(text: string) {
     return text
+        .replace(/\n\n+/g, '<br><br>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/`(.*?)`/g, '<code>$1</code>');
 }

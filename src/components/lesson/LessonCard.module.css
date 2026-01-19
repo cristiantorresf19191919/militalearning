@@ -83,6 +83,92 @@
     background: #e6ffFA;
 }
 
+.editorSection {
+    width: 100%;
+}
+
+.editorRow {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.extraEditor {
+    margin-bottom: 1rem;
+}
+
+/* React live preview — full-width row, same look as /react-live */
+.previewSection {
+    width: 100%;
+    margin-top: 1.25rem;
+}
+
+.previewCard {
+    background: linear-gradient(145deg, rgba(29, 32, 43, 0.98), rgba(20, 22, 31, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.previewHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #e5e7eb;
+    font-weight: 600;
+}
+
+.badgeOk,
+.badgeError {
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badgeOk {
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.badgeError {
+    background: rgba(248, 84, 155, 0.12);
+    color: #fca5a5;
+    border: 1px solid rgba(248, 84, 155, 0.25);
+}
+
+.previewBody {
+    padding: 1rem;
+    flex: 1;
+    background: #0d1017;
+    min-height: 280px;
+}
+
+.previewFrame {
+    width: 100%;
+    height: 320px;
+    border: none;
+    border-radius: 12px;
+    background: #0f172a;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.previewError {
+    margin: 0;
+    background: rgba(248, 84, 155, 0.08);
+    border: 1px solid rgba(248, 84, 155, 0.25);
+    color: #fca5a5;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
 .controls {
     display: flex;
     justify-content: flex-end;

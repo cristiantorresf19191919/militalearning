@@ -1,6 +1,7 @@
 .toggleButton {
     position: fixed;
-    top: 20px;
+    /* Vertically centered in the 70px header: (70 - 50) / 2 = 10px */
+    top: 10px;
     left: 20px;
     z-index: 1001;
     width: 50px;
@@ -9,29 +10,39 @@
     background: var(--purple-gradient);
     border: none;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     cursor: pointer;
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        var(--shadow-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.toggleButton i {
+    display: block;
+    line-height: 1;
 }
 
 @media (max-width: 768px) {
     .toggleButton {
-        top: 10px;
-        left: 10px;
+        /* Vertically centered in the 78px header: (78 - 45) / 2 ≈ 16.5px */
+        top: 17px;
+        left: 16px;
     }
 }
 
 .toggleButton:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-xl);
+    transform: scale(1.08);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.3),
+        var(--shadow-xl);
 }
 
 .toggleButton:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .backdrop {

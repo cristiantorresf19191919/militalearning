@@ -2406,9 +2406,9 @@ export const lessons: Lesson[] = [
       color: "pink",
       type: "react",
       section: "react",
-      description: "¡Bienvenida a React! 🐱 Un **componente** es como un gatito adorable que puedes usar una y otra vez. En React, creamos componentes con funciones que devuelven JSX (parecido a HTML pero con superpoderes).",
-      instruction: "Crea tu primer componente React llamado \`Gatito\` que muestre '¡Miau! Soy un gatito feliz 🐱'. Usa \`function Gatito() { return <h1>...</h1>; }\`",
-      initialCode: `function Gatito() {\n  return <h1>¡Miau! Soy un gatito feliz 🐱</h1>;\n}\n\nconsole.log("Componente creado: Gatito");\nGatito();`,
+      description: "¡Bienvenida a React! 🐱 Un **componente** es como un gatito adorable que puedes usar una y otra vez: una función que devuelve JSX (HTML con superpoderes).\n\n**¿Y eso de \`App\` y \`export default App\`?** ¡Ahí está la magia! 🪄 La página tiene un div vacío (como un «hueco» esperando). React no puede adivinar qué poner ahí, así que necesita **una** componente raíz: la puerta de entrada. Esa es \`App\`. React coge tu \`App\`, la convierte en HTML de verdad y la **inyecta** en ese hueco. ¡Pum! Tu Gatito aparece. Por eso en todas las lecciones usamos \`App\` y \`export default App\` — le decimos a React: «esta es mi raíz». 🚪✨",
+      instruction: "Crea tu primer componente \`Gatito\` que muestre '¡Miau! Soy un gatito feliz 🐱'. Úsalo en \`App\` con \`<Gatito />\` y \`export default App\` para verlo en el preview.",
+      initialCode: `function Gatito() {\n  return <h1>¡Miau! Soy un gatito feliz 🐱</h1>;\n}\n\nfunction App() {\n  return <Gatito />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasFunction = code.includes("function Gatito") || code.includes("const Gatito");
           const hasReturn = code.includes("return");
@@ -2427,8 +2427,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Los componentes pueden recibir **props** (propiedades), como cuando le das un nombre a tu perrito. Las props son como regalitos que le pasas a tu componente para que sepa qué hacer.",
-      instruction: "Crea un componente \`Perrito\` que reciba una prop \`nombre\` y muestre '¡Guau! Soy {nombre} 🐶'. Usa \`function Perrito({ nombre }) { ... }\`",
-      initialCode: `function Perrito({ nombre }) {\n  return <h2>¡Guau! Soy {nombre} 🐶</h2>;\n}\n\nconsole.log("Perrito con nombre: Max");\nPerrito({ nombre: "Max" });`,
+      instruction: "Crea un componente \`Perrito\` que reciba una prop \`nombre\` y muestre '¡Guau! Soy {nombre} 🐶'. Úsalo en \`App\` con JSX: \`<Perrito nombre=\"Max\" />\` y \`export default App\`.",
+      initialCode: `function Perrito({ nombre }) {\n  return <h2>¡Guau! Soy {nombre} 🐶</h2>;\n}\n\nfunction App() {\n  return <Perrito nombre="Max" />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasProps = code.includes("{ nombre }") || code.includes("props.nombre");
           const hasJSXWithProp = code.includes("{nombre}") || code.includes("props.nombre");
@@ -2446,8 +2446,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "En React, podemos usar **JSX** para crear HTML de forma mágica. JSX es como HTML pero dentro de JavaScript. ¡La conejita puede saltar entre etiquetas! 🐰",
-      instruction: "Crea un componente \`Conejita\` que muestre un div con un párrafo que diga '¡Hop! ¡Hop! Soy una conejita saltarina 🐰'. Usa \`<div><p>...</p></div>\`",
-      initialCode: `function Conejita() {\n  return (\n    <div>\n      <p>¡Hop! ¡Hop! Soy una conejita saltarina 🐰</p>\n    </div>\n  );\n}\n\nconsole.log("Conejita creada");`,
+      instruction: "Crea un componente \`Conejita\` que muestre un div con un párrafo que diga '¡Hop! ¡Hop! Soy una conejita saltarina 🐰'. Úsalo en \`App\` con \`<Conejita />\` y \`export default App\`.",
+      initialCode: `function Conejita() {\n  return (\n    <div>\n      <p>¡Hop! ¡Hop! Soy una conejita saltarina 🐰</p>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Conejita />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasDiv = code.includes("<div>");
           const hasParagraph = code.includes("<p>");
@@ -2466,8 +2466,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Los componentes pueden tener **múltiples props**. Es como darle al pajarito un nombre Y una canción favorita. ¡Puedes pasarle todas las propiedades que quieras! 🐦",
-      instruction: "Crea un componente \`Pajarito\` que reciba \`nombre\` y \`cancion\` como props, y muestre '{nombre} canta: {cancion} 🐦'",
-      initialCode: `function Pajarito({ nombre, cancion }) {\n  return <p>{nombre} canta: {cancion} 🐦</p>;\n}\n\nconsole.log("Pajarito con nombre y canción");\nPajarito({ nombre: "Piolín", cancion: "Tweet tweet" });`,
+      instruction: "Crea un componente \`Pajarito\` que reciba \`nombre\` y \`cancion\` como props, y muestre '{nombre} canta: {cancion} 🐦'. Úsalo en \`App\`: \`<Pajarito nombre=\"Piolín\" cancion=\"Tweet tweet\" />\` y \`export default App\`.",
+      initialCode: `function Pajarito({ nombre, cancion }) {\n  return <p>{nombre} canta: {cancion} 🐦</p>;\n}\n\nfunction App() {\n  return <Pajarito nombre="Piolín" cancion="Tweet tweet" />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasMultipleProps = (code.match(/\{\s*\w+\s*,\s*\w+\s*\}/g) || []).length > 0;
           const hasNombre = code.includes("nombre");
@@ -2479,6 +2479,48 @@ export const lessons: Lesson[] = [
       }
   },
   {
+      id: 1241,
+      title: "Composición I: Componentes dentro de componentes",
+      icon: "fa-layer-group",
+      color: "teal",
+      type: "react",
+      section: "react",
+      description: "La **composición** es poner componentes dentro de otros, como muñecas rusas. Crea un \`Titulo\`, un \`Cuerpo\`, y un \`Tarjeta\` que los use con JSX.",
+      instruction: "Crea \`Titulo\`, \`Cuerpo\` y \`Tarjeta\`. \`Tarjeta\` debe renderizar \`<Titulo />\` y \`<Cuerpo />\` dentro de un div. \`App\` renderiza \`<Tarjeta />\` y \`export default App\`.",
+      initialCode: `function Titulo() {\n  return <h2>Mi Tarjeta</h2>;\n}\n\nfunction Cuerpo() {\n  return <p>Contenido aquí.</p>;\n}\n\nfunction Tarjeta() {\n  return (\n    <div className="tarjeta">\n      <Titulo />\n      <Cuerpo />\n    </div>\n  );\n}\n\nfunction App() {\n  return <Tarjeta />;\n}\n\nexport default App;`,
+      validationLogic: (code, logs) => {
+          const hasTitulo = code.includes("Titulo");
+          const hasCuerpo = code.includes("Cuerpo");
+          const hasTarjeta = code.includes("Tarjeta");
+          const hasComposition = (code.includes("<Titulo />") || code.includes("<Titulo/>")) && (code.includes("<Cuerpo />") || code.includes("<Cuerpo/>"));
+          return {
+              success: hasTitulo && hasCuerpo && hasTarjeta && hasComposition,
+              message: "🧩 ¡Composición dominada! ¡Componentes dentro de componentes!"
+          };
+      }
+  },
+  {
+      id: 1242,
+      title: "Composición II: Pasando props al componer",
+      icon: "fa-project-diagram",
+      color: "pink",
+      type: "react",
+      section: "react",
+      description: "Al componer, el **padre** pasa props a los **hijos**. Crea un \`Saludo\` que reciba \`nombre\` y un \`Pagina\` que lo use con \`<Saludo nombre=\"Milita\" />\`.",
+      instruction: "Crea \`Saludo({ nombre })\` que muestre 'Hola, {nombre}!'. Crea \`Pagina\` que renderice \`<Saludo nombre=\"Milita\" />\` y un párrafo. \`App\` usa \`<Pagina />\` y \`export default App\`.",
+      initialCode: `function Saludo({ nombre }) {\n  return <h2>Hola, {nombre}!</h2>;\n}\n\nfunction Pagina() {\n  return (\n    <div>\n      <Saludo nombre="Milita" />\n      <p>Bienvenida a la lección de composición.</p>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Pagina />;\n}\n\nexport default App;`,
+      validationLogic: (code, logs) => {
+          const hasSaludo = code.includes("Saludo");
+          const hasNombreProp = code.includes("{ nombre }") || code.includes("nombre");
+          const hasPagina = code.includes("Pagina");
+          const hasPropsPassed = code.includes('nombre="Milita"') || code.includes("nombre=\"Milita\"");
+          return {
+              success: hasSaludo && hasNombreProp && hasPagina && hasPropsPassed,
+              message: "🧩 ¡Props al componer dominadas! ¡Composición con datos!"
+          };
+      }
+  },
+  {
       id: 125,
       title: "React 5: El Osito Abrazador",
       icon: "fa-bear",
@@ -2486,8 +2528,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Podemos usar **className** en JSX (en lugar de 'class') para darle estilos a nuestros componentes. El osito quiere un abrazo con estilo! 🐻",
-      instruction: "Crea un componente \`Osito\` que tenga un div con \`className=\"abrazador\"\` y muestre '¡Abrazo de osito! 🐻'",
-      initialCode: `function Osito() {\n  return <div className="abrazador">¡Abrazo de osito! 🐻</div>;\n}\n\nconsole.log("Osito abrazador creado");`,
+      instruction: "Crea un componente \`Osito\` que tenga un div con \`className=\"abrazador\"\` y muestre '¡Abrazo de osito! 🐻'. Úsalo en \`App\` con \`<Osito />\` y \`export default App\`.",
+      initialCode: `function Osito() {\n  return <div className="abrazador">¡Abrazo de osito! 🐻</div>;\n}\n\nfunction App() {\n  return <Osito />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasClassName = code.includes('className=') || code.includes('className =');
           const hasOsito = code.includes("Osito");
@@ -2505,8 +2547,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Los componentes pueden tener **estilos inline** usando objetos JavaScript. La mariposa quiere volar con colores hermosos! 🦋",
-      instruction: "Crea un componente \`Mariposa\` con un div que tenga estilo inline \`style={{ color: 'pink', fontSize: '20px' }}\` y muestre '¡Vuelo libre! 🦋'",
-      initialCode: `function Mariposa() {\n  return (\n    <div style={{ color: 'pink', fontSize: '20px' }}>\n      ¡Vuelo libre! 🦋\n    </div>\n  );\n}\n\nconsole.log("Mariposa voladora creada");`,
+      instruction: "Crea un componente \`Mariposa\` con un div que tenga estilo inline \`style={{ color: 'pink', fontSize: '20px' }}\` y muestre '¡Vuelo libre! 🦋'. Úsalo en \`App\` con \`<Mariposa />\` y \`export default App\`.",
+      initialCode: `function Mariposa() {\n  return (\n    <div style={{ color: 'pink', fontSize: '20px' }}>\n      ¡Vuelo libre! 🦋\n    </div>\n  );\n}\n\nfunction App() {\n  return <Mariposa />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasStyle = code.includes("style={{") || code.includes("style={{");
           const hasColor = code.includes("color:");
@@ -2524,8 +2566,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Podemos usar **arrays** en JSX para mostrar listas de cosas. El elefante tiene una memoria increíble y recuerda a todos sus amigos! 🐘",
-      instruction: "Crea un componente \`Elefante\` que muestre una lista de amigos usando \`map\`. Crea un array \`amigos = ['Luna', 'Sol', 'Estrella']\` y muéstralos con \`{amigos.map(...)}\`",
-      initialCode: `function Elefante() {\n  const amigos = ['Luna', 'Sol', 'Estrella'];\n  return (\n    <ul>\n      {amigos.map(amigo => <li key={amigo}>{amigo} 🐘</li>)}\n    </ul>\n  );\n}\n\nconsole.log("Elefante con amigos creado");`,
+      instruction: "Crea un componente \`Elefante\` que muestre una lista de amigos usando \`map\`. Crea \`amigos = ['Luna', 'Sol', 'Estrella']\` y \`{amigos.map(...)}\`. Úsalo en \`App\` con \`<Elefante />\` y \`export default App\`.",
+      initialCode: `function Elefante() {\n  const amigos = ['Luna', 'Sol', 'Estrella'];\n  return (\n    <ul>\n      {amigos.map(amigo => <li key={amigo}>{amigo} 🐘</li>)}\n    </ul>\n  );\n}\n\nfunction App() {\n  return <Elefante />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasMap = code.includes(".map(");
           const hasArray = code.includes("['") || code.includes('["');
@@ -2544,8 +2586,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Los componentes pueden tener **condicionales** con \`&&\` o \`?\`. El pingüino baila solo si está feliz! 🐧",
-      instruction: "Crea un componente \`Pinguino\` que reciba una prop \`feliz\` (true/false). Si está feliz, muestra '¡Estoy bailando! 🐧', si no, muestra 'Estoy triste 😢'",
-      initialCode: `function Pinguino({ feliz }) {\n  return (\n    <div>\n      {feliz ? <p>¡Estoy bailando! 🐧</p> : <p>Estoy triste 😢</p>}\n    </div>\n  );\n}\n\nconsole.log("Pingüino creado");\nPinguino({ feliz: true });`,
+      instruction: "Crea un componente \`Pinguino\` que reciba una prop \`feliz\` (true/false). Si está feliz, muestra '¡Estoy bailando! 🐧', si no 'Estoy triste 😢'. Úsalo en \`App\`: \`<Pinguino feliz={true} />\` y \`export default App\`.",
+      initialCode: `function Pinguino({ feliz }) {\n  return (\n    <div>\n      {feliz ? <p>¡Estoy bailando! 🐧</p> : <p>Estoy triste 😢</p>}\n    </div>\n  );\n}\n\nfunction App() {\n  return <Pinguino feliz={true} />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasConditional = code.includes("?") && code.includes(":");
           const hasFeliz = code.includes("feliz");
@@ -2563,8 +2605,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Podemos usar **fragmentos** \`<></>\` o \`<React.Fragment>\` para envolver múltiples elementos sin crear un div extra. El león es valiente y no necesita contenedores! 🦁",
-      instruction: "Crea un componente \`Leon\` que use un fragmento \`<>\` para mostrar dos párrafos: '¡Rugido poderoso! 🦁' y 'Soy el rey de la selva'",
-      initialCode: `function Leon() {\n  return (\n    <>\n      <p>¡Rugido poderoso! 🦁</p>\n      <p>Soy el rey de la selva</p>\n    </>\n  );\n}\n\nconsole.log("León creado");`,
+      instruction: "Crea un componente \`Leon\` que use un fragmento \`<>\` para mostrar dos párrafos: '¡Rugido poderoso! 🦁' y 'Soy el rey de la selva'. Úsalo en \`App\` con \`<Leon />\` y \`export default App\`.",
+      initialCode: `function Leon() {\n  return (\n    <>\n      <p>¡Rugido poderoso! 🦁</p>\n      <p>Soy el rey de la selva</p>\n    </>\n  );\n}\n\nfunction App() {\n  return <Leon />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasFragment = code.includes("<>") || code.includes("<React.Fragment>");
           const hasMultipleElements = (code.match(/<p>/g) || []).length >= 2;
@@ -2582,8 +2624,8 @@ export const lessons: Lesson[] = [
       type: "react",
       section: "react",
       description: "Los componentes pueden tener **eventos** como \`onClick\`. El delfín quiere jugar cuando haces clic! 🐬",
-      instruction: "Crea un componente \`Delfin\` con un botón que tenga \`onClick\` y muestre '¡Splash! Estoy jugando 🐬' cuando hagas clic. Usa \`const handleClick = () => { ... }\`",
-      initialCode: `function Delfin() {\n  const handleClick = () => {\n    console.log("¡Splash! Estoy jugando 🐬");\n  };\n  return <button onClick={handleClick}>¡Hazme clic!</button>;\n}\n\nconsole.log("Delfín creado");`,
+      instruction: "Crea un componente \`Delfin\` con un botón que tenga \`onClick\` y muestre '¡Splash! Estoy jugando 🐬' cuando hagas clic. Úsalo en \`App\` con \`<Delfin />\` y \`export default App\`.",
+      initialCode: `function Delfin() {\n  const handleClick = () => {\n    console.log("¡Splash! Estoy jugando 🐬");\n  };\n  return <button onClick={handleClick}>¡Hazme clic!</button>;\n}\n\nfunction App() {\n  return <Delfin />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasOnClick = code.includes("onClick=");
           const hasHandleClick = code.includes("handleClick");
@@ -2602,7 +2644,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "¡Hora de aprender **useState**! Es como una cajita mágica que recuerda cosas. El canguro quiere contar sus saltos! 🦘",
       instruction: "Crea un componente \`Canguro\` que use \`useState\` para contar saltos. Usa \`const [saltos, setSaltos] = useState(0)\` y un botón que incremente los saltos.",
-      initialCode: `import { useState } from 'react';\nfunction Canguro() {\n  const [saltos, setSaltos] = useState(0);\n  return (\n    <div>\n      <p>Saltos: {saltos} 🦘</p>\n      <button onClick={() => setSaltos(saltos + 1)}>Saltar</button>\n    </div>\n  );\n}\n\nconsole.log("Canguro con estado creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Canguro() {\n  const [saltos, setSaltos] = useState(0);\n  return (\n    <div>\n      <p>Saltos: {saltos} 🦘</p>\n      <button onClick={() => setSaltos(saltos + 1)}>Saltar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Canguro />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseState = code.includes("useState");
           const hasSetState = code.includes("setSaltos") || code.includes("setState");
@@ -2622,7 +2664,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useState** con diferentes tipos de datos. La jirafa quiere crecer y cambiar su altura! 🦒",
       instruction: "Crea un componente \`Jirafa\` con \`useState\` para la altura (número). Muestra la altura y un botón que la aumente en 10cm cada vez.",
-      initialCode: `import { useState } from 'react';\nfunction Jirafa() {\n  const [altura, setAltura] = useState(200);\n  return (\n    <div>\n      <p>Altura: {altura}cm 🦒</p>\n      <button onClick={() => setAltura(altura + 10)}>Crecer</button>\n    </div>\n  );\n}\n\nconsole.log("Jirafa que crece creada");`,
+      initialCode: `import { useState } from 'react';\nfunction Jirafa() {\n  const [altura, setAltura] = useState(200);\n  return (\n    <div>\n      <p>Altura: {altura}cm 🦒</p>\n      <button onClick={() => setAltura(altura + 10)}>Crecer</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Jirafa />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseState = code.includes("useState");
           const hasNumber = code.includes("useState(") && (code.includes("200") || code.includes("0"));
@@ -2642,7 +2684,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useState** con strings (textos). El mono quiere cambiar lo que dice! 🐵",
       instruction: "Crea un componente \`Mono\` con \`useState\` para un mensaje (string). Muestra el mensaje y un input que lo cambie con \`onChange\`.",
-      initialCode: `import { useState } from 'react';\nfunction Mono() {\n  const [mensaje, setMensaje] = useState("¡Ooh ooh!");\n  return (\n    <div>\n      <p>{mensaje} 🐵</p>\n      <input value={mensaje} onChange={(e) => setMensaje(e.target.value)} />\n    </div>\n  );\n}\n\nconsole.log("Mono charlatán creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Mono() {\n  const [mensaje, setMensaje] = useState("¡Ooh ooh!");\n  return (\n    <div>\n      <p>{mensaje} 🐵</p>\n      <input value={mensaje} onChange={(e) => setMensaje(e.target.value)} />\n    </div>\n  );\n}\n\nfunction App() {\n  return <Mono />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseState = code.includes("useState");
           const hasString = code.includes('useState("') || code.includes("useState('");
@@ -2662,7 +2704,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useState** con booleanos (true/false). El panda cambia entre feliz y triste! 🐼",
       instruction: "Crea un componente \`Panda\` con \`useState\` para \`feliz\` (boolean). Muestra un emoji diferente según si está feliz o no, y un botón que cambie el estado.",
-      initialCode: `import { useState } from 'react';\nfunction Panda() {\n  const [feliz, setFeliz] = useState(true);\n  return (\n    <div>\n      <p>{feliz ? '😊 Feliz' : '😢 Triste'} 🐼</p>\n      <button onClick={() => setFeliz(!feliz)}>Cambiar humor</button>\n    </div>\n  );\n}\n\nconsole.log("Panda creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Panda() {\n  const [feliz, setFeliz] = useState(true);\n  return (\n    <div>\n      <p>{feliz ? '😊 Feliz' : '😢 Triste'} 🐼</p>\n      <button onClick={() => setFeliz(!feliz)}>Cambiar humor</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Panda />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseState = code.includes("useState");
           const hasBoolean = code.includes("useState(true)") || code.includes("useState(false)");
@@ -2682,7 +2724,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **múltiples useState** en un componente. El zorro es astuto y puede recordar muchas cosas a la vez! 🦊",
       instruction: "Crea un componente \`Zorro\` con dos \`useState\`: uno para \`nombre\` y otro para \`edad\`. Muestra ambos y botones para cambiarlos.",
-      initialCode: `import { useState } from 'react';\nfunction Zorro() {\n  const [nombre, setNombre] = useState("Zorro");\n  const [edad, setEdad] = useState(3);\n  return (\n    <div>\n      <p>{nombre}, {edad} años 🦊</p>\n      <button onClick={() => setNombre("Astuto")}>Cambiar nombre</button>\n      <button onClick={() => setEdad(edad + 1)}>Cumplir años</button>\n    </div>\n  );\n}\n\nconsole.log("Zorro astuto creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Zorro() {\n  const [nombre, setNombre] = useState("Zorro");\n  const [edad, setEdad] = useState(3);\n  return (\n    <div>\n      <p>{nombre}, {edad} años 🦊</p>\n      <button onClick={() => setNombre("Astuto")}>Cambiar nombre</button>\n      <button onClick={() => setEdad(edad + 1)}>Cumplir años</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Zorro />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const useStateCount = (code.match(/useState/g) || []).length;
           const hasMultiple = useStateCount >= 2;
@@ -2701,7 +2743,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "¡Hora de aprender **useEffect**! Es como un asistente que hace cosas cuando algo cambia. El koala se despierta cuando cambias algo! 🐨",
       instruction: "Crea un componente \`Koala\` con \`useState\` para \`despierto\` y \`useEffect\` que muestre en consola 'El koala se despertó' cuando \`despierto\` cambie a true.",
-      initialCode: `import { useState, useEffect } from 'react';\nfunction Koala() {\n  const [despierto, setDespierto] = useState(false);\n  useEffect(() => {\n    if (despierto) {\n      console.log("El koala se despertó 🐨");\n    }\n  }, [despierto]);\n  return (\n    <div>\n      <p>{despierto ? 'Despierto' : 'Durmiendo'} 🐨</p>\n      <button onClick={() => setDespierto(!despierto)}>Despertar</button>\n    </div>\n  );\n}\n\nconsole.log("Koala creado");`,
+      initialCode: `import { useState, useEffect } from 'react';\nfunction Koala() {\n  const [despierto, setDespierto] = useState(false);\n  useEffect(() => {\n    if (despierto) {\n      console.log("El koala se despertó 🐨");\n    }\n  }, [despierto]);\n  return (\n    <div>\n      <p>{despierto ? 'Despierto' : 'Durmiendo'} 🐨</p>\n      <button onClick={() => setDespierto(!despierto)}>Despertar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Koala />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseEffect = code.includes("useEffect");
           const hasDependency = code.includes("[despierto]") || code.includes("[");
@@ -2720,7 +2762,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "**useEffect** puede ejecutarse solo una vez al montar el componente (con array vacío []). El lobo aúlla cuando aparece por primera vez! 🐺",
       instruction: "Crea un componente \`Lobo\` con \`useEffect\` que solo se ejecute una vez (array vacío []) y muestre en consola '¡Auuuu! 🐺' cuando el componente se monte.",
-      initialCode: `import { useEffect } from 'react';\nfunction Lobo() {\n  useEffect(() => {\n    console.log("¡Auuuu! 🐺");\n  }, []);\n  return <p>Lobo aullador 🐺</p>;\n}\n\nconsole.log("Lobo creado");`,
+      initialCode: `import { useEffect } from 'react';\nfunction Lobo() {\n  useEffect(() => {\n    console.log("¡Auuuu! 🐺");\n  }, []);\n  return <p>Lobo aullador 🐺</p>;\n}\n\nfunction App() {\n  return <Lobo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseEffect = code.includes("useEffect");
           const hasEmptyArray = code.includes("], []") || code.includes("],[])");
@@ -2739,7 +2781,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useEffect** con cleanup (limpieza). El tigre limpia después de sí mismo! 🐅",
       instruction: "Crea un componente \`Tigre\` con \`useEffect\` que retorne una función de limpieza. La función debe mostrar en consola 'El tigre se fue 🐅' cuando el componente se desmonte.",
-      initialCode: `import { useEffect } from 'react';\nfunction Tigre() {\n  useEffect(() => {\n    console.log("El tigre llegó 🐅");\n    return () => {\n      console.log("El tigre se fue 🐅");\n    };\n  }, []);\n  return <p>Tigre feroz 🐅</p>;\n}\n\nconsole.log("Tigre creado");`,
+      initialCode: `import { useEffect } from 'react';\nfunction Tigre() {\n  useEffect(() => {\n    console.log("El tigre llegó 🐅");\n    return () => {\n      console.log("El tigre se fue 🐅");\n    };\n  }, []);\n  return <p>Tigre feroz 🐅</p>;\n}\n\nfunction App() {\n  return <Tigre />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseEffect = code.includes("useEffect");
           const hasReturn = code.includes("return () =>") || code.includes("return() =>");
@@ -2758,7 +2800,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos pasar **funciones como props**. El caballo puede recibir una función para galopar! 🐴",
       instruction: "Crea un componente \`Caballo\` que reciba una prop \`onGalopar\` (función) y un botón que la llame. También crea un componente padre que pase la función.",
-      initialCode: `function Caballo({ onGalopar }) {\n  return (\n    <div>\n      <p>Caballo 🐴</p>\n      <button onClick={onGalopar}>Galopar</button>\n    </div>\n  );\n}\n\nfunction Establo() {\n  const handleGalopar = () => console.log("¡Galopando! 🐴");\n  return <Caballo onGalopar={handleGalopar} />;\n}\n\nconsole.log("Caballo creado");`,
+      initialCode: `function Caballo({ onGalopar }) {\n  return (\n    <div>\n      <p>Caballo 🐴</p>\n      <button onClick={onGalopar}>Galopar</button>\n    </div>\n  );\n}\n\nfunction Establo() {\n  const handleGalopar = () => console.log("¡Galopando! 🐴");\n  return <Caballo onGalopar={handleGalopar} />;\n}\n\nfunction App() {\n  return <Establo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasFunctionProp = code.includes("onGalopar") && code.includes("function");
           const hasParent = code.includes("Establo") || code.includes("handleGalopar");
@@ -2777,7 +2819,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **children** para pasar contenido a componentes. El oso polar puede tener hijos (otros componentes) dentro! 🐻‍❄️",
       instruction: "Crea un componente \`OsoPolar\` que reciba \`children\` y los muestre dentro de un div. Luego úsalo envolviendo un párrafo con 'Estoy en el frío 🐻‍❄️'",
-      initialCode: `function OsoPolar({ children }) {\n  return <div className="oso-polar">{children}</div>;\n}\n\nfunction App() {\n  return (\n    <OsoPolar>\n      <p>Estoy en el frío 🐻‍❄️</p>\n    </OsoPolar>\n  );\n}\n\nconsole.log("Oso polar creado");`,
+      initialCode: `function OsoPolar({ children }) {\n  return <div className="oso-polar">{children}</div>;\n}\n\nfunction App() {\n  return (\n    <OsoPolar>\n      <p>Estoy en el frío 🐻‍❄️</p>\n    </OsoPolar>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasChildren = code.includes("{ children }") || code.includes("children");
           const hasUsage = code.includes("<OsoPolar>") || code.includes("</OsoPolar>");
@@ -2796,7 +2838,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "¡Hora de **useRef**! Es como una cajita que guarda una referencia sin causar re-renders. El cangrejo guarda su posición! 🦀",
       instruction: "Crea un componente \`Cangrejo\` con \`useRef\` para un input. Usa \`const inputRef = useRef(null)\` y \`inputRef.current.focus()\` en un botón.",
-      initialCode: `import { useRef } from 'react';\nfunction Cangrejo() {\n  const inputRef = useRef(null);\n  const handleFocus = () => {\n    inputRef.current.focus();\n  };\n  return (\n    <div>\n      <input ref={inputRef} placeholder="Cangrejo 🦀" />\n      <button onClick={handleFocus}>Enfocar</button>\n    </div>\n  );\n}\n\nconsole.log("Cangrejo creado");`,
+      initialCode: `import { useRef } from 'react';\nfunction Cangrejo() {\n  const inputRef = useRef(null);\n  const handleFocus = () => {\n    inputRef.current.focus();\n  };\n  return (\n    <div>\n      <input ref={inputRef} placeholder="Cangrejo 🦀" />\n      <button onClick={handleFocus}>Enfocar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Cangrejo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseRef = code.includes("useRef");
           const hasRef = code.includes("ref={") || code.includes("ref =");
@@ -2815,7 +2857,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useMemo** para memorizar cálculos costosos. El pulpo tiene muchos brazos pero solo calcula cuando es necesario! 🐙",
       instruction: "Crea un componente \`Pulpo\` con \`useMemo\` que calcule el cuadrado de un número. Usa \`const resultado = useMemo(() => numero * numero, [numero])\`",
-      initialCode: `import { useState, useMemo } from 'react';\nfunction Pulpo() {\n  const [numero, setNumero] = useState(5);\n  const resultado = useMemo(() => numero * numero, [numero]);\n  return (\n    <div>\n      <p>Número: {numero}, Cuadrado: {resultado} 🐙</p>\n      <button onClick={() => setNumero(numero + 1)}>Aumentar</button>\n    </div>\n  );\n}\n\nconsole.log("Pulpo creado");`,
+      initialCode: `import { useState, useMemo } from 'react';\nfunction Pulpo() {\n  const [numero, setNumero] = useState(5);\n  const resultado = useMemo(() => numero * numero, [numero]);\n  return (\n    <div>\n      <p>Número: {numero}, Cuadrado: {resultado} 🐙</p>\n      <button onClick={() => setNumero(numero + 1)}>Aumentar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Pulpo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseMemo = code.includes("useMemo");
           const hasDependency = code.includes("[numero]") || code.includes("[");
@@ -2834,7 +2876,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "¡Hora de **useCallback**! Memoriza funciones para evitar recrearlas. El camello guarda energía como agua en el desierto! 🐪",
       instruction: "Crea un componente \`Camello\` con \`useCallback\` para una función. Usa \`const handleClick = useCallback(() => { ... }, [])\`",
-      initialCode: `import { useCallback } from 'react';\nfunction Camello() {\n  const handleClick = useCallback(() => {\n    console.log("Camello caminando 🐪");\n  }, []);\n  return (\n    <div>\n      <p>Camello 🐪</p>\n      <button onClick={handleClick}>Caminar</button>\n    </div>\n  );\n}\n\nconsole.log("Camello creado");`,
+      initialCode: `import { useCallback } from 'react';\nfunction Camello() {\n  const handleClick = useCallback(() => {\n    console.log("Camello caminando 🐪");\n  }, []);\n  return (\n    <div>\n      <p>Camello 🐪</p>\n      <button onClick={handleClick}>Caminar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Camello />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseCallback = code.includes("useCallback");
           const hasDependency = code.includes("], [") || code.includes("],[]");
@@ -2853,7 +2895,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos crear **hooks personalizados** para reutilizar lógica. El hipopótamo crea su propio hook para nadar! 🦛",
       instruction: "Crea un hook personalizado \`useNadar\` que retorne \`{ nadando, empezarNadar }\`. Luego úsalo en un componente \`Hipopotamo\`.",
-      initialCode: `import { useState } from 'react';\nfunction useNadar() {\n  const [nadando, setNadando] = useState(false);\n  const empezarNadar = () => setNadando(true);\n  return { nadando, empezarNadar };\n}\n\nfunction Hipopotamo() {\n  const { nadando, empezarNadar } = useNadar();\n  return (\n    <div>\n      <p>{nadando ? 'Nadando' : 'En tierra'} 🦛</p>\n      <button onClick={empezarNadar}>Nadar</button>\n    </div>\n  );\n}\n\nconsole.log("Hipopótamo creado");`,
+      initialCode: `import { useState } from 'react';\nfunction useNadar() {\n  const [nadando, setNadando] = useState(false);\n  const empezarNadar = () => setNadando(true);\n  return { nadando, empezarNadar };\n}\n\nfunction Hipopotamo() {\n  const { nadando, empezarNadar } = useNadar();\n  return (\n    <div>\n      <p>{nadando ? 'Nadando' : 'En tierra'} 🦛</p>\n      <button onClick={empezarNadar}>Nadar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Hipopotamo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasCustomHook = code.includes("function useNadar") || code.includes("const useNadar");
           const hasUsage = code.includes("useNadar()");
@@ -2872,7 +2914,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **contexto** con \`createContext\` y \`useContext\` para compartir datos. El flamenco comparte su elegancia con todos! 🦩",
       instruction: "Crea un contexto \`EleganteContext\` con \`createContext\` y úsalo en un componente \`Flamenco\` con \`useContext\`.",
-      initialCode: `import { createContext, useContext } from 'react';\nconst EleganteContext = createContext("Elegante");\n\nfunction Flamenco() {\n  const elegante = useContext(EleganteContext);\n  return <p>{elegante} 🦩</p>;\n}\n\nfunction App() {\n  return (\n    <EleganteContext.Provider value="Soy elegante">\n      <Flamenco />\n    </EleganteContext.Provider>\n  );\n}\n\nconsole.log("Flamenco creado");`,
+      initialCode: `import { createContext, useContext } from 'react';\nconst EleganteContext = createContext("Elegante");\n\nfunction Flamenco() {\n  const elegante = useContext(EleganteContext);\n  return <p>{elegante} 🦩</p>;\n}\n\nfunction App() {\n  return (\n    <EleganteContext.Provider value="Soy elegante">\n      <Flamenco />\n    </EleganteContext.Provider>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasCreateContext = code.includes("createContext");
           const hasUseContext = code.includes("useContext");
@@ -2892,7 +2934,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **useReducer** para manejar estados complejos. El erizo tiene muchas espinas (estados) que necesita organizar! 🦔",
       instruction: "Crea un componente \`Erizo\` con \`useReducer\` que tenga acciones 'agregar' y 'quitar' espinas. Usa \`const [espinas, dispatch] = useReducer(...)\`",
-      initialCode: `import { useReducer } from 'react';\nfunction reducer(estado, accion) {\n  switch(accion.tipo) {\n    case 'agregar': return estado + 1;\n    case 'quitar': return Math.max(0, estado - 1);\n    default: return estado;\n  }\n}\n\nfunction Erizo() {\n  const [espinas, dispatch] = useReducer(reducer, 0);\n  return (\n    <div>\n      <p>Espinas: {espinas} 🦔</p>\n      <button onClick={() => dispatch({ tipo: 'agregar' })}>Agregar</button>\n      <button onClick={() => dispatch({ tipo: 'quitar' })}>Quitar</button>\n    </div>\n  );\n}\n\nconsole.log("Erizo creado");`,
+      initialCode: `import { useReducer } from 'react';\nfunction reducer(estado, accion) {\n  switch(accion.tipo) {\n    case 'agregar': return estado + 1;\n    case 'quitar': return Math.max(0, estado - 1);\n    default: return estado;\n  }\n}\n\nfunction Erizo() {\n  const [espinas, dispatch] = useReducer(reducer, 0);\n  return (\n    <div>\n      <p>Espinas: {espinas} 🦔</p>\n      <button onClick={() => dispatch({ tipo: 'agregar' })}>Agregar</button>\n      <button onClick={() => dispatch({ tipo: 'quitar' })}>Quitar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Erizo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseReducer = code.includes("useReducer");
           const hasReducer = code.includes("function reducer") || code.includes("const reducer");
@@ -2912,7 +2954,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **lazy loading** con \`React.lazy\` y \`Suspense\` para cargar componentes cuando se necesiten. El búho es sabio y carga solo lo necesario! 🦉",
       instruction: "Crea un componente \`Buho\` con \`React.lazy\` y envuélvelo en \`Suspense\` con un fallback 'Cargando...'",
-      initialCode: `import { lazy, Suspense } from 'react';\nconst Buho = lazy(() => Promise.resolve({ default: () => <p>Búho sabio 🦉</p> }));\n\nfunction App() {\n  return (\n    <Suspense fallback={<p>Cargando...</p>}>\n      <Buho />\n    </Suspense>\n  );\n}\n\nconsole.log("Búho creado");`,
+      initialCode: `import { lazy, Suspense } from 'react';\nconst Buho = lazy(() => Promise.resolve({ default: () => <p>Búho sabio 🦉</p> }));\n\nfunction App() {\n  return (\n    <Suspense fallback={<p>Cargando...</p>}>\n      <Buho />\n    </Suspense>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasLazy = code.includes("lazy(") || code.includes("React.lazy");
           const hasSuspense = code.includes("Suspense");
@@ -2932,7 +2974,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **memo** para evitar re-renders innecesarios. El pato solo se actualiza cuando es necesario! 🦆",
       instruction: "Crea un componente \`Pato\` envuelto en \`React.memo\`. El componente debe recibir props y solo re-renderizarse si las props cambian.",
-      initialCode: `import { memo, useState } from 'react';\nconst Pato = memo(function Pato({ nombre }) {\n  console.log("Pato renderizado");\n  return <p>{nombre} 🦆</p>;\n});\n\nfunction App() {\n  const [contador, setContador] = useState(0);\n  return (\n    <div>\n      <p>Contador: {contador}</p>\n      <button onClick={() => setContador(contador + 1)}>Incrementar</button>\n      <Pato nombre="Donald" />\n    </div>\n  );\n}\n\nconsole.log("Pato creado");`,
+      initialCode: `import { memo, useState } from 'react';\nconst Pato = memo(function Pato({ nombre }) {\n  console.log("Pato renderizado");\n  return <p>{nombre} 🦆</p>;\n});\n\nfunction App() {\n  const [contador, setContador] = useState(0);\n  return (\n    <div>\n      <p>Contador: {contador}</p>\n      <button onClick={() => setContador(contador + 1)}>Incrementar</button>\n      <Pato nombre="Donald" />\n    </div>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasMemo = code.includes("memo(") || code.includes("React.memo");
           const hasComponent = code.includes("function Pato") || code.includes("const Pato");
@@ -2951,7 +2993,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **forwardRef** para pasar refs a componentes hijos. El conejo es veloz y necesita pasar referencias! 🐰",
       instruction: "Crea un componente \`Conejo\` con \`forwardRef\` que reciba una ref y la pase a un input. Usa \`const Conejo = forwardRef((props, ref) => { ... })\`",
-      initialCode: `import { forwardRef, useRef } from 'react';\nconst Conejo = forwardRef((props, ref) => {\n  return <input ref={ref} placeholder="Conejo veloz 🐰" />;\n});\n\nfunction App() {\n  const inputRef = useRef(null);\n  return (\n    <div>\n      <Conejo ref={inputRef} />\n      <button onClick={() => inputRef.current.focus()}>Enfocar</button>\n    </div>\n  );\n}\n\nconsole.log("Conejo creado");`,
+      initialCode: `import { forwardRef, useRef } from 'react';\nconst Conejo = forwardRef((props, ref) => {\n  return <input ref={ref} placeholder="Conejo veloz 🐰" />;\n});\n\nfunction App() {\n  const inputRef = useRef(null);\n  return (\n    <div>\n      <Conejo ref={inputRef} />\n      <button onClick={() => inputRef.current.focus()}>Enfocar</button>\n    </div>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasForwardRef = code.includes("forwardRef");
           const hasRefParam = code.includes("(props, ref)") || code.includes("(props,ref)");
@@ -2970,7 +3012,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **portales** con \`createPortal\` para renderizar fuera del árbol DOM. El pez puede nadar fuera de su pecera! 🐠",
       instruction: "Crea un componente \`Pez\` que use \`createPortal\` para renderizar un mensaje fuera del componente. Usa \`import { createPortal } from 'react-dom'\`",
-      initialCode: `import { createPortal } from 'react-dom';\nfunction Pez() {\n  return (\n    <div>\n      <p>Pez en la pecera 🐠</p>\n      {createPortal(\n        <p>Pez fuera de la pecera 🐠</p>,\n        document.body\n      )}\n    </div>\n  );\n}\n\nconsole.log("Pez creado");`,
+      initialCode: `import { createPortal } from 'react-dom';\nfunction Pez() {\n  return (\n    <div>\n      <p>Pez en la pecera 🐠</p>\n      {createPortal(\n        <p>Pez fuera de la pecera 🐠</p>,\n        document.body\n      )}\n    </div>\n  );\n}\n\nfunction App() {\n  return <Pez />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasCreatePortal = code.includes("createPortal");
           const hasReactDom = code.includes("react-dom");
@@ -2989,7 +3031,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos combinar múltiples hooks. La ardilla acumula nueces (datos) usando varios hooks a la vez! 🐿️",
       instruction: "Crea un componente \`Ardilla\` que use \`useState\`, \`useEffect\`, y \`useMemo\` juntos. Acumula 'nueces' y muestra el total.",
-      initialCode: `import { useState, useEffect, useMemo } from 'react';\nfunction Ardilla() {\n  const [nueces, setNueces] = useState(0);\n  useEffect(() => {\n    console.log("Nueces cambiaron:", nueces);\n  }, [nueces]);\n  const total = useMemo(() => nueces * 2, [nueces]);\n  return (\n    <div>\n      <p>Nueces: {nueces}, Total: {total} 🐿️</p>\n      <button onClick={() => setNueces(nueces + 1)}>Agregar nuez</button>\n    </div>\n  );\n}\n\nconsole.log("Ardilla creada");`,
+      initialCode: `import { useState, useEffect, useMemo } from 'react';\nfunction Ardilla() {\n  const [nueces, setNueces] = useState(0);\n  useEffect(() => {\n    console.log("Nueces cambiaron:", nueces);\n  }, [nueces]);\n  const total = useMemo(() => nueces * 2, [nueces]);\n  return (\n    <div>\n      <p>Nueces: {nueces}, Total: {total} 🐿️</p>\n      <button onClick={() => setNueces(nueces + 1)}>Agregar nuez</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Ardilla />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasUseState = code.includes("useState");
           const hasUseEffect = code.includes("useEffect");
@@ -3009,7 +3051,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos crear **componentes controlados** donde el estado controla el input. El mapache controla todo de noche! 🦝",
       instruction: "Crea un componente \`Mapache\` con un input controlado. Usa \`value\` y \`onChange\` para controlar completamente el input.",
-      initialCode: `import { useState } from 'react';\nfunction Mapache() {\n  const [valor, setValor] = useState("");\n  return (\n    <div>\n      <input\n        value={valor}\n        onChange={(e) => setValor(e.target.value)}\n        placeholder="Mapache 🦝"\n      />\n      <p>Valor: {valor}</p>\n    </div>\n  );\n}\n\nconsole.log("Mapache creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Mapache() {\n  const [valor, setValor] = useState("");\n  return (\n    <div>\n      <input\n        value={valor}\n        onChange={(e) => setValor(e.target.value)}\n        placeholder="Mapache 🦝"\n      />\n      <p>Valor: {valor}</p>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Mapache />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasValue = code.includes("value={") || code.includes("value =");
           const hasOnChange = code.includes("onChange=");
@@ -3029,7 +3071,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **formularios** en React. El loro quiere un formulario para repetir lo que dice! 🦜",
       instruction: "Crea un componente \`Loro\` con un formulario que tenga un input y un botón submit. Usa \`onSubmit\` y \`preventDefault\`.",
-      initialCode: `import { useState } from 'react';\nfunction Loro() {\n  const [mensaje, setMensaje] = useState("");\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log("El loro dice:", mensaje);\n  };\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={mensaje}\n        onChange={(e) => setMensaje(e.target.value)}\n        placeholder="¿Qué dice el loro? 🦜"\n      />\n      <button type="submit">Repetir</button>\n    </form>\n  );\n}\n\nconsole.log("Loro creado");`,
+      initialCode: `import { useState } from 'react';\nfunction Loro() {\n  const [mensaje, setMensaje] = useState("");\n  const handleSubmit = (e) => {\n    e.preventDefault();\n    console.log("El loro dice:", mensaje);\n  };\n  return (\n    <form onSubmit={handleSubmit}>\n      <input\n        value={mensaje}\n        onChange={(e) => setMensaje(e.target.value)}\n        placeholder="¿Qué dice el loro? 🦜"\n      />\n      <button type="submit">Repetir</button>\n    </form>\n  );\n}\n\nfunction App() {\n  return <Loro />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasForm = code.includes("<form");
           const hasOnSubmit = code.includes("onSubmit=");
@@ -3049,7 +3091,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **render props** para compartir lógica. El cangrejo ermitaño comparte su casita (lógica) con otros! 🦀",
       instruction: "Crea un componente \`CangrejoErmitano\` que use render props. El componente debe recibir una función \`render\` y llamarla con datos.",
-      initialCode: `function CangrejoErmitano({ render }) {\n  const casita = "Cómoda";\n  return render(casita);\n}\n\nfunction App() {\n  return (\n    <CangrejoErmitano\n      render={(casita) => <p>Mi casita es {casita} 🦀</p>}\n    />\n  );\n}\n\nconsole.log("Cangrejo ermitaño creado");`,
+      initialCode: `function CangrejoErmitano({ render }) {\n  const casita = "Cómoda";\n  return render(casita);\n}\n\nfunction App() {\n  return (\n    <CangrejoErmitano\n      render={(casita) => <p>Mi casita es {casita} 🦀</p>}\n    />\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasRender = code.includes("render");
           const hasRenderCall = code.includes("render(") || code.includes("render (");
@@ -3068,7 +3110,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **Higher Order Components (HOC)** para envolver componentes. El unicornio es mágico y puede dar superpoderes a otros! 🦄",
       instruction: "Crea un HOC \`conMagia\` que envuelva un componente y le agregue una prop \`magico\`. Luego úsalo en un componente \`Unicornio\`.",
-      initialCode: `function conMagia(Componente) {\n  return function ComponenteMagico(props) {\n    return <Componente {...props} magico={true} />;\n  };\n}\n\nfunction Unicornio({ magico }) {\n  return <p>{magico ? 'Mágico' : 'Normal'} 🦄</p>;\n}\n\nconst UnicornioMagico = conMagia(Unicornio);\n\nconsole.log("Unicornio creado");`,
+      initialCode: `function conMagia(Componente) {\n  return function ComponenteMagico(props) {\n    return <Componente {...props} magico={true} />;\n  };\n}\n\nfunction Unicornio({ magico }) {\n  return <p>{magico ? 'Mágico' : 'Normal'} 🦄</p>;\n}\n\nconst UnicornioMagico = conMagia(Unicornio);\n\nfunction App() {\n  return <UnicornioMagico />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasHOC = code.includes("function conMagia") || code.includes("const conMagia");
           const hasSpread = code.includes("{...props}");
@@ -3087,7 +3129,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **error boundaries** con \`componentDidCatch\` para manejar errores. El dragón protege contra errores! 🐉",
       instruction: "Crea un componente \`Dragon\` que sea un error boundary. Usa \`class ErrorBoundary extends React.Component\` con \`componentDidCatch\`.",
-      initialCode: `class ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { hasError: false };\n  }\n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  componentDidCatch(error, errorInfo) {\n    console.log("Error capturado:", error);\n  }\n  render() {\n    if (this.state.hasError) {\n      return <p>Algo salió mal 🐉</p>;\n    }\n    return this.props.children;\n  }\n}\n\nconsole.log("Dragón creado");`,
+      initialCode: `class ErrorBoundary extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = { hasError: false };\n  }\n  static getDerivedStateFromError(error) {\n    return { hasError: true };\n  }\n  componentDidCatch(error, errorInfo) {\n    console.log("Error capturado:", error);\n  }\n  render() {\n    if (this.state.hasError) {\n      return <p>Algo salió mal 🐉</p>;\n    }\n    return this.props.children;\n  }\n}\n\nfunction App() {\n  return (\n    <ErrorBoundary>\n      <p>Contenido seguro 🐉</p>\n    </ErrorBoundary>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasClass = code.includes("class ErrorBoundary") || code.includes("extends");
           const hasComponentDidCatch = code.includes("componentDidCatch");
@@ -3106,7 +3148,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **lifecycle methods** en componentes de clase. El fénix renace en cada ciclo de vida! 🦅",
       instruction: "Crea un componente de clase \`Fenix\` con \`componentDidMount\`, \`componentDidUpdate\`, y \`componentWillUnmount\`.",
-      initialCode: `class Fenix extends React.Component {\n  componentDidMount() {\n    console.log("Fénix montado 🦅");\n  }\n  componentDidUpdate() {\n    console.log("Fénix actualizado 🦅");\n  }\n  componentWillUnmount() {\n    console.log("Fénix desmontado 🦅");\n  }\n  render() {\n    return <p>Fénix 🦅</p>;\n  }\n}\n\nconsole.log("Fénix creado");`,
+      initialCode: `class Fenix extends React.Component {\n  componentDidMount() {\n    console.log("Fénix montado 🦅");\n  }\n  componentDidUpdate() {\n    console.log("Fénix actualizado 🦅");\n  }\n  componentWillUnmount() {\n    console.log("Fénix desmontado 🦅");\n  }\n  render() {\n    return <p>Fénix 🦅</p>;\n  }\n}\n\nfunction App() {\n  return <Fenix />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasDidMount = code.includes("componentDidMount");
           const hasDidUpdate = code.includes("componentDidUpdate");
@@ -3126,7 +3168,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos usar **custom hooks** para compartir lógica entre componentes. El grillo canta la misma canción en diferentes lugares! 🦗",
       instruction: "Crea un custom hook \`useCantar\` que retorne \`{ cancion, cambiarCancion }\`. Luego úsalo en un componente \`Grillo\`.",
-      initialCode: `import { useState } from 'react';\nfunction useCantar() {\n  const [cancion, setCancion] = useState("Cri cri");\n  const cambiarCancion = (nueva) => setCancion(nueva);\n  return { cancion, cambiarCancion };\n}\n\nfunction Grillo() {\n  const { cancion, cambiarCancion } = useCantar();\n  return (\n    <div>\n      <p>{cancion} 🦗</p>\n      <button onClick={() => cambiarCancion("Nueva canción")}>Cambiar</button>\n    </div>\n  );\n}\n\nconsole.log("Grillo creado");`,
+      initialCode: `import { useState } from 'react';\nfunction useCantar() {\n  const [cancion, setCancion] = useState("Cri cri");\n  const cambiarCancion = (nueva) => setCancion(nueva);\n  return { cancion, cambiarCancion };\n}\n\nfunction Grillo() {\n  const { cancion, cambiarCancion } = useCantar();\n  return (\n    <div>\n      <p>{cancion} 🦗</p>\n      <button onClick={() => cambiarCancion("Nueva canción")}>Cambiar</button>\n    </div>\n  );\n}\n\nfunction App() {\n  return <Grillo />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasCustomHook = code.includes("function useCantar") || code.includes("const useCantar");
           const hasUsage = code.includes("useCantar()");
@@ -3145,7 +3187,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "Podemos optimizar con **React.memo** y comparadores personalizados. El colibrí es tan veloz que solo se actualiza cuando es necesario! 🐦",
       instruction: "Crea un componente \`Colibri\` con \`React.memo\` y una función comparadora personalizada. La función debe comparar props y decidir si re-renderizar.",
-      initialCode: `import { memo, useState } from 'react';\nconst Colibri = memo(function Colibri({ velocidad }) {\n  return <p>Velocidad: {velocidad} 🐦</p>;\n}, (prevProps, nextProps) => {\n  return prevProps.velocidad === nextProps.velocidad;\n});\n\nfunction App() {\n  const [velocidad, setVelocidad] = useState(100);\n  return (\n    <div>\n      <Colibri velocidad={velocidad} />\n      <button onClick={() => setVelocidad(velocidad + 10)}>Acelerar</button>\n    </div>\n  );\n}\n\nconsole.log("Colibrí creado");`,
+      initialCode: `import { memo, useState } from 'react';\nconst Colibri = memo(function Colibri({ velocidad }) {\n  return <p>Velocidad: {velocidad} 🐦</p>;\n}, (prevProps, nextProps) => {\n  return prevProps.velocidad === nextProps.velocidad;\n});\n\nfunction App() {\n  const [velocidad, setVelocidad] = useState(100);\n  return (\n    <div>\n      <Colibri velocidad={velocidad} />\n      <button onClick={() => setVelocidad(velocidad + 10)}>Acelerar</button>\n    </div>\n  );\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasMemo = code.includes("memo(");
           const hasComparator = code.includes("(prevProps, nextProps)") || code.includes("prevProps") && code.includes("nextProps");
@@ -3164,7 +3206,7 @@ export const lessons: Lesson[] = [
       section: "react",
       description: "¡Felicidades! 🎉 Has llegado al final de React. Ahora combina TODO lo aprendido: hooks, context, memo, formularios, y más. ¡Crea un zoológico completo con todos los animales!",
       instruction: "Crea un componente \`Zoologico\` que use múltiples componentes de animales, useState, useEffect, useContext, y formularios. Muestra al menos 3 animales diferentes con sus propias funcionalidades.",
-      initialCode: `import { useState, useEffect, createContext, useContext } from 'react';\nconst ZoologicoContext = createContext();\n\nfunction Gatito({ nombre }) {\n  return <p>{nombre} 🐱</p>;\n}\n\nfunction Perrito({ nombre }) {\n  return <p>{nombre} 🐶</p>;\n}\n\nfunction Zoologico() {\n  const [animales, setAnimales] = useState(["Gatito", "Perrito"]);\n  useEffect(() => {\n    console.log("Zoológico abierto");\n  }, []);\n  return (\n    <ZoologicoContext.Provider value={{ animales }}>\n      <div>\n        <h1>Mi Zoológico 🦁</h1>\n        {animales.map(animal => (\n          animal === "Gatito" ? <Gatito key={animal} nombre="Miau" /> :\n          <Perrito key={animal} nombre="Guau" />\n        ))}\n      </div>\n    </ZoologicoContext.Provider>\n  );\n}\n\nconsole.log("Zoológico completo creado");`,
+      initialCode: `import { useState, useEffect, createContext, useContext } from 'react';\nconst ZoologicoContext = createContext();\n\nfunction Gatito({ nombre }) {\n  return <p>{nombre} 🐱</p>;\n}\n\nfunction Perrito({ nombre }) {\n  return <p>{nombre} 🐶</p>;\n}\n\nfunction Zoologico() {\n  const [animales, setAnimales] = useState(["Gatito", "Perrito"]);\n  useEffect(() => {\n    console.log("Zoológico abierto");\n  }, []);\n  return (\n    <ZoologicoContext.Provider value={{ animales }}>\n      <div>\n        <h1>Mi Zoológico 🦁</h1>\n        {animales.map(animal => (\n          animal === "Gatito" ? <Gatito key={animal} nombre="Miau" /> :\n          <Perrito key={animal} nombre="Guau" />\n        ))}\n      </div>\n    </ZoologicoContext.Provider>\n  );\n}\n\nfunction App() {\n  return <Zoologico />;\n}\n\nexport default App;`,
       validationLogic: (code, logs) => {
           const hasMultipleComponents = (code.match(/function \w+/g) || []).length >= 3;
           const hasUseState = code.includes("useState");

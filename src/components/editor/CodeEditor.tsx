@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import Editor from 'react-simple-code-editor';
 import Prism from 'prismjs';
+import expandAbbreviation from 'emmet';
+import { extract } from 'emmet';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-typescript';
 import 'prismjs/components/prism-css';
@@ -64,6 +66,41 @@ export function CodeEditor({ initialCode, onChange, onRun, readOnly = false, lan
     setCode(newCode);
     if (onChange) onChange(newCode);
   };
+
+  const handleEmmetKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (language !== 'react' || readOnly || e.key !== 'Tab' || e.shiftKey) return;
+      const ta = e.currentTarget as HTMLTextAreaElement;
+      const value = ta.value;
+      const selectionStart = ta.selectionStart;
+      const textBefore = value.slice(0, selectionStart);
+      const lineStart = textBefore.lastIndexOf('\n') + 1;
+      const line = value.slice(lineStart).split('\n')[0];
+      const posInLine = selectionStart - lineStart;
+      const extracted = extract(line, posInLine, { type: 'markup' });
+      if (!extracted) return;
+      let expansion: string;
+      try {
+        expansion = expandAbbreviation(extracted.abbreviation, { syntax: 'jsx' });
+      } catch {
+        return;
+      }
+      const newValue =
+        value.slice(0, lineStart + extracted.start) +
+        expansion +
+        value.slice(lineStart + extracted.end);
+      setCode(newValue);
+      onChange?.(newValue);
+      e.preventDefault();
+      const pos = lineStart + extracted.start + expansion.length;
+      setTimeout(() => {
+        ta.selectionStart = pos;
+        ta.selectionEnd = pos;
+        ta.focus();
+      }, 0);
+    },
+    [language, readOnly, onChange]
+  );
 
   const getLanguage = (): string => {
     if (language === 'html') return 'markup';
@@ -146,6 +183,7 @@ export function CodeEditor({ initialCode, onChange, onRun, readOnly = false, lan
           <Editor
             value={code}
             onValueChange={handleChange}
+            onKeyDown={handleEmmetKeyDown}
             highlight={highlight}
             padding={20}
             className={styles.editor}
@@ -191,6 +229,7 @@ export function CodeEditor({ initialCode, onChange, onRun, readOnly = false, lan
           <Editor
             value={code}
             onValueChange={handleChange}
+            onKeyDown={handleEmmetKeyDown}
             highlight={highlight}
             padding={15}
             className={styles.editor}

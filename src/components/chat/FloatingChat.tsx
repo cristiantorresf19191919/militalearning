@@ -40,7 +40,7 @@ export default function FloatingChat() {
       setMessages([
         {
           id: 'welcome',
-          text: '¡Hola! 👋 Soy tu asistente de programación. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre JavaScript, React, HTML, CSS o cualquier concepto de programación. ¡Estoy aquí para ayudarte a aprender! 💻✨',
+          text: '¡Hola! 👋 Soy GorilonBot. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre JavaScript, React, HTML, CSS o cualquier concepto de programación. ¡Estoy aquí para ayudarte a aprender! 💻✨',
           sender: 'ai',
           timestamp: new Date(),
         },
