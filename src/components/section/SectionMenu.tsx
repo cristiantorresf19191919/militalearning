@@ -260,6 +260,88 @@ export function SectionMenu() {
             <div className={styles.decorativePattern}>⚡️</div>
           </Link>
         </motion.div>
+
+        <motion.div
+          key="react-live"
+          variants={cardVariants}
+          whileHover={{ 
+            scale: 1.05,
+            y: -8,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            href="/react-live"
+            className={`${styles.sectionCard} ${styles.playgroundCard}`}
+            style={{ 
+              '--section-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #14b8a6 100%)',
+              '--section-color': '#14b8a6',
+            } as React.CSSProperties}
+          >
+            <div className={styles.cardBackground} />
+            <div className={styles.cardContent}>
+              <div className={styles.iconWrapper}>
+                <div className={styles.iconContainer}>
+                  <i className={`fas fa-code ${styles.icon}`}></i>
+                  <span className={styles.emoji}>⚛️</span>
+                </div>
+              </div>
+              <div className={styles.playgroundLabel}>
+                <span>React Live</span>
+              </div>
+              <h3 className={styles.cardTitle}>React en vivo</h3>
+              <p className={styles.cardDescription}>
+                Edita JSX/TSX y ve el preview React al instante en la derecha.
+              </p>
+              <div className={styles.cardArrow}>
+                <i className="fas fa-arrow-right"></i>
+              </div>
+            </div>
+            <div className={styles.decorativePattern}>✨</div>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          key="kotlin"
+          variants={cardVariants}
+          whileHover={{ 
+            scale: 1.05,
+            y: -8,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            href="/kotlin"
+            className={`${styles.sectionCard} ${styles.playgroundCard}`}
+            style={{ 
+              '--section-gradient': 'linear-gradient(135deg, #7c3aed 0%, #0ea5e9 100%)',
+              '--section-color': '#7c3aed',
+            } as React.CSSProperties}
+          >
+            <div className={styles.cardBackground} />
+            <div className={styles.cardContent}>
+              <div className={styles.iconWrapper}>
+                <div className={styles.iconContainer}>
+                  <i className={`fas fa-code ${styles.icon}`}></i>
+                  <span className={styles.emoji}>🧩</span>
+                </div>
+              </div>
+              <div className={styles.playgroundLabel}>
+                <span>Kotlin</span>
+              </div>
+              <h3 className={styles.cardTitle}>Kotlin Basics</h3>
+              <p className={styles.cardDescription}>
+                Practica Kotlin con autocompletado y snippets educativos.
+              </p>
+              <div className={styles.cardArrow}>
+                <i className="fas fa-arrow-right"></i>
+              </div>
+            </div>
+            <div className={styles.decorativePattern}>🟣</div>
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div 

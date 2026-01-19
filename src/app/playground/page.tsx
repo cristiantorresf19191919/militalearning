@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { createPortal } from "react-dom";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useCodeRunner } from "@/hooks/useCodeRunner";
 import styles from "./page.module.css";
 
@@ -48,6 +48,8 @@ export default function PlaygroundPage() {
   const { runCode } = useCodeRunner();
   const [files, setFiles] = useState<FileTab[]>(defaultFiles);
   const [activeFileId, setActiveFileId] = useState<string>("main");
+  const monacoRef = useRef<any>(null);
+  const editorRef = useRef<any>(null);
   const [logs, setLogs] = useState<string[]>([]);
   const [runtimeError, setRuntimeError] = useState<string | null>(null);
   const [isRunning, setIsRunning] = useState(false);
@@ -103,6 +105,29 @@ export default function PlaygroundPage() {
       document.body.style.overflow = "";
     };
   }, [isFullscreen]);
+
+  // Prepare Monaco models so TS can resolve imports across tabs
+  const ensureModels = useCallback(() => {
+    if (!monacoRef.current) return;
+    files.forEach((file) => {
+      const uri = monacoRef.current.Uri.file(file.name);
+      let model = monacoRef.current.editor.getModel(uri);
+      if (!model) {
+        model = monacoRef.current.editor.createModel(file.content, file.language, uri);
+      } else if (model.getValue() !== file.content) {
+        model.pushEditOperations([], [
+          {
+            range: model.getFullModelRange(),
+            text: file.content,
+          },
+        ], () => null);
+      }
+    });
+  }, [files]);
+
+  useEffect(() => {
+    ensureModels();
+  }, [ensureModels]);
 
   const consolePanel = useMemo(
     () => (
@@ -254,6 +279,28 @@ export default function PlaygroundPage() {
         <MonacoEditor
           language={activeFile?.language || "typescript"}
           value={activeFile?.content || ""}
+          path={activeFile ? activeFile.name : "main.ts"}
+          beforeMount={(monaco) => {
+            monacoRef.current = monaco;
+            monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+              allowJs: true,
+              target: monaco.languages.typescript.ScriptTarget.ESNext,
+              module: monaco.languages.typescript.ModuleKind.ESNext,
+              moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+              allowNonTsExtensions: true,
+              allowImportingTsExtensions: true,
+              resolveJsonModule: true,
+              esModuleInterop: true,
+              isolatedModules: true,
+              noEmit: true,
+            });
+            monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
+          }}
+          onMount={(editor, monaco) => {
+            editorRef.current = editor;
+            monacoRef.current = monaco;
+            ensureModels();
+          }}
           onChange={(value) =>
             setFiles((prev) =>
               prev.map((f) => (f.id === activeFileId ? { ...f, content: value || "" } : f))

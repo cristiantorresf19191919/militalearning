@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from 'react';
+import * as Babel from '@babel/standalone';
 
 type CodeRunnerResult = {
   logs: string[];
@@ -30,18 +31,40 @@ export function useCodeRunner() {
     };
 
     try {
+      // Lightweight shims so React/JSX snippets don't crash execution.
+      const reactShim = `
+        const React = {
+          createElement: (type, props, ...children) => ({ type, props: { ...props, children } }),
+          Fragment: 'fragment',
+          Component: class {}
+        };
+        const Fragment = React.Fragment;
+        const useState = (initial) => {
+          let value = initial;
+          const setValue = (next) => { value = typeof next === 'function' ? next(value) : next; };
+          return [value, setValue];
+        };
+        const useEffect = () => {};
+        const useRef = (val = null) => ({ current: val });
+        const useMemo = (fn) => fn();
+        const useCallback = (fn) => fn;
+        const Suspense = ({ children }) => children;
+        const createContext = (v) => ({ Provider: ({ children }) => children, Consumer: ({ children }) => children(v) });
+        const useContext = (ctx) => ctx;
+        const useReducer = (reducer, init) => [init, () => {}];
+        const memo = (comp) => comp;
+        const lazy = (loader) => loader();
+        const forwardRef = (fn) => fn;
+        const createPortal = (node) => node;
+      `;
+
       // Strip TypeScript type annotations for execution
-      // This is a simple approach - remove type annotations from function parameters and variables
       let jsCode = code
-        // Remove interface/type/enum declarations first (they're compile-time only)
         .replace(/interface\s+\w+\s*\{[\s\S]*?\}/g, '')
         .replace(/type\s+\w+\s*=\s*[^;]+;/g, '')
         .replace(/enum\s+\w+\s*\{[\s\S]*?\}/g, '')
-        // Remove type assertions: value as Type -> value
         .replace(/\s+as\s+\w+(?:\s*\|\s*\w+)*/g, '')
-        // Remove return type annotations: function name(): Type -> function name()
         .replace(/\):\s*(?:string|number|boolean|void|any|\w+\s*\|\s*\w+)\s*{/g, ') {')
-        // Remove type annotations from arrow function parameters: (param: Type) => or param: Type =>
         .replace(/(\([^)]*\))\s*=>/g, (match, params) => {
           if (!params || params === '()') return match;
           const paramList = params.slice(1, -1);
@@ -52,9 +75,7 @@ export function useCodeRunner() {
           }).join(', ');
           return `(${cleaned}) =>`;
         })
-        // Remove type annotations from single arrow function parameter: param: Type =>
         .replace(/(\w+):\s*[^=,=>\n]+(?=\s*=>)/g, '$1')
-        // Remove type annotations from function declarations: function name(param: Type)
         .replace(/function\s+\w+\s*(\([^)]*\))/g, (match, params) => {
           if (!params || params === '()') return match;
           const paramList = params.slice(1, -1);
@@ -65,16 +86,28 @@ export function useCodeRunner() {
           }).join(', ');
           return match.replace(params, `(${cleaned})`);
         })
-        // Remove type annotations from variable declarations: let x: Type -> let x
         .replace(/(let|const|var)\s+(\w+):\s*[^=;,\n\[\]]+(?:\[\])?/g, '$1 $2')
-        // Remove array type annotations: string[] -> (keep the array syntax)
         .replace(/(\w+):\s*\w+\[\]/g, '$1')
-        // Clean up any remaining type annotations (but be careful not to break strings)
         .replace(/:\s*(?:string|number|boolean|void|any|\w+\s*\|\s*\w+)(?:\[\])?(?=\s*[=,;\)\]\n])/g, '');
-      
-      // Create a function that takes console and alert as arguments
-      // We treat the user code as the body of this function
-      const func = new Function('console', 'alert', jsCode);
+
+      // Try to transpile JSX/TSX if present.
+      try {
+        jsCode = Babel.transform(jsCode, {
+          presets: [
+            "env",
+            ["react", { runtime: "classic" }],
+            "typescript",
+          ],
+          sourceType: "module",
+          filename: "user-code.tsx",
+        }).code || jsCode;
+      } catch (e) {
+        // If Babel fails, keep the stripped JS.
+      }
+
+      const wrappedCode = `${reactShim}\n${jsCode}`;
+
+      const func = new Function('console', 'alert', wrappedCode);
       func(mockConsole, mockAlert);
     } catch (e: any) {
       logs.push(`❌ Error: ${e.message}`);

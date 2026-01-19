@@ -38,6 +38,8 @@ export default function RootLayout({
                 <Link href="/playground" className="topNav__cta">
                   Playground
                 </Link>
+                <Link href="/react-live">React Live</Link>
+                <Link href="/kotlin">Kotlin</Link>
               </nav>
             </div>
           </header>
