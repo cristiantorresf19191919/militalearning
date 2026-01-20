@@ -342,6 +342,47 @@ export function SectionMenu() {
             <div className={styles.decorativePattern}>🟣</div>
           </Link>
         </motion.div>
+
+        <motion.div
+          key="backend"
+          variants={cardVariants}
+          whileHover={{ 
+            scale: 1.05,
+            y: -8,
+            transition: { duration: 0.3 }
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link
+            href="/backend"
+            className={`${styles.sectionCard} ${styles.playgroundCard}`}
+            style={{ 
+              '--section-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #8a54f8 100%)',
+              '--section-color': '#0ea5e9',
+            } as React.CSSProperties}
+          >
+            <div className={styles.cardBackground} />
+            <div className={styles.cardContent}>
+              <div className={styles.iconWrapper}>
+                <div className={styles.iconContainer}>
+                  <i className={`fas fa-server ${styles.icon}`}></i>
+                  <span className={styles.emoji}>🔌</span>
+                </div>
+              </div>
+              <div className={styles.playgroundLabel}>
+                <span>Backend & API</span>
+              </div>
+              <h3 className={styles.cardTitle}>Frontend ↔ Backend</h3>
+              <p className={styles.cardDescription}>
+                Aprende endpoints, REST API, GET, POST, PUT, DELETE con Node.js.
+              </p>
+              <div className={styles.cardArrow}>
+                <i className="fas fa-arrow-right"></i>
+              </div>
+            </div>
+            <div className={styles.decorativePattern}>🌐</div>
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div 

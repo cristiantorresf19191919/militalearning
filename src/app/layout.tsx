@@ -40,6 +40,7 @@ export default function RootLayout({
                 </Link>
                 <Link href="/react-live">React Live</Link>
                 <Link href="/kotlin">Kotlin</Link>
+                <Link href="/backend">Backend & API</Link>
               </nav>
             </div>
           </header>

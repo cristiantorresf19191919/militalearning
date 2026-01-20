@@ -1,0 +1,722 @@
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.1), transparent 35%),
+    radial-gradient(circle at 80% 5%, rgba(124, 58, 237, 0.1), transparent 30%),
+    #0f1117;
+  color: #e5e7eb;
+  padding-bottom: 4rem;
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.kicker {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 0.75rem;
+  color: #f9fafb;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: #cbd5e1;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+.content {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.section {
+  margin-bottom: 3.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  color: #f9fafb;
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sectionTitle::before {
+  content: "";
+  width: 4px;
+  height: 1.2em;
+  background: linear-gradient(180deg, #38bdf8, #8a54f8);
+  border-radius: 2px;
+}
+
+.sectionBody {
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.sectionBody p {
+  margin: 0 0 1rem;
+}
+
+.sectionBody p:last-child {
+  margin-bottom: 0;
+}
+
+.sectionBody strong {
+  color: #f9fafb;
+}
+
+.sectionBody code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-family: "Fira Code", "JetBrains Mono", monospace;
+}
+
+.imgWrap {
+  margin: 1.5rem 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.imgWrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imgCaption {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.9rem;
+  color: #94a3b8;
+  text-align: center;
+}
+
+.stepGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.stepCard {
+  background: linear-gradient(145deg, rgba(29, 32, 43, 0.6), rgba(20, 22, 31, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.08), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #38bdf8, #8a54f8);
+  color: #0f1117;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0;
+}
+
+.stepBody {
+  padding: 1.25rem;
+}
+
+.stepBody p {
+  margin: 0 0 0.75rem;
+  color: #cbd5e1;
+  line-height: 1.75;
+}
+
+.stepBody p:last-child {
+  margin-bottom: 0;
+}
+
+.stepImg {
+  margin-top: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stepImg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Code editor blocks */
+.editorSection {
+  margin: 2.5rem 0;
+}
+
+.editorLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editorLabel::before {
+  content: "";
+  width: 3px;
+  height: 1em;
+  background: #38bdf8;
+  border-radius: 2px;
+}
+
+.editorCard {
+  background: linear-gradient(145deg, rgba(29, 32, 43, 0.95), rgba(20, 22, 31, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.editorCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1.1rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.editorCardTitle {
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+.editorCardHint {
+  margin-left: auto;
+  color: #38bdf8;
+  font-size: 0.85rem;
+}
+
+.editorBody {
+  padding: 0 1rem 1rem;
+}
+
+.editorLoader {
+  padding: 1.5rem;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.ul {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.5rem;
+}
+
+.ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.blockquote {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #38bdf8;
+  background: rgba(56, 189, 248, 0.06);
+  border-radius: 0 12px 12px 0;
+  color: #cbd5e1;
+  font-style: italic;
+}
+
+.endpointTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.endpointTable th,
+.endpointTable td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.endpointTable th {
+  background: rgba(255, 255, 255, 0.04);
+  color: #f9fafb;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.endpointTable td {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+.endpointTable tr:last-child td {
+  border-bottom: none;
+}
+
+.endpointTable code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2em 0.5em;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+.get { color: #34d399; }
+.post { color: #38bdf8; }
+.put { color: #fbbf24; }
+.delete { color: #f87171; }
+
+/* Level badges and section header row */
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.sectionHeaderRow .sectionTitle {
+  margin: 0;
+}
+
+.levelBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.15));
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  flex-shrink: 0;
+}
+
+.levelBadgeLevel1 {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(14, 165, 233, 0.15));
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  flex-shrink: 0;
+}
+
+/* Pro tip / Gorilín callout */
+.proTip {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(138, 84, 248, 0.06));
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.proTipIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.proTip strong {
+  color: #f9fafb;
+}
+
+.proTip code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.12em 0.35em;
+  border-radius: 6px;
+  font-size: 0.88em;
+}
+
+/* Comparison: Fetch vs Axios vs React Query */
+.comparisonGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.comparisonCard {
+  background: linear-gradient(145deg, rgba(29, 32, 43, 0.7), rgba(20, 22, 31, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comparisonCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.comparisonCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.comparisonEmoji {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.comparisonTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f9fafb;
+  margin: 0;
+}
+
+.comparisonCard p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.comparisonCard code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+/* Entry card: link to Pokemon block */
+.entryCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.08));
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.entryCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(251, 191, 36, 0.15);
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+.entryCardEmoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.entryCardBody {
+  flex: 1;
+}
+
+.entryCardTitle {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f9fafb;
+}
+
+.entryCardText {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.entryCardText code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.entryCardCta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fbbf24;
+}
+
+/* Pokemon block: workbench with tabs + preview */
+.pokemonBlock {
+  margin-top: 0.5rem;
+}
+
+.pokemonBlockHeader {
+  margin-bottom: 1rem;
+}
+
+.pokemonBlockHeader .sectionHeaderRow {
+  margin-bottom: 0.5rem;
+}
+
+.pokemonBlockIntro {
+  margin: 0 0 1rem;
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.pokemonBlockIntro code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.levelBadgeSteroids {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(22, 163, 74, 0.15));
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  flex-shrink: 0;
+}
+
+.pokemonActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.runButton,
+.resetButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.runButton {
+  background: linear-gradient(135deg, #8a54f8 0%, #f8549b 100%);
+  color: #0f1117;
+  box-shadow: 0 8px 20px rgba(138, 84, 248, 0.3);
+}
+
+.runButton:hover {
+  transform: translateY(-1px);
+}
+
+.resetButton {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.resetButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.pokemonWorkbench {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1rem;
+}
+
+.pokemonEditorCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pokemonTabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.pokemonTab,
+.pokemonTabActive {
+  padding: 0.5rem 0.9rem;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pokemonTab:hover {
+  color: #e5e7eb;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.pokemonTabActive {
+  background: linear-gradient(145deg, rgba(29, 32, 43, 0.95), rgba(20, 22, 31, 0.95));
+  color: #38bdf8;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom-color: transparent;
+}
+
+.previewCard {
+  background: linear-gradient(145deg, rgba(29, 32, 43, 0.95), rgba(20, 22, 31, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.badgeOk,
+.badgeError {
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badgeOk {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.badgeError {
+  background: rgba(248, 84, 155, 0.12);
+  color: #fca5a5;
+}
+
+.previewBody {
+  padding: 0;
+  flex: 1;
+  min-height: 340px;
+  background: #0d1017;
+}
+
+.previewFrame {
+  width: 100%;
+  height: 420px;
+  border: none;
+  border-radius: 0;
+  background: #0f172a;
+}
+
+.errorBox {
+  margin: 1rem;
+  padding: 0.75rem;
+  background: rgba(248, 84, 155, 0.08);
+  border: 1px solid rgba(248, 84, 155, 0.25);
+  color: #fca5a5;
+  border-radius: 12px;
+  white-space: pre-wrap;
+  font-size: 0.9rem;
+}
+
+.placeholder {
+  display: block;
+  padding: 2rem;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .comparisonGrid {
+    grid-template-columns: 1fr;
+  }
+  .pokemonWorkbench {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero { padding-top: 2rem; }
+  .section { margin-bottom: 2.5rem; }
+  .sectionHeaderRow { flex-direction: column; align-items: flex-start; }
+  .previewFrame { height: 340px; }
+}
