@@ -317,8 +317,7 @@ const usePokemon = (limit = 20) => {
 };
 `;
 
-const POKEMON_DEFAULT_APP = `import React from "react";
-
+const POKEMON_DEFAULT_APP = `// React ya está en scope: lo importa usePokemon.js antes (concatenación).
 const PokemonCard = ({ name, url }) => {
   const id = url.split("/").filter(Boolean).pop() || "1";
   const img = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id + ".png";
